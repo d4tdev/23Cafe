@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class DangNhap : Form
+    public partial class Order : Form
     {
-        public DangNhap()
+        public Order()
         {
             InitializeComponent();
         }
