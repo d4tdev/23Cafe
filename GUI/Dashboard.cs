@@ -16,5 +16,18 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void btnLogoutAdmin_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnNaviOrder_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Order order = new Order();
+            order.ShowDialog();
+            this.Show();
+        }
     }
 }
