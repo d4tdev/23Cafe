@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace GUI
 {
@@ -22,17 +24,25 @@ namespace GUI
         {
             String username = txtUsername.Text;
             String password = txtPassword.Text;
-            if(username == "" ||  password == "")
+            SqlConnection connect = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=23Cafe;Integrated Security=True;Connect Timeout=30");
+            connect.Open();
+            SqlCommand command = new SqlCommand($"SELECT * FROM Account WHERE LOWER(username) = LOWER('{username}') AND LOWER(password) = LOWER('{password}')", connect);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (username == "" ||  password == "")
             {
                 MessageBox.Show("Vui lòng điền đủ thông tin để đăng nhập vào hệ thống!", "Cảnh báo");
+                return;
             } else if(username == "admin" && password == "admin")
             {
                 this.Hide();
                 Dashboard dashboard = new Dashboard();
                 dashboard.ShowDialog();
                 this.Show();
-            } else if (username == "user" && password == "user")
+            } else if (reader.HasRows)
             {
+                MessageBox.Show(DateTime.Now.ToString());
                 this.Hide();
                 Order order = new Order();
                 order.ShowDialog();
@@ -41,6 +51,7 @@ namespace GUI
             else
             {
                 MessageBox.Show("Không tìm thấy tài khoản, vui lòng liên hệ admin để được cấp lại tài khoản!", "Thông báo");
+                return;
             }
         }
 
@@ -63,6 +74,14 @@ namespace GUI
             {
                 loginSystem();
             }
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            txtUsername.Text = txtUsername.Text.ToLower();
+            txtUsername.SelectionStart = txtUsername.Text.Length;
+            txtPassword.Text = txtPassword.Text.ToLower();
+            txtPassword.SelectionStart = txtPassword.Text.Length;
         }
     }
 }

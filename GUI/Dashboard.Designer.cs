@@ -31,6 +31,10 @@
             this.btnLogoutAdmin = new System.Windows.Forms.Button();
             this.tabPage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnViewBill = new System.Windows.Forms.Button();
+            this.dgvBill = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnSearchAccount = new System.Windows.Forms.Button();
             this.txtUsernameAccount = new System.Windows.Forms.TextBox();
@@ -44,6 +48,15 @@
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtTable = new System.Windows.Forms.TextBox();
+            this.labelTable = new System.Windows.Forms.Label();
+            this.dgvTable = new System.Windows.Forms.DataGridView();
+            this.btnSearchTable = new System.Windows.Forms.Button();
+            this.txtSearchTable = new System.Windows.Forms.TextBox();
+            this.btnViewTable = new System.Windows.Forms.Button();
+            this.btnDeleteTable = new System.Windows.Forms.Button();
+            this.btnEditTable = new System.Windows.Forms.Button();
+            this.btnAddTable = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.comboBoxCategoryFood = new System.Windows.Forms.ComboBox();
             this.labelCategoryFood = new System.Windows.Forms.Label();
@@ -61,16 +74,6 @@
             this.btnEditFood = new System.Windows.Forms.Button();
             this.btnAddFood = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnNaviOrder = new System.Windows.Forms.Button();
-            this.txtTable = new System.Windows.Forms.TextBox();
-            this.labelTable = new System.Windows.Forms.Label();
-            this.dgvTable = new System.Windows.Forms.DataGridView();
-            this.btnSearchTable = new System.Windows.Forms.Button();
-            this.txtSearchTable = new System.Windows.Forms.TextBox();
-            this.btnViewTable = new System.Windows.Forms.Button();
-            this.btnDeleteTable = new System.Windows.Forms.Button();
-            this.btnEditTable = new System.Windows.Forms.Button();
-            this.btnAddTable = new System.Windows.Forms.Button();
             this.txtCategory = new System.Windows.Forms.TextBox();
             this.labelCategory = new System.Windows.Forms.Label();
             this.dgrCategory = new System.Windows.Forms.DataGridView();
@@ -80,21 +83,18 @@
             this.btnDeleteCategory = new System.Windows.Forms.Button();
             this.btnEditCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dgvBill = new System.Windows.Forms.DataGridView();
-            this.btnViewBill = new System.Windows.Forms.Button();
+            this.btnNaviOrder = new System.Windows.Forms.Button();
             this.tabPage.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrCategory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogoutAdmin
@@ -133,6 +133,37 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Quản lý doanh thu";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnViewBill
+            // 
+            this.btnViewBill.Location = new System.Drawing.Point(455, 6);
+            this.btnViewBill.Name = "btnViewBill";
+            this.btnViewBill.Size = new System.Drawing.Size(75, 23);
+            this.btnViewBill.TabIndex = 3;
+            this.btnViewBill.Text = "Thống kê";
+            this.btnViewBill.UseVisualStyleBackColor = true;
+            // 
+            // dgvBill
+            // 
+            this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBill.Location = new System.Drawing.Point(7, 33);
+            this.dgvBill.Name = "dgvBill";
+            this.dgvBill.Size = new System.Drawing.Size(968, 494);
+            this.dgvBill.TabIndex = 2;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(775, 6);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 1;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 6);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -246,6 +277,7 @@
             this.btnAddAccount.TabIndex = 11;
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // tabPage3
             // 
@@ -265,6 +297,82 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Quản lý bàn";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtTable
+            // 
+            this.txtTable.Location = new System.Drawing.Point(608, 121);
+            this.txtTable.Name = "txtTable";
+            this.txtTable.Size = new System.Drawing.Size(366, 20);
+            this.txtTable.TabIndex = 14;
+            // 
+            // labelTable
+            // 
+            this.labelTable.AutoSize = true;
+            this.labelTable.Location = new System.Drawing.Point(609, 105);
+            this.labelTable.Name = "labelTable";
+            this.labelTable.Size = new System.Drawing.Size(26, 13);
+            this.labelTable.TabIndex = 13;
+            this.labelTable.Text = "Bàn";
+            // 
+            // dgvTable
+            // 
+            this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTable.Location = new System.Drawing.Point(6, 36);
+            this.dgvTable.Name = "dgvTable";
+            this.dgvTable.Size = new System.Drawing.Size(590, 490);
+            this.dgvTable.TabIndex = 12;
+            // 
+            // btnSearchTable
+            // 
+            this.btnSearchTable.Location = new System.Drawing.Point(899, 6);
+            this.btnSearchTable.Name = "btnSearchTable";
+            this.btnSearchTable.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchTable.TabIndex = 11;
+            this.btnSearchTable.Text = "Tìm kiếm";
+            this.btnSearchTable.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchTable
+            // 
+            this.txtSearchTable.Location = new System.Drawing.Point(605, 8);
+            this.txtSearchTable.Name = "txtSearchTable";
+            this.txtSearchTable.Size = new System.Drawing.Size(288, 20);
+            this.txtSearchTable.TabIndex = 10;
+            // 
+            // btnViewTable
+            // 
+            this.btnViewTable.Location = new System.Drawing.Point(249, 6);
+            this.btnViewTable.Name = "btnViewTable";
+            this.btnViewTable.Size = new System.Drawing.Size(75, 23);
+            this.btnViewTable.TabIndex = 6;
+            this.btnViewTable.Text = "Xem";
+            this.btnViewTable.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteTable
+            // 
+            this.btnDeleteTable.Location = new System.Drawing.Point(168, 6);
+            this.btnDeleteTable.Name = "btnDeleteTable";
+            this.btnDeleteTable.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteTable.TabIndex = 7;
+            this.btnDeleteTable.Text = "Xóa";
+            this.btnDeleteTable.UseVisualStyleBackColor = true;
+            // 
+            // btnEditTable
+            // 
+            this.btnEditTable.Location = new System.Drawing.Point(87, 6);
+            this.btnEditTable.Name = "btnEditTable";
+            this.btnEditTable.Size = new System.Drawing.Size(75, 23);
+            this.btnEditTable.TabIndex = 8;
+            this.btnEditTable.Text = "Sửa";
+            this.btnEditTable.UseVisualStyleBackColor = true;
+            // 
+            // btnAddTable
+            // 
+            this.btnAddTable.Location = new System.Drawing.Point(6, 6);
+            this.btnAddTable.Name = "btnAddTable";
+            this.btnAddTable.Size = new System.Drawing.Size(75, 23);
+            this.btnAddTable.TabIndex = 9;
+            this.btnAddTable.Text = "Thêm";
+            this.btnAddTable.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -435,92 +543,6 @@
             this.tabPage5.Text = "Quản lý danh mục";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // btnNaviOrder
-            // 
-            this.btnNaviOrder.Location = new System.Drawing.Point(846, 578);
-            this.btnNaviOrder.Name = "btnNaviOrder";
-            this.btnNaviOrder.Size = new System.Drawing.Size(75, 23);
-            this.btnNaviOrder.TabIndex = 2;
-            this.btnNaviOrder.Text = "Đặt món";
-            this.btnNaviOrder.UseVisualStyleBackColor = true;
-            this.btnNaviOrder.Click += new System.EventHandler(this.btnNaviOrder_Click);
-            // 
-            // txtTable
-            // 
-            this.txtTable.Location = new System.Drawing.Point(608, 121);
-            this.txtTable.Name = "txtTable";
-            this.txtTable.Size = new System.Drawing.Size(366, 20);
-            this.txtTable.TabIndex = 14;
-            // 
-            // labelTable
-            // 
-            this.labelTable.AutoSize = true;
-            this.labelTable.Location = new System.Drawing.Point(609, 105);
-            this.labelTable.Name = "labelTable";
-            this.labelTable.Size = new System.Drawing.Size(26, 13);
-            this.labelTable.TabIndex = 13;
-            this.labelTable.Text = "Bàn";
-            // 
-            // dgvTable
-            // 
-            this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTable.Location = new System.Drawing.Point(6, 36);
-            this.dgvTable.Name = "dgvTable";
-            this.dgvTable.Size = new System.Drawing.Size(590, 490);
-            this.dgvTable.TabIndex = 12;
-            // 
-            // btnSearchTable
-            // 
-            this.btnSearchTable.Location = new System.Drawing.Point(899, 6);
-            this.btnSearchTable.Name = "btnSearchTable";
-            this.btnSearchTable.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchTable.TabIndex = 11;
-            this.btnSearchTable.Text = "Tìm kiếm";
-            this.btnSearchTable.UseVisualStyleBackColor = true;
-            // 
-            // txtSearchTable
-            // 
-            this.txtSearchTable.Location = new System.Drawing.Point(605, 8);
-            this.txtSearchTable.Name = "txtSearchTable";
-            this.txtSearchTable.Size = new System.Drawing.Size(288, 20);
-            this.txtSearchTable.TabIndex = 10;
-            // 
-            // btnViewTable
-            // 
-            this.btnViewTable.Location = new System.Drawing.Point(249, 6);
-            this.btnViewTable.Name = "btnViewTable";
-            this.btnViewTable.Size = new System.Drawing.Size(75, 23);
-            this.btnViewTable.TabIndex = 6;
-            this.btnViewTable.Text = "Xem";
-            this.btnViewTable.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteTable
-            // 
-            this.btnDeleteTable.Location = new System.Drawing.Point(168, 6);
-            this.btnDeleteTable.Name = "btnDeleteTable";
-            this.btnDeleteTable.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteTable.TabIndex = 7;
-            this.btnDeleteTable.Text = "Xóa";
-            this.btnDeleteTable.UseVisualStyleBackColor = true;
-            // 
-            // btnEditTable
-            // 
-            this.btnEditTable.Location = new System.Drawing.Point(87, 6);
-            this.btnEditTable.Name = "btnEditTable";
-            this.btnEditTable.Size = new System.Drawing.Size(75, 23);
-            this.btnEditTable.TabIndex = 8;
-            this.btnEditTable.Text = "Sửa";
-            this.btnEditTable.UseVisualStyleBackColor = true;
-            // 
-            // btnAddTable
-            // 
-            this.btnAddTable.Location = new System.Drawing.Point(6, 6);
-            this.btnAddTable.Name = "btnAddTable";
-            this.btnAddTable.Size = new System.Drawing.Size(75, 23);
-            this.btnAddTable.TabIndex = 9;
-            this.btnAddTable.Text = "Thêm";
-            this.btnAddTable.UseVisualStyleBackColor = true;
-            // 
             // txtCategory
             // 
             this.txtCategory.Location = new System.Drawing.Point(608, 121);
@@ -597,36 +619,15 @@
             this.btnAddCategory.Text = "Thêm";
             this.btnAddCategory.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // btnNaviOrder
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 6);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(775, 6);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 1;
-            // 
-            // dgvBill
-            // 
-            this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBill.Location = new System.Drawing.Point(7, 33);
-            this.dgvBill.Name = "dgvBill";
-            this.dgvBill.Size = new System.Drawing.Size(968, 494);
-            this.dgvBill.TabIndex = 2;
-            // 
-            // btnViewBill
-            // 
-            this.btnViewBill.Location = new System.Drawing.Point(455, 6);
-            this.btnViewBill.Name = "btnViewBill";
-            this.btnViewBill.Size = new System.Drawing.Size(75, 23);
-            this.btnViewBill.TabIndex = 3;
-            this.btnViewBill.Text = "Thống kê";
-            this.btnViewBill.UseVisualStyleBackColor = true;
+            this.btnNaviOrder.Location = new System.Drawing.Point(846, 578);
+            this.btnNaviOrder.Name = "btnNaviOrder";
+            this.btnNaviOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnNaviOrder.TabIndex = 2;
+            this.btnNaviOrder.Text = "Đặt món";
+            this.btnNaviOrder.UseVisualStyleBackColor = true;
+            this.btnNaviOrder.Click += new System.EventHandler(this.btnNaviOrder_Click);
             // 
             // Dashboard
             // 
@@ -640,19 +641,19 @@
             this.Text = "Quản lý hệ thống";
             this.tabPage.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrCategory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             this.ResumeLayout(false);
 
         }
