@@ -194,6 +194,7 @@
             this.btnSearchAccount.TabIndex = 22;
             this.btnSearchAccount.Text = "Tìm kiếm";
             this.btnSearchAccount.UseVisualStyleBackColor = true;
+            this.btnSearchAccount.Click += new System.EventHandler(this.btnSearchAccount_Click);
             // 
             // txtUsernameAccount
             // 
@@ -234,6 +235,7 @@
             this.dgvAccount.Name = "dgvAccount";
             this.dgvAccount.Size = new System.Drawing.Size(590, 490);
             this.dgvAccount.TabIndex = 13;
+            this.dgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccount_CellClick);
             // 
             // txtSearchAccount
             // 
@@ -250,6 +252,7 @@
             this.btnViewAccount.TabIndex = 8;
             this.btnViewAccount.Text = "Xem";
             this.btnViewAccount.UseVisualStyleBackColor = true;
+            this.btnViewAccount.Click += new System.EventHandler(this.btnViewAccount_Click);
             // 
             // btnDeleteAccount
             // 
@@ -259,6 +262,7 @@
             this.btnDeleteAccount.TabIndex = 9;
             this.btnDeleteAccount.Text = "Xóa";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnEditAccount
             // 
@@ -268,6 +272,7 @@
             this.btnEditAccount.TabIndex = 10;
             this.btnEditAccount.Text = "Sửa";
             this.btnEditAccount.UseVisualStyleBackColor = true;
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnAddAccount
             // 
