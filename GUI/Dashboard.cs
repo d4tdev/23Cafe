@@ -14,15 +14,16 @@ namespace GUI
 {
     public partial class Dashboard : Form
     {
+        public SqlConnection connect = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=23Cafe;Integrated Security=True;Connect Timeout=30");
         public Dashboard()
         {
             InitializeComponent();
-            loadData();
+            loadDataAccount();
+            loadDataTable();
         }
 
-        void loadData()
+        void loadDataAccount()
         {
-            SqlConnection connect = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=23Cafe;Integrated Security=True;Connect Timeout=30");
             SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * From Account", connect);
             DataTable dt = new DataTable();
             connect.Open();
@@ -30,6 +31,16 @@ namespace GUI
             dgvAccount.DataSource = dt;
             connect.Close();
         }
+        void loadDataTable()
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM TableManager", connect);
+            DataTable dt = new DataTable();
+            connect.Open();
+            adapter.Fill(dt);
+            dgvTable.DataSource = dt;
+            connect.Close();
+        }
+
 
         private void btnLogoutAdmin_Click(object sender, EventArgs e)
         {
@@ -49,7 +60,6 @@ namespace GUI
             String username = txtUsernameAccount.Text;
             String password = txtPasswordAccount.Text;
 
-            SqlConnection connect = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=23Cafe;Integrated Security=True;Connect Timeout=30");
             SqlCommand cmdCheckAccount = new SqlCommand($"SELECT * From Account where username = '{username}'", connect);
             SqlCommand cmdAddAccount = new SqlCommand($"INSERT INTO Account VALUES ('{username}', '{password}')", connect);
             if (username == "" ||  password == "")
@@ -73,7 +83,7 @@ namespace GUI
                 } else
                 {
                     MessageBox.Show("Thêm tài khoản thành công!", "Thành công");
-                    loadData();
+                    loadDataAccount();
                     txtUsernameAccount.Text = "";
                     txtPasswordAccount.Text = "";
                 }
@@ -99,7 +109,6 @@ namespace GUI
                 return;
             }
 
-            SqlConnection connect = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=23Cafe;Integrated Security=True;Connect Timeout=30");
             SqlCommand command = new SqlCommand($"UPDATE Account SET username = '{username}', password = '{password}' WHERE username = '{username}'", connect);
             connect.Open();
             int udpate = command.ExecuteNonQuery();
@@ -111,7 +120,7 @@ namespace GUI
             else
             {
                 MessageBox.Show("Cập nhật thông tin thành công!", "Thành công");
-                loadData();
+                loadDataAccount();
             }
 
         }
@@ -119,7 +128,6 @@ namespace GUI
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
             String username = txtUsernameAccount.Text;
-            SqlConnection connect = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=23Cafe;Integrated Security=True;Connect Timeout=30");
             SqlCommand command = new SqlCommand($"DELETE FROM Account WHERE username = '{username}'", connect);
             connect.Open();
             int delete = command.ExecuteNonQuery();
@@ -130,25 +138,72 @@ namespace GUI
             } else
             {
                 MessageBox.Show("Xóa tài khoản thành công!", "Thành công");
-                loadData();
+                loadDataAccount();
             }
         }
 
         private void btnViewAccount_Click(object sender, EventArgs e)
         {
-            loadData();
+            loadDataAccount();
         }
 
         private void btnSearchAccount_Click(object sender, EventArgs e)
         {
             String search = txtSearchAccount.Text;
-            SqlConnection connect = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=23Cafe;Integrated Security=True;Connect Timeout=30");
             SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Account WHERE username LIKE '%{search}%'", connect);
             DataTable dt = new DataTable();
             connect.Open();
             adapter.Fill(dt);
             dgvAccount.DataSource = dt;
             connect.Close();
+        }
+
+        private void btnAddTable_Click(object sender, EventArgs e)
+        {
+            int Id = Convert.ToInt16(txtTable.Text);
+            String Status = cbStatusTable.Text;
+
+            SqlCommand command = new SqlCommand($"INSERT INTO TableManager VALUES ('{Id}', '{Status}')", connect);
+            SqlCommand checkDuplicateCommand = new SqlCommand($"SELECT * FROM TableManager WHERE ID = '{Id}'", connect);
+            connect.Open();
+            int addTable = command.ExecuteNonQuery();
+            int checkDuplicate = checkDuplicateCommand.ExecuteNonQuery();
+            if ( checkDuplicate == 0 )
+            {
+                MessageBox.Show("Bàn đã tồn tại, vui lòng kiểm tra lại!", "Thông báo");
+                return;
+            }
+            else if ( checkDuplicate != 0 && addTable != 0 ) {
+                MessageBox.Show("Thêm bàn thành công!", "Thành công");
+                loadDataTable();
+            } else
+            {
+                MessageBox.Show("Đã xảy ra lỗi, vui lòng thử lại sau!", "Thông báo");
+                return;
+            }
+        }
+
+        private void dgvTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtTable.Text = dgvTable.Rows[e.RowIndex].Cells[2].Value.ToString();
+            cbStatusTable.Text = dgvTable.Rows[e.RowIndex].Cells[3].Value.ToString();
+        }
+
+        private void btnDeleteTable_Click(object sender, EventArgs e)
+        {
+            int Id = Convert.ToInt16(txtTable.Text);
+            SqlCommand command = new SqlCommand($"DELETE FROM TableManager WHERE Id = '{Id}'", connect);
+            connect.Open();
+            int deleteTable = command.ExecuteNonQuery();
+            if ( deleteTable == 0 )
+            {
+                MessageBox.Show("?? x?y ra l?i, vui l?ng th? l?i sau!", "Th?ng b?o");
+                return;
+            } else
+            {
+                MessageBox.Show("Xóa bàn thành công", "Thành công");
+                loadDataTable();
+            }
         }
     }
 }

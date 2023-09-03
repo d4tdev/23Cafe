@@ -48,14 +48,15 @@
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cbStatusTable = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtTable = new System.Windows.Forms.TextBox();
             this.labelTable = new System.Windows.Forms.Label();
             this.dgvTable = new System.Windows.Forms.DataGridView();
-            this.btnSearchTable = new System.Windows.Forms.Button();
-            this.txtSearchTable = new System.Windows.Forms.TextBox();
+            this.colNameTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatusTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnViewTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
-            this.btnEditTable = new System.Windows.Forms.Button();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.comboBoxCategoryFood = new System.Windows.Forms.ComboBox();
@@ -286,14 +287,13 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.cbStatusTable);
+            this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.txtTable);
             this.tabPage3.Controls.Add(this.labelTable);
             this.tabPage3.Controls.Add(this.dgvTable);
-            this.tabPage3.Controls.Add(this.btnSearchTable);
-            this.tabPage3.Controls.Add(this.txtSearchTable);
             this.tabPage3.Controls.Add(this.btnViewTable);
             this.tabPage3.Controls.Add(this.btnDeleteTable);
-            this.tabPage3.Controls.Add(this.btnEditTable);
             this.tabPage3.Controls.Add(this.btnAddTable);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -302,6 +302,27 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Quản lý bàn";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // cbStatusTable
+            // 
+            this.cbStatusTable.FormattingEnabled = true;
+            this.cbStatusTable.Items.AddRange(new object[] {
+            "Trống",
+            "Có người"});
+            this.cbStatusTable.Location = new System.Drawing.Point(608, 168);
+            this.cbStatusTable.Name = "cbStatusTable";
+            this.cbStatusTable.Size = new System.Drawing.Size(366, 21);
+            this.cbStatusTable.TabIndex = 15;
+            this.cbStatusTable.Text = "--- Chọn trạng thái bàn ---";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(610, 151);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Trạng thái";
             // 
             // txtTable
             // 
@@ -322,30 +343,28 @@
             // dgvTable
             // 
             this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colNameTable,
+            this.colStatusTable});
             this.dgvTable.Location = new System.Drawing.Point(6, 36);
             this.dgvTable.Name = "dgvTable";
             this.dgvTable.Size = new System.Drawing.Size(590, 490);
             this.dgvTable.TabIndex = 12;
+            this.dgvTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTable_CellClick);
             // 
-            // btnSearchTable
+            // colNameTable
             // 
-            this.btnSearchTable.Location = new System.Drawing.Point(899, 6);
-            this.btnSearchTable.Name = "btnSearchTable";
-            this.btnSearchTable.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchTable.TabIndex = 11;
-            this.btnSearchTable.Text = "Tìm kiếm";
-            this.btnSearchTable.UseVisualStyleBackColor = true;
+            this.colNameTable.HeaderText = "Bàn";
+            this.colNameTable.Name = "colNameTable";
             // 
-            // txtSearchTable
+            // colStatusTable
             // 
-            this.txtSearchTable.Location = new System.Drawing.Point(605, 8);
-            this.txtSearchTable.Name = "txtSearchTable";
-            this.txtSearchTable.Size = new System.Drawing.Size(288, 20);
-            this.txtSearchTable.TabIndex = 10;
+            this.colStatusTable.HeaderText = "Trạng thái";
+            this.colStatusTable.Name = "colStatusTable";
             // 
             // btnViewTable
             // 
-            this.btnViewTable.Location = new System.Drawing.Point(249, 6);
+            this.btnViewTable.Location = new System.Drawing.Point(168, 7);
             this.btnViewTable.Name = "btnViewTable";
             this.btnViewTable.Size = new System.Drawing.Size(75, 23);
             this.btnViewTable.TabIndex = 6;
@@ -354,21 +373,13 @@
             // 
             // btnDeleteTable
             // 
-            this.btnDeleteTable.Location = new System.Drawing.Point(168, 6);
+            this.btnDeleteTable.Location = new System.Drawing.Point(87, 6);
             this.btnDeleteTable.Name = "btnDeleteTable";
             this.btnDeleteTable.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteTable.TabIndex = 7;
             this.btnDeleteTable.Text = "Xóa";
             this.btnDeleteTable.UseVisualStyleBackColor = true;
-            // 
-            // btnEditTable
-            // 
-            this.btnEditTable.Location = new System.Drawing.Point(87, 6);
-            this.btnEditTable.Name = "btnEditTable";
-            this.btnEditTable.Size = new System.Drawing.Size(75, 23);
-            this.btnEditTable.TabIndex = 8;
-            this.btnEditTable.Text = "Sửa";
-            this.btnEditTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
             // 
             // btnAddTable
             // 
@@ -378,6 +389,7 @@
             this.btnAddTable.TabIndex = 9;
             this.btnAddTable.Text = "Thêm";
             this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
             // 
             // tabPage4
             // 
@@ -702,11 +714,8 @@
         private System.Windows.Forms.TextBox txtTable;
         private System.Windows.Forms.Label labelTable;
         private System.Windows.Forms.DataGridView dgvTable;
-        private System.Windows.Forms.Button btnSearchTable;
-        private System.Windows.Forms.TextBox txtSearchTable;
         private System.Windows.Forms.Button btnViewTable;
         private System.Windows.Forms.Button btnDeleteTable;
-        private System.Windows.Forms.Button btnEditTable;
         private System.Windows.Forms.Button btnAddTable;
         private System.Windows.Forms.TextBox txtCategory;
         private System.Windows.Forms.Label labelCategory;
@@ -721,5 +730,9 @@
         private System.Windows.Forms.DataGridView dgvBill;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbStatusTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNameTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatusTable;
     }
 }
