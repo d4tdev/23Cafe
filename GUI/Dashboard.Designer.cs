@@ -39,6 +39,10 @@
             this.btnSearchAccount = new System.Windows.Forms.Button();
             this.txtUsernameAccount = new System.Windows.Forms.TextBox();
             this.labelUsernameAccount = new System.Windows.Forms.Label();
+            this.txtSalary = new System.Windows.Forms.TextBox();
+            this.label = new System.Windows.Forms.Label();
+            this.txtDisplayName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtPasswordAccount = new System.Windows.Forms.TextBox();
             this.labelPasswordAccount = new System.Windows.Forms.Label();
             this.dgvAccount = new System.Windows.Forms.DataGridView();
@@ -169,6 +173,10 @@
             this.tabPage2.Controls.Add(this.btnSearchAccount);
             this.tabPage2.Controls.Add(this.txtUsernameAccount);
             this.tabPage2.Controls.Add(this.labelUsernameAccount);
+            this.tabPage2.Controls.Add(this.txtSalary);
+            this.tabPage2.Controls.Add(this.label);
+            this.tabPage2.Controls.Add(this.txtDisplayName);
+            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.txtPasswordAccount);
             this.tabPage2.Controls.Add(this.labelPasswordAccount);
             this.tabPage2.Controls.Add(this.dgvAccount);
@@ -197,7 +205,7 @@
             // 
             // txtUsernameAccount
             // 
-            this.txtUsernameAccount.Location = new System.Drawing.Point(608, 121);
+            this.txtUsernameAccount.Location = new System.Drawing.Point(608, 136);
             this.txtUsernameAccount.Name = "txtUsernameAccount";
             this.txtUsernameAccount.Size = new System.Drawing.Size(366, 20);
             this.txtUsernameAccount.TabIndex = 18;
@@ -205,11 +213,43 @@
             // labelUsernameAccount
             // 
             this.labelUsernameAccount.AutoSize = true;
-            this.labelUsernameAccount.Location = new System.Drawing.Point(609, 105);
+            this.labelUsernameAccount.Location = new System.Drawing.Point(609, 120);
             this.labelUsernameAccount.Name = "labelUsernameAccount";
             this.labelUsernameAccount.Size = new System.Drawing.Size(73, 13);
             this.labelUsernameAccount.TabIndex = 15;
             this.labelUsernameAccount.Text = "Tên tài khoản";
+            // 
+            // txtSalary
+            // 
+            this.txtSalary.Location = new System.Drawing.Point(609, 265);
+            this.txtSalary.Name = "txtSalary";
+            this.txtSalary.Size = new System.Drawing.Size(366, 20);
+            this.txtSalary.TabIndex = 19;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(610, 249);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(73, 13);
+            this.label.TabIndex = 16;
+            this.label.Text = "Lương cơ bản";
+            // 
+            // txtDisplayName
+            // 
+            this.txtDisplayName.Location = new System.Drawing.Point(609, 220);
+            this.txtDisplayName.Name = "txtDisplayName";
+            this.txtDisplayName.Size = new System.Drawing.Size(366, 20);
+            this.txtDisplayName.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(610, 204);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Tên người dùng";
             // 
             // txtPasswordAccount
             // 
@@ -717,5 +757,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbStatusTable;
+        private System.Windows.Forms.TextBox txtSalary;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.TextBox txtDisplayName;
+        private System.Windows.Forms.Label label3;
     }
 }
