@@ -53,8 +53,6 @@
             this.txtTable = new System.Windows.Forms.TextBox();
             this.labelTable = new System.Windows.Forms.Label();
             this.dgvTable = new System.Windows.Forms.DataGridView();
-            this.colNameTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatusTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnViewTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.btnAddTable = new System.Windows.Forms.Button();
@@ -343,24 +341,11 @@
             // dgvTable
             // 
             this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colNameTable,
-            this.colStatusTable});
             this.dgvTable.Location = new System.Drawing.Point(6, 36);
             this.dgvTable.Name = "dgvTable";
             this.dgvTable.Size = new System.Drawing.Size(590, 490);
             this.dgvTable.TabIndex = 12;
             this.dgvTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTable_CellClick);
-            // 
-            // colNameTable
-            // 
-            this.colNameTable.HeaderText = "Bàn";
-            this.colNameTable.Name = "colNameTable";
-            // 
-            // colStatusTable
-            // 
-            this.colStatusTable.HeaderText = "Trạng thái";
-            this.colStatusTable.Name = "colStatusTable";
             // 
             // btnViewTable
             // 
@@ -732,7 +717,5 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbStatusTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNameTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatusTable;
     }
 }

@@ -122,7 +122,7 @@ namespace GUI
                 MessageBox.Show("Cập nhật thông tin thành công!", "Thành công");
                 loadDataAccount();
             }
-
+            connect.Close();
         }
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
@@ -140,6 +140,7 @@ namespace GUI
                 MessageBox.Show("Xóa tài khoản thành công!", "Thành công");
                 loadDataAccount();
             }
+            connect.Close();
         }
 
         private void btnViewAccount_Click(object sender, EventArgs e)
@@ -163,11 +164,11 @@ namespace GUI
             int Id = Convert.ToInt16(txtTable.Text);
             String Status = cbStatusTable.Text;
 
-            SqlCommand command = new SqlCommand($"INSERT INTO TableManager VALUES ('{Id}', '{Status}')", connect);
             SqlCommand checkDuplicateCommand = new SqlCommand($"SELECT * FROM TableManager WHERE ID = '{Id}'", connect);
+            SqlCommand command = new SqlCommand($"INSERT INTO TableManager VALUES ('{Id}', '{Status}')", connect);
             connect.Open();
-            int addTable = command.ExecuteNonQuery();
             int checkDuplicate = checkDuplicateCommand.ExecuteNonQuery();
+            int addTable = command.ExecuteNonQuery();
             if ( checkDuplicate == 0 )
             {
                 MessageBox.Show("Bàn đã tồn tại, vui lòng kiểm tra lại!", "Thông báo");
@@ -181,12 +182,13 @@ namespace GUI
                 MessageBox.Show("Đã xảy ra lỗi, vui lòng thử lại sau!", "Thông báo");
                 return;
             }
+            connect.Close();
         }
 
         private void dgvTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtTable.Text = dgvTable.Rows[e.RowIndex].Cells[2].Value.ToString();
-            cbStatusTable.Text = dgvTable.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtTable.Text = dgvTable.Rows[e.RowIndex].Cells[0].Value.ToString();
+            cbStatusTable.Text = dgvTable.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
@@ -197,13 +199,14 @@ namespace GUI
             int deleteTable = command.ExecuteNonQuery();
             if ( deleteTable == 0 )
             {
-                MessageBox.Show("?? x?y ra l?i, vui l?ng th? l?i sau!", "Th?ng b?o");
+                MessageBox.Show("Đã xảy ra lỗi, vui lòng thử lại sau!", "Thông báo");
                 return;
             } else
             {
                 MessageBox.Show("Xóa bàn thành công", "Thành công");
                 loadDataTable();
             }
+            connect.Close();
         }
     }
 }
