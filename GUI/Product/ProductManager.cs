@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.Product;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,23 @@ namespace GUI
         public ProductManager()
         {
             InitializeComponent();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            AddProduct addProduct = new AddProduct();
+            addProduct.Show();
+        }
+
+        private void btnEditProduct_Click(object sender, EventArgs e)
+        {
+            EditProduct editProduct = new EditProduct();
+            editProduct.Show();
         }
     }
 }
