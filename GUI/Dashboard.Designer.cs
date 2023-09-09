@@ -31,31 +31,38 @@
             this.btnLogoutAdmin = new System.Windows.Forms.Button();
             this.tabPage = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnViewBill = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dgvBill = new System.Windows.Forms.DataGridView();
+            this.btnViewBill = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnSearchAccount = new System.Windows.Forms.Button();
-            this.txtUsernameAccount = new System.Windows.Forms.TextBox();
-            this.labelUsernameAccount = new System.Windows.Forms.Label();
-            this.txtSalary = new System.Windows.Forms.TextBox();
-            this.label = new System.Windows.Forms.Label();
-            this.txtDisplayName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtPasswordAccount = new System.Windows.Forms.TextBox();
-            this.labelPasswordAccount = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.dgvAccount = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtUsernameAccount = new System.Windows.Forms.TextBox();
+            this.labelPasswordAccount = new System.Windows.Forms.Label();
+            this.txtPasswordAccount = new System.Windows.Forms.TextBox();
+            this.labelUsernameAccount = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSalaryAccount = new System.Windows.Forms.TextBox();
+            this.txtDisplayNameAccount = new System.Windows.Forms.TextBox();
+            this.label = new System.Windows.Forms.Label();
+            this.btnSearchAccount = new System.Windows.Forms.Button();
             this.txtSearchAccount = new System.Windows.Forms.TextBox();
             this.btnViewAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.cbStatusTable = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.txtTable = new System.Windows.Forms.TextBox();
+            this.cbStatusTable = new System.Windows.Forms.ComboBox();
             this.labelTable = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.dgvTable = new System.Windows.Forms.DataGridView();
             this.btnViewTable = new System.Windows.Forms.Button();
             this.btnDeleteTable = new System.Windows.Forms.Button();
@@ -89,10 +96,17 @@
             this.btnNaviOrder = new System.Windows.Forms.Button();
             this.tabPage.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFood)).BeginInit();
@@ -102,7 +116,9 @@
             // 
             // btnLogoutAdmin
             // 
-            this.btnLogoutAdmin.Location = new System.Drawing.Point(927, 578);
+            this.btnLogoutAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogoutAdmin.AutoSize = true;
+            this.btnLogoutAdmin.Location = new System.Drawing.Point(997, 621);
             this.btnLogoutAdmin.Name = "btnLogoutAdmin";
             this.btnLogoutAdmin.Size = new System.Drawing.Size(75, 23);
             this.btnLogoutAdmin.TabIndex = 0;
@@ -112,6 +128,9 @@
             // 
             // tabPage
             // 
+            this.tabPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPage.Controls.Add(this.tabPage1);
             this.tabPage.Controls.Add(this.tabPage2);
             this.tabPage.Controls.Add(this.tabPage3);
@@ -120,25 +139,50 @@
             this.tabPage.Location = new System.Drawing.Point(13, 13);
             this.tabPage.Name = "tabPage";
             this.tabPage.SelectedIndex = 0;
-            this.tabPage.Size = new System.Drawing.Size(989, 559);
+            this.tabPage.Size = new System.Drawing.Size(1059, 602);
             this.tabPage.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.btnViewBill);
-            this.tabPage1.Controls.Add(this.dgvBill);
             this.tabPage1.Controls.Add(this.dateTimePicker2);
             this.tabPage1.Controls.Add(this.dateTimePicker1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(981, 533);
+            this.tabPage1.Size = new System.Drawing.Size(1051, 576);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Quản lý doanh thu";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.dgvBill);
+            this.panel1.Location = new System.Drawing.Point(6, 35);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1194, 650);
+            this.panel1.TabIndex = 4;
+            // 
+            // dgvBill
+            // 
+            this.dgvBill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBill.Location = new System.Drawing.Point(3, 3);
+            this.dgvBill.Name = "dgvBill";
+            this.dgvBill.Size = new System.Drawing.Size(1036, 532);
+            this.dgvBill.TabIndex = 2;
+            // 
             // btnViewBill
             // 
+            this.btnViewBill.AutoSize = true;
             this.btnViewBill.Location = new System.Drawing.Point(455, 6);
             this.btnViewBill.Name = "btnViewBill";
             this.btnViewBill.Size = new System.Drawing.Size(75, 23);
@@ -146,17 +190,10 @@
             this.btnViewBill.Text = "Thống kê";
             this.btnViewBill.UseVisualStyleBackColor = true;
             // 
-            // dgvBill
-            // 
-            this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBill.Location = new System.Drawing.Point(7, 33);
-            this.dgvBill.Name = "dgvBill";
-            this.dgvBill.Size = new System.Drawing.Size(968, 494);
-            this.dgvBill.TabIndex = 2;
-            // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(775, 6);
+            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(845, 6);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 1;
@@ -170,16 +207,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.panel3);
+            this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Controls.Add(this.btnSearchAccount);
-            this.tabPage2.Controls.Add(this.txtUsernameAccount);
-            this.tabPage2.Controls.Add(this.labelUsernameAccount);
-            this.tabPage2.Controls.Add(this.txtSalary);
-            this.tabPage2.Controls.Add(this.label);
-            this.tabPage2.Controls.Add(this.txtDisplayName);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.txtPasswordAccount);
-            this.tabPage2.Controls.Add(this.labelPasswordAccount);
-            this.tabPage2.Controls.Add(this.dgvAccount);
             this.tabPage2.Controls.Add(this.txtSearchAccount);
             this.tabPage2.Controls.Add(this.btnViewAccount);
             this.tabPage2.Controls.Add(this.btnDeleteAccount);
@@ -188,14 +218,127 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(981, 533);
+            this.tabPage2.Size = new System.Drawing.Size(1051, 576);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Quản lý tài khoản";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            this.panel3.AutoScroll = true;
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.dgvAccount);
+            this.panel3.Location = new System.Drawing.Point(6, 36);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(788, 661);
+            this.panel3.TabIndex = 24;
+            // 
+            // dgvAccount
+            // 
+            this.dgvAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAccount.Location = new System.Drawing.Point(3, 3);
+            this.dgvAccount.Name = "dgvAccount";
+            this.dgvAccount.Size = new System.Drawing.Size(781, 646);
+            this.dgvAccount.TabIndex = 13;
+            this.dgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccount_CellClick);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel2);
+            this.panel4.Location = new System.Drawing.Point(6, 36);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1194, 652);
+            this.panel4.TabIndex = 25;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.txtUsernameAccount);
+            this.panel2.Controls.Add(this.labelPasswordAccount);
+            this.panel2.Controls.Add(this.txtPasswordAccount);
+            this.panel2.Controls.Add(this.labelUsernameAccount);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.txtSalaryAccount);
+            this.panel2.Controls.Add(this.txtDisplayNameAccount);
+            this.panel2.Controls.Add(this.label);
+            this.panel2.Location = new System.Drawing.Point(790, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(407, 646);
+            this.panel2.TabIndex = 23;
+            // 
+            // txtUsernameAccount
+            // 
+            this.txtUsernameAccount.Location = new System.Drawing.Point(4, 175);
+            this.txtUsernameAccount.Name = "txtUsernameAccount";
+            this.txtUsernameAccount.Size = new System.Drawing.Size(400, 20);
+            this.txtUsernameAccount.TabIndex = 18;
+            // 
+            // labelPasswordAccount
+            // 
+            this.labelPasswordAccount.AutoSize = true;
+            this.labelPasswordAccount.Location = new System.Drawing.Point(3, 198);
+            this.labelPasswordAccount.Name = "labelPasswordAccount";
+            this.labelPasswordAccount.Size = new System.Drawing.Size(52, 13);
+            this.labelPasswordAccount.TabIndex = 16;
+            this.labelPasswordAccount.Text = "Mật khẩu";
+            // 
+            // txtPasswordAccount
+            // 
+            this.txtPasswordAccount.Location = new System.Drawing.Point(4, 214);
+            this.txtPasswordAccount.Name = "txtPasswordAccount";
+            this.txtPasswordAccount.Size = new System.Drawing.Size(400, 20);
+            this.txtPasswordAccount.TabIndex = 19;
+            // 
+            // labelUsernameAccount
+            // 
+            this.labelUsernameAccount.AutoSize = true;
+            this.labelUsernameAccount.Location = new System.Drawing.Point(3, 159);
+            this.labelUsernameAccount.Name = "labelUsernameAccount";
+            this.labelUsernameAccount.Size = new System.Drawing.Size(73, 13);
+            this.labelUsernameAccount.TabIndex = 15;
+            this.labelUsernameAccount.Text = "Tên tài khoản";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 243);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Tên người dùng";
+            // 
+            // txtSalaryAccount
+            // 
+            this.txtSalaryAccount.Location = new System.Drawing.Point(4, 304);
+            this.txtSalaryAccount.Name = "txtSalaryAccount";
+            this.txtSalaryAccount.Size = new System.Drawing.Size(400, 20);
+            this.txtSalaryAccount.TabIndex = 19;
+            // 
+            // txtDisplayNameAccount
+            // 
+            this.txtDisplayNameAccount.Location = new System.Drawing.Point(4, 259);
+            this.txtDisplayNameAccount.Name = "txtDisplayNameAccount";
+            this.txtDisplayNameAccount.Size = new System.Drawing.Size(400, 20);
+            this.txtDisplayNameAccount.TabIndex = 19;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(3, 288);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(73, 13);
+            this.label.TabIndex = 16;
+            this.label.Text = "Lương cơ bản";
+            // 
             // btnSearchAccount
             // 
-            this.btnSearchAccount.Location = new System.Drawing.Point(900, 5);
+            this.btnSearchAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchAccount.AutoSize = true;
+            this.btnSearchAccount.Location = new System.Drawing.Point(970, 5);
             this.btnSearchAccount.Name = "btnSearchAccount";
             this.btnSearchAccount.Size = new System.Drawing.Size(75, 23);
             this.btnSearchAccount.TabIndex = 22;
@@ -203,82 +346,10 @@
             this.btnSearchAccount.UseVisualStyleBackColor = true;
             this.btnSearchAccount.Click += new System.EventHandler(this.btnSearchAccount_Click);
             // 
-            // txtUsernameAccount
-            // 
-            this.txtUsernameAccount.Location = new System.Drawing.Point(608, 136);
-            this.txtUsernameAccount.Name = "txtUsernameAccount";
-            this.txtUsernameAccount.Size = new System.Drawing.Size(366, 20);
-            this.txtUsernameAccount.TabIndex = 18;
-            // 
-            // labelUsernameAccount
-            // 
-            this.labelUsernameAccount.AutoSize = true;
-            this.labelUsernameAccount.Location = new System.Drawing.Point(609, 120);
-            this.labelUsernameAccount.Name = "labelUsernameAccount";
-            this.labelUsernameAccount.Size = new System.Drawing.Size(73, 13);
-            this.labelUsernameAccount.TabIndex = 15;
-            this.labelUsernameAccount.Text = "Tên tài khoản";
-            // 
-            // txtSalary
-            // 
-            this.txtSalary.Location = new System.Drawing.Point(609, 265);
-            this.txtSalary.Name = "txtSalary";
-            this.txtSalary.Size = new System.Drawing.Size(366, 20);
-            this.txtSalary.TabIndex = 19;
-            // 
-            // label
-            // 
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(610, 249);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(73, 13);
-            this.label.TabIndex = 16;
-            this.label.Text = "Lương cơ bản";
-            // 
-            // txtDisplayName
-            // 
-            this.txtDisplayName.Location = new System.Drawing.Point(609, 220);
-            this.txtDisplayName.Name = "txtDisplayName";
-            this.txtDisplayName.Size = new System.Drawing.Size(366, 20);
-            this.txtDisplayName.TabIndex = 19;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(610, 204);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Tên người dùng";
-            // 
-            // txtPasswordAccount
-            // 
-            this.txtPasswordAccount.Location = new System.Drawing.Point(608, 175);
-            this.txtPasswordAccount.Name = "txtPasswordAccount";
-            this.txtPasswordAccount.Size = new System.Drawing.Size(366, 20);
-            this.txtPasswordAccount.TabIndex = 19;
-            // 
-            // labelPasswordAccount
-            // 
-            this.labelPasswordAccount.AutoSize = true;
-            this.labelPasswordAccount.Location = new System.Drawing.Point(609, 159);
-            this.labelPasswordAccount.Name = "labelPasswordAccount";
-            this.labelPasswordAccount.Size = new System.Drawing.Size(52, 13);
-            this.labelPasswordAccount.TabIndex = 16;
-            this.labelPasswordAccount.Text = "Mật khẩu";
-            // 
-            // dgvAccount
-            // 
-            this.dgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAccount.Location = new System.Drawing.Point(6, 36);
-            this.dgvAccount.Name = "dgvAccount";
-            this.dgvAccount.Size = new System.Drawing.Size(590, 490);
-            this.dgvAccount.TabIndex = 13;
-            this.dgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccount_CellClick);
-            // 
             // txtSearchAccount
             // 
-            this.txtSearchAccount.Location = new System.Drawing.Point(605, 8);
+            this.txtSearchAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchAccount.Location = new System.Drawing.Point(676, 6);
             this.txtSearchAccount.Name = "txtSearchAccount";
             this.txtSearchAccount.Size = new System.Drawing.Size(288, 20);
             this.txtSearchAccount.TabIndex = 12;
@@ -325,21 +396,52 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.cbStatusTable);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.txtTable);
-            this.tabPage3.Controls.Add(this.labelTable);
-            this.tabPage3.Controls.Add(this.dgvTable);
+            this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Controls.Add(this.btnViewTable);
             this.tabPage3.Controls.Add(this.btnDeleteTable);
             this.tabPage3.Controls.Add(this.btnAddTable);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(981, 533);
+            this.tabPage3.Size = new System.Drawing.Size(1051, 576);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Quản lý bàn";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.AutoSize = true;
+            this.panel5.Controls.Add(this.panel7);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Location = new System.Drawing.Point(6, 35);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1042, 630);
+            this.panel5.TabIndex = 16;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.AutoSize = true;
+            this.panel7.Controls.Add(this.txtTable);
+            this.panel7.Controls.Add(this.cbStatusTable);
+            this.panel7.Controls.Add(this.labelTable);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Location = new System.Drawing.Point(777, 4);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(262, 554);
+            this.panel7.TabIndex = 1;
+            // 
+            // txtTable
+            // 
+            this.txtTable.Location = new System.Drawing.Point(6, 177);
+            this.txtTable.Name = "txtTable";
+            this.txtTable.Size = new System.Drawing.Size(253, 20);
+            this.txtTable.TabIndex = 14;
             // 
             // cbStatusTable
             // 
@@ -347,43 +449,48 @@
             this.cbStatusTable.Items.AddRange(new object[] {
             "Trống",
             "Có người"});
-            this.cbStatusTable.Location = new System.Drawing.Point(608, 168);
+            this.cbStatusTable.Location = new System.Drawing.Point(6, 228);
             this.cbStatusTable.Name = "cbStatusTable";
-            this.cbStatusTable.Size = new System.Drawing.Size(366, 21);
+            this.cbStatusTable.Size = new System.Drawing.Size(253, 21);
             this.cbStatusTable.TabIndex = 15;
             this.cbStatusTable.Text = "--- Chọn trạng thái bàn ---";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(610, 151);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Trạng thái";
-            // 
-            // txtTable
-            // 
-            this.txtTable.Location = new System.Drawing.Point(608, 121);
-            this.txtTable.Name = "txtTable";
-            this.txtTable.Size = new System.Drawing.Size(366, 20);
-            this.txtTable.TabIndex = 14;
             // 
             // labelTable
             // 
             this.labelTable.AutoSize = true;
-            this.labelTable.Location = new System.Drawing.Point(609, 105);
+            this.labelTable.Location = new System.Drawing.Point(3, 161);
             this.labelTable.Name = "labelTable";
             this.labelTable.Size = new System.Drawing.Size(26, 13);
             this.labelTable.TabIndex = 13;
             this.labelTable.Text = "Bàn";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Trạng thái";
+            // 
+            // panel6
+            // 
+            this.panel6.AutoSize = true;
+            this.panel6.Controls.Add(this.dgvTable);
+            this.panel6.Location = new System.Drawing.Point(3, 4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(771, 534);
+            this.panel6.TabIndex = 0;
+            // 
             // dgvTable
             // 
+            this.dgvTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTable.Location = new System.Drawing.Point(6, 36);
+            this.dgvTable.Location = new System.Drawing.Point(3, 4);
             this.dgvTable.Name = "dgvTable";
-            this.dgvTable.Size = new System.Drawing.Size(590, 490);
+            this.dgvTable.Size = new System.Drawing.Size(765, 527);
             this.dgvTable.TabIndex = 12;
             this.dgvTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTable_CellClick);
             // 
@@ -436,7 +543,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(981, 533);
+            this.tabPage4.Size = new System.Drawing.Size(1051, 576);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Quản lý món";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -444,15 +551,15 @@
             // comboBoxCategoryFood
             // 
             this.comboBoxCategoryFood.FormattingEnabled = true;
-            this.comboBoxCategoryFood.Location = new System.Drawing.Point(609, 299);
+            this.comboBoxCategoryFood.Location = new System.Drawing.Point(790, 284);
             this.comboBoxCategoryFood.Name = "comboBoxCategoryFood";
-            this.comboBoxCategoryFood.Size = new System.Drawing.Size(366, 21);
+            this.comboBoxCategoryFood.Size = new System.Drawing.Size(255, 21);
             this.comboBoxCategoryFood.TabIndex = 7;
             // 
             // labelCategoryFood
             // 
             this.labelCategoryFood.AutoSize = true;
-            this.labelCategoryFood.Location = new System.Drawing.Point(610, 282);
+            this.labelCategoryFood.Location = new System.Drawing.Point(787, 268);
             this.labelCategoryFood.Name = "labelCategoryFood";
             this.labelCategoryFood.Size = new System.Drawing.Size(56, 13);
             this.labelCategoryFood.TabIndex = 6;
@@ -460,15 +567,15 @@
             // 
             // txtPriceFood
             // 
-            this.txtPriceFood.Location = new System.Drawing.Point(609, 236);
+            this.txtPriceFood.Location = new System.Drawing.Point(790, 234);
             this.txtPriceFood.Name = "txtPriceFood";
-            this.txtPriceFood.Size = new System.Drawing.Size(366, 20);
+            this.txtPriceFood.Size = new System.Drawing.Size(255, 20);
             this.txtPriceFood.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(610, 220);
+            this.label2.Location = new System.Drawing.Point(787, 218);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 4;
@@ -476,15 +583,15 @@
             // 
             // txtCodeFood
             // 
-            this.txtCodeFood.Location = new System.Drawing.Point(609, 122);
+            this.txtCodeFood.Location = new System.Drawing.Point(790, 138);
             this.txtCodeFood.Name = "txtCodeFood";
-            this.txtCodeFood.Size = new System.Drawing.Size(366, 20);
+            this.txtCodeFood.Size = new System.Drawing.Size(258, 20);
             this.txtCodeFood.TabIndex = 5;
             // 
             // labelCodeFood
             // 
             this.labelCodeFood.AutoSize = true;
-            this.labelCodeFood.Location = new System.Drawing.Point(610, 106);
+            this.labelCodeFood.Location = new System.Drawing.Point(787, 122);
             this.labelCodeFood.Name = "labelCodeFood";
             this.labelCodeFood.Size = new System.Drawing.Size(45, 13);
             this.labelCodeFood.TabIndex = 4;
@@ -492,15 +599,15 @@
             // 
             // txtNameFood
             // 
-            this.txtNameFood.Location = new System.Drawing.Point(609, 176);
+            this.txtNameFood.Location = new System.Drawing.Point(790, 186);
             this.txtNameFood.Name = "txtNameFood";
-            this.txtNameFood.Size = new System.Drawing.Size(366, 20);
+            this.txtNameFood.Size = new System.Drawing.Size(255, 20);
             this.txtNameFood.TabIndex = 5;
             // 
             // labelNameFood
             // 
             this.labelNameFood.AutoSize = true;
-            this.labelNameFood.Location = new System.Drawing.Point(610, 160);
+            this.labelNameFood.Location = new System.Drawing.Point(790, 170);
             this.labelNameFood.Name = "labelNameFood";
             this.labelNameFood.Size = new System.Drawing.Size(49, 13);
             this.labelNameFood.TabIndex = 4;
@@ -511,21 +618,23 @@
             this.dgvFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFood.Location = new System.Drawing.Point(7, 37);
             this.dgvFood.Name = "dgvFood";
-            this.dgvFood.Size = new System.Drawing.Size(590, 490);
+            this.dgvFood.Size = new System.Drawing.Size(777, 490);
             this.dgvFood.TabIndex = 3;
+            this.dgvFood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFood_CellClick);
             // 
             // btnSearchFood
             // 
-            this.btnSearchFood.Location = new System.Drawing.Point(900, 7);
+            this.btnSearchFood.Location = new System.Drawing.Point(970, 7);
             this.btnSearchFood.Name = "btnSearchFood";
             this.btnSearchFood.Size = new System.Drawing.Size(75, 23);
             this.btnSearchFood.TabIndex = 2;
             this.btnSearchFood.Text = "Tìm kiếm";
             this.btnSearchFood.UseVisualStyleBackColor = true;
+            this.btnSearchFood.Click += new System.EventHandler(this.btnSearchFood_Click);
             // 
             // txtSearchFood
             // 
-            this.txtSearchFood.Location = new System.Drawing.Point(606, 9);
+            this.txtSearchFood.Location = new System.Drawing.Point(676, 9);
             this.txtSearchFood.Name = "txtSearchFood";
             this.txtSearchFood.Size = new System.Drawing.Size(288, 20);
             this.txtSearchFood.TabIndex = 1;
@@ -565,6 +674,7 @@
             this.btnAddFood.TabIndex = 0;
             this.btnAddFood.Text = "Thêm";
             this.btnAddFood.UseVisualStyleBackColor = true;
+            this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
             // tabPage5
             // 
@@ -580,7 +690,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(981, 533);
+            this.tabPage5.Size = new System.Drawing.Size(1051, 576);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Quản lý danh mục";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -663,7 +773,9 @@
             // 
             // btnNaviOrder
             // 
-            this.btnNaviOrder.Location = new System.Drawing.Point(846, 578);
+            this.btnNaviOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNaviOrder.AutoSize = true;
+            this.btnNaviOrder.Location = new System.Drawing.Point(916, 621);
             this.btnNaviOrder.Name = "btnNaviOrder";
             this.btnNaviOrder.Size = new System.Drawing.Size(75, 23);
             this.btnNaviOrder.TabIndex = 2;
@@ -675,7 +787,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 613);
+            this.ClientSize = new System.Drawing.Size(1084, 656);
             this.Controls.Add(this.btnNaviOrder);
             this.Controls.Add(this.tabPage);
             this.Controls.Add(this.btnLogoutAdmin);
@@ -683,12 +795,24 @@
             this.Text = "Quản lý hệ thống";
             this.tabPage.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
@@ -697,6 +821,7 @@
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrCategory)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -757,9 +882,16 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbStatusTable;
-        private System.Windows.Forms.TextBox txtSalary;
+        private System.Windows.Forms.TextBox txtSalaryAccount;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.TextBox txtDisplayName;
+        private System.Windows.Forms.TextBox txtDisplayNameAccount;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
     }
 }

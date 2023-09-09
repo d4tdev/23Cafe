@@ -59,6 +59,8 @@ namespace GUI
         {
             String username = txtUsernameAccount.Text;
             String password = txtPasswordAccount.Text;
+            String displayName = txtDisplayNameAccount.Text;
+            int salary = Convert.ToInt16(txtSalaryAccount);
 
             SqlCommand cmdCheckAccount = new SqlCommand($"SELECT * From Account where username = '{username}'", connect);
             SqlCommand cmdAddAccount = new SqlCommand($"INSERT INTO Account VALUES ('{username}', '{password}')", connect);
@@ -207,6 +209,27 @@ namespace GUI
                 loadDataTable();
             }
             connect.Close();
+        }
+
+        private void btnAddFood_Click(object sender, EventArgs e)
+        {
+            String codeFood = txtCodeFood.Text;
+            String nameFood = txtNameFood.Text;
+            int priceFood = Convert.ToInt16(txtPriceFood.Text);
+            String categoryFood = comboBoxCategoryFood.Text;
+        }
+
+        private void dgvFood_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodeFood.Text = dgvFood.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtNameFood.Text = dgvFood.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtPriceFood.Text = dgvFood.Rows[e.RowIndex].Cells[2].Value.ToString();
+            comboBoxCategoryFood.Text = dgvFood.Rows[e.RowIndex].Cells[3].Value.ToString();
+        }
+
+        private void btnSearchFood_Click(object sender, EventArgs e)
+        {
+            String search = txtSearchFood.Text;
         }
     }
 }
