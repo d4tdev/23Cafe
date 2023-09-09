@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GUI
+namespace GUI.Product
 {
-    public partial class Dashboard : Form
+    public partial class EditProduct : Form
     {
-        public Dashboard()
+        public EditProduct()
         {
             InitializeComponent();
-        }
-
-        private void btnProduct_Click(object sender, EventArgs e)
-        {
-            ProductManager productManager = new ProductManager();
-            productManager.Show();
         }
     }
 }

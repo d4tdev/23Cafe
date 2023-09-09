@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Dashboard : Form
+    public partial class ProductManager : Form
     {
-        public Dashboard()
+        public ProductManager()
         {
             InitializeComponent();
-        }
-
-        private void btnProduct_Click(object sender, EventArgs e)
-        {
-            ProductManager productManager = new ProductManager();
-            productManager.Show();
         }
     }
 }
