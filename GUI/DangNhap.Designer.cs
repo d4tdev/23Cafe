@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPasswordLogin = new System.Windows.Forms.TextBox();
             this.txtUsernameLogin = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -63,6 +64,7 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.btnLogin);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
@@ -118,6 +120,16 @@
             this.txtUsernameLogin.Size = new System.Drawing.Size(272, 20);
             this.txtUsernameLogin.TabIndex = 0;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 23.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 36);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "23Cafe";
+            // 
             // DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,7 +138,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "DangNhap";
-            this.Text = "DangNhap";
+            this.Text = "Đăng nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DangNhap_FormClosing);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DangNhap_KeyPress);
             this.panel1.ResumeLayout(false);
@@ -148,5 +160,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
     }
 }
