@@ -16,5 +16,11 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            ProductManager productManager = new ProductManager();
+            productManager.Show();
+        }
     }
 }

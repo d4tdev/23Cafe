@@ -28,12 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnProduct = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(161, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(478, 73);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Quản lý 23Cafe";
+            // 
+            // btnProduct
+            // 
+            this.btnProduct.Location = new System.Drawing.Point(141, 173);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(119, 23);
+            this.btnProduct.TabIndex = 1;
+            this.btnProduct.Text = "Quản lý sản phẩm";
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            // 
+            // Dashboard
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 256);
+            this.Controls.Add(this.btnProduct);
+            this.Controls.Add(this.label1);
+            this.Name = "Dashboard";
             this.Text = "Dashboard";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnProduct;
     }
 }

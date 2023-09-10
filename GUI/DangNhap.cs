@@ -36,6 +36,7 @@ namespace GUI
             }
             else if (username == "user" && password == "user")
             {
+                MessageBox.Show($"Bắt đầu ca làm việc vào lúc: {DateTime.Now}", "Bắt đầu ca làm việc");
                 this.Hide();
                 Order order = new Order();
                 order.ShowDialog();
