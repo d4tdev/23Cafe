@@ -1,12 +1,13 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace DAL
 {
     public class DataProvider
     {
@@ -14,9 +15,13 @@ namespace BLL
 
         public static DataProvider Instance { get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; } private set { DataProvider.instance = value; } }
 
-        private DataProvider() { }
 
-        private String connectionStr = "Data Source=D4JT\\SQLSERVER;Initial Catalog=QuanLy23Cafe;Integrated Security=True";
+        private Variable var;
+        private String connectionStr;
+        private DataProvider() {
+            var = new Variable();
+            connectionStr = var.ConnectionString;
+        }
 
         // Return ResultSet
         public DataTable ExecuteQuery(string query, object[] parameter = null)

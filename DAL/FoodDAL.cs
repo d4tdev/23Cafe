@@ -1,5 +1,4 @@
 ﻿using DTO;
-using BLL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class FoodDAL
+    public class FoodDAL
     {
         private static FoodDAL instance;
         public static FoodDAL Instance
