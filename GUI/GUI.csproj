@@ -84,6 +84,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staff\AddStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff\AddStaff.Designer.cs">
+      <DependentUpon>AddStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\EditStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff\EditStaff.Designer.cs">
+      <DependentUpon>EditStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\StaffInformationDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff\StaffInformationDetail.Designer.cs">
+      <DependentUpon>StaffInformationDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\StaffManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff\StaffManager.Designer.cs">
+      <DependentUpon>StaffManager.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +135,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Staff\StaffManager.resx">
+      <DependentUpon>StaffManager.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
