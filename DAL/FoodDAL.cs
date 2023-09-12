@@ -21,7 +21,7 @@ namespace DAL
         {
             List<Food> list = new List<Food>();
 
-            string query = "select * from Food where idCategory = " + id;
+            string query = "select id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price from Food where id_category = " + id;
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -37,7 +37,7 @@ namespace DAL
         {
             List<Food> list = new List<Food>();
 
-            string query = "select * from Food";
+            string query = "select id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price from Food";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
