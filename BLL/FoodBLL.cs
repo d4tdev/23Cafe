@@ -36,7 +36,7 @@ namespace BLL
         }
         public bool UpdateFood(string name, float price, int idCategory, string idFood)
         {
-            return FoodDAL.Instance.UpdateFood(name, price, idCategory, price);
+            return FoodDAL.Instance.UpdateFood(name, price, idCategory, idFood);
         }
         public bool DeleteFood(string idFood)
         {

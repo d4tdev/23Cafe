@@ -59,8 +59,8 @@ namespace DTO
         public Food(DataRow row)
         {
             this.Id = (string)row["id"];
-            this.Food_Name = row["name"].ToString();
-            this.Id_Category = (int)row["idcategory"];
+            this.Food_Name = row["food_name"].ToString();
+            this.Id_Category = (int)row["id_category"];
             this.Price = (float)Convert.ToDouble(row["price"].ToString());
         }
         
