@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class FoodDAO
+    internal class FoodDAL
     {
-        private static FoodDAO instance;
-        public static FoodDAO Instance
+        private static FoodDAL instance;
+        public static FoodDAL Instance
         {
-            get { if (instance == null) instance = new FoodDAO(); return FoodDAO.instance; }
-            private set { FoodDAO.instance = value; }
+            get { if (instance == null) instance = new FoodDAL(); return FoodDAL.instance; }
+            private set { FoodDAL.instance = value; }
         }
-        private FoodDAO() { }
+        private FoodDAL() { }
         public List<Food> GetFoodByCategoryID(int id)
         {
             List<Food> list = new List<Food>();
