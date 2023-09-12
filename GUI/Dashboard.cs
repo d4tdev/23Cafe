@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.Staff;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,12 @@ namespace GUI
         {
             ProductManager productManager = new ProductManager();
             productManager.Show();
+        }
+
+        private void btnStaff_Click(object sender, EventArgs e)
+        {
+            StaffManager staffManager = new StaffManager();
+            staffManager.Show();
         }
     }
 }
