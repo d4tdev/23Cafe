@@ -396,5 +396,39 @@ GO
 EXEC dbo.USP_GetAccountByUserName @userName = N'admin'
 GO
 
+        /**
+        * Tạo thủ tục USP_Login
+        */
+CREATE PROC USP_Login
+@userName nvarchar(100),
+@passWord nvarchar(100)
+AS
+BEGIN
+    SELECT * FROM dbo.Account WHERE username = @userName COLLATE SQL_Latin1_General_CP1_CS_AS AND password = @passWord COLLATE SQL_Latin1_General_CP1_CS_AS
+END
+GO
 
+
+        /**
+        * Tạo Thủ tục USP_UpdateAccount
+        */
+CREATE PROC USP_UpdateAccount
+@userName NVARCHAR(100), @displayName NVARCHAR(100), @password NVARCHAR(100), @newPassword NVARCHAR(100)
+AS
+BEGIN
+    DECLARE @isRightPass INT = 0
+    
+    SELECT @isRightPass = COUNT(*) FROM dbo.Account WHERE username = @userName COLLATE SQL_Latin1_General_CP1_CS_AS AND password = @passWord COLLATE SQL_Latin1_General_CP1_CS_AS
+    
+    IF (@isRightPass = 1)
+    BEGIN
+        IF (@newPassword = NULL OR @newPassword = '')
+        BEGIN
+            UPDATE dbo.Account SET display_name = @displayName WHERE username = @userName
+        END     
+        ELSE
+            UPDATE dbo.Account SET display_name = @displayName, password = @newPassword WHERE username = @userName
+    end
+END
+GO
 

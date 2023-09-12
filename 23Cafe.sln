@@ -11,10 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{44C16888-224A-4B55-B348-19B001753FA5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{A30C6793-55B4-4154-8F5D-9B0BB184756A}"
-	ProjectSection(SolutionItems) = preProject
-		SQL23Cafe.sql = SQL23Cafe.sql
-	EndProjectSection
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{C024DB1C-6D49-45C8-B33E-A51D92F1E4B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +35,12 @@ Global
 		{44C16888-224A-4B55-B348-19B001753FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44C16888-224A-4B55-B348-19B001753FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44C16888-224A-4B55-B348-19B001753FA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C024DB1C-6D49-45C8-B33E-A51D92F1E4B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C024DB1C-6D49-45C8-B33E-A51D92F1E4B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C024DB1C-6D49-45C8-B33E-A51D92F1E4B2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C024DB1C-6D49-45C8-B33E-A51D92F1E4B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C024DB1C-6D49-45C8-B33E-A51D92F1E4B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C024DB1C-6D49-45C8-B33E-A51D92F1E4B2}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

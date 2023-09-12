@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class DataProvider
+    public class DataProvider
     {
         private static DataProvider instance; // Ctrl + R + E
 
-        internal static DataProvider Instance { get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; } private set { DataProvider.instance = value; } }
+        public static DataProvider Instance { get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; } private set { DataProvider.instance = value; } }
 
         private DataProvider() { }
 
