@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,6 +48,24 @@ namespace GUI.Product
             if (category == null)
             {
                 MessageBox.Show("Bạn chưa lựa chọn danh mục sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            int idCategory = 1;
+            if (idCategory == -1)
+            {
+                MessageBox.Show("Không tìm thấy danh mục sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (FoodBLL.Instance.InsertFood(name, code, idCategory, float.Parse(price)))
+                {
+                    MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

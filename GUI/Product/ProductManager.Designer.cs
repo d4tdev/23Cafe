@@ -32,7 +32,7 @@
             this.dataGridViewFood = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSearchProduct = new System.Windows.Forms.Button();
             this.txtSearchProduct = new System.Windows.Forms.TextBox();
             this.btnReloadProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnSearchProduct);
             this.panel2.Controls.Add(this.txtSearchProduct);
             this.panel2.Controls.Add(this.btnReloadProduct);
             this.panel2.Controls.Add(this.btnDeleteProduct);
@@ -100,15 +100,15 @@
             this.panel2.Size = new System.Drawing.Size(331, 534);
             this.panel2.TabIndex = 2;
             // 
-            // button1
+            // btnSearchProduct
             // 
-            this.button1.Location = new System.Drawing.Point(249, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Tìm kiếm";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSearchProduct.Location = new System.Drawing.Point(249, 0);
+            this.btnSearchProduct.Name = "btnSearchProduct";
+            this.btnSearchProduct.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchProduct.TabIndex = 4;
+            this.btnSearchProduct.Text = "Tìm kiếm";
+            this.btnSearchProduct.UseVisualStyleBackColor = true;
+            this.btnSearchProduct.Click += new System.EventHandler(this.btnSearchProduct_Click);
             // 
             // txtSearchProduct
             // 
@@ -134,6 +134,7 @@
             this.btnDeleteProduct.TabIndex = 2;
             this.btnDeleteProduct.Text = "Xóa";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // btnEditProduct
             // 
@@ -158,76 +159,80 @@
             // textCategoryProduct
             // 
             this.textCategoryProduct.AutoSize = true;
-            this.textCategoryProduct.Location = new System.Drawing.Point(3, 270);
+            this.textCategoryProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textCategoryProduct.Location = new System.Drawing.Point(176, 240);
             this.textCategoryProduct.Name = "textCategoryProduct";
-            this.textCategoryProduct.Size = new System.Drawing.Size(41, 13);
+            this.textCategoryProduct.Size = new System.Drawing.Size(71, 24);
             this.textCategoryProduct.TabIndex = 1;
             this.textCategoryProduct.Text = "Cà phê";
             // 
             // textPriceProduct
             // 
             this.textPriceProduct.AutoSize = true;
-            this.textPriceProduct.Location = new System.Drawing.Point(3, 218);
+            this.textPriceProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPriceProduct.Location = new System.Drawing.Point(175, 188);
             this.textPriceProduct.Name = "textPriceProduct";
-            this.textPriceProduct.Size = new System.Drawing.Size(37, 13);
+            this.textPriceProduct.Size = new System.Drawing.Size(60, 24);
             this.textPriceProduct.TabIndex = 1;
             this.textPriceProduct.Text = "20000";
             // 
             // textNameProduct
             // 
             this.textNameProduct.AutoSize = true;
-            this.textNameProduct.Location = new System.Drawing.Point(3, 168);
+            this.textNameProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNameProduct.Location = new System.Drawing.Point(175, 140);
             this.textNameProduct.Name = "textNameProduct";
-            this.textNameProduct.Size = new System.Drawing.Size(42, 13);
+            this.textNameProduct.Size = new System.Drawing.Size(72, 24);
             this.textNameProduct.TabIndex = 1;
             this.textNameProduct.Text = "Bạc xỉu";
             // 
             // textCodeProduct
             // 
             this.textCodeProduct.AutoSize = true;
-            this.textCodeProduct.Location = new System.Drawing.Point(3, 120);
+            this.textCodeProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textCodeProduct.Location = new System.Drawing.Point(175, 94);
             this.textCodeProduct.Name = "textCodeProduct";
-            this.textCodeProduct.Size = new System.Drawing.Size(52, 13);
+            this.textCodeProduct.Size = new System.Drawing.Size(86, 24);
             this.textCodeProduct.TabIndex = 1;
             this.textCodeProduct.Text = "Test_001";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 190);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 16);
+            this.label5.Size = new System.Drawing.Size(144, 22);
             this.label5.TabIndex = 0;
             this.label5.Text = "Giá sản phẩm:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 95);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 16);
+            this.label4.Size = new System.Drawing.Size(141, 22);
             this.label4.TabIndex = 0;
             this.label4.Text = "Mã sản phẩm:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 242);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 16);
+            this.label3.Size = new System.Drawing.Size(111, 22);
             this.label3.TabIndex = 0;
             this.label3.Text = "Danh mục:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 142);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 16);
+            this.label2.Size = new System.Drawing.Size(149, 22);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tên sản phẩm:";
             // 
@@ -240,7 +245,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "ProductManager";
-            this.Text = "ProductManager";
+            this.Text = "Thông tin sản phẩm";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -268,7 +273,7 @@
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtSearchProduct;
+        private System.Windows.Forms.Button btnSearchProduct;
     }
 }
