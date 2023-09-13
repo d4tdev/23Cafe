@@ -19,8 +19,9 @@ namespace DTO
          * id_category INT
          * price Float
          */
+        private int stt;
         private string id, food_name;
-        private string stt, id_category;
+        private string id_category;
         private float price;
         public string Id
         {
@@ -59,7 +60,7 @@ namespace DTO
         public Food(DataRow row)
         {
             this.Id = (string)row["id"];
-            this.Food_Name = row["name"].ToString();
+            this.Food_Name = row["food_name"].ToString();
             this.Id_Category = (string)row["id_category"];
             this.Price = (float)Convert.ToDouble(row["price"].ToString());
         }
