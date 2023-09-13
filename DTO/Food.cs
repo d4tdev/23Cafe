@@ -28,7 +28,7 @@ namespace DTO
             get { return id; }
             set { id = value; }
         }
-        public string Stt
+        public int Stt
         {
             get { return stt; }
             set { stt = value; }
@@ -48,7 +48,7 @@ namespace DTO
             get { return price; }
             set { price = value; }
         }
-        public Food(string stt, string id, string name, string categoryId, float price)
+        public Food(int stt, string id, string name, string categoryId, float price)
         {
             this.Stt = stt;
             this.Id = id;

@@ -60,7 +60,7 @@ namespace DAL
         {
             List<Food> list = new List<Food>();
 
-            string query = string.Format("SELECT id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price FROM dbo.Food WHERE dbo.fuConvertToUnsign1(name) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
+            string query = string.Format("SELECT id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price FROM dbo.Food WHERE food_name LIKE N'%{0}%'", name);
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
