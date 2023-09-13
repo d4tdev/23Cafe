@@ -60,7 +60,7 @@ namespace DTO
         {
             this.Id = (string)row["id"];
             this.Food_Name = row["food_name"].ToString();
-            this.Id_Category = (string)row["id_category"];
+            this.Id_Category = (String)(row["id_category"].ToString());
             this.Price = (float)Convert.ToDouble(row["price"].ToString());
         }
         

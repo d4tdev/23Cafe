@@ -72,9 +72,28 @@ namespace GUI
             editProduct.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSearchProduct_Click(object sender, EventArgs e)
         {
             String search = txtSearchProduct.Text;
+
+            List<Food> listFood = FoodBLL.Instance.SearchFoodByName(search);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Mã sản phẩm", typeof(string));
+            dt.Columns.Add("Tên sản phẩm", typeof(string));
+            dt.Columns.Add("Danh mục", typeof(string));
+            dt.Columns.Add("Giá", typeof(int));
+
+            foreach (var food in listFood)
+            {
+                DataRow row = dt.NewRow();
+                row["Mã sản phẩm"] = food.Id;
+                row["Tên sản phẩm"] = food.Food_Name;
+                row["Danh mục"] = food.Id_Category;
+                row["Giá"] = food.Price;
+                dt.Rows.Add(row);
+            }
+            dataGridViewFood.DataSource = dt;
         }
 
         private void dataGridViewFood_CellClick(object sender, DataGridViewCellEventArgs e)
