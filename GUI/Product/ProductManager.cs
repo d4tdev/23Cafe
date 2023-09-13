@@ -29,7 +29,7 @@ namespace GUI
             DataTable dt = new DataTable();
             dt.Columns.Add("Mã sản phẩm", typeof(string));
             dt.Columns.Add("Tên sản phẩm", typeof(string));
-            dt.Columns.Add("Danh mục", typeof(int));
+            dt.Columns.Add("Danh mục", typeof(string));
             dt.Columns.Add("Giá", typeof(int));
 
             foreach (var food in listFood)

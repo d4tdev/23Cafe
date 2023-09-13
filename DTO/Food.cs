@@ -27,7 +27,7 @@ namespace DTO
             get { return id; }
             set { id = value; }
         }
-        public int Stt
+        public string Stt
         {
             get { return stt; }
             set { stt = value; }
@@ -47,7 +47,7 @@ namespace DTO
             get { return price; }
             set { price = value; }
         }
-        public Food(int stt, string id, string name, string categoryId, float price)
+        public Food(string stt, string id, string name, string categoryId, float price)
         {
             this.Stt = stt;
             this.Id = id;
@@ -59,8 +59,8 @@ namespace DTO
         public Food(DataRow row)
         {
             this.Id = (string)row["id"];
-            this.Food_Name = row["name"].ToString();
-            this.Id_Category = (int)row["idcategory"];
+            this.Food_Name = row["food_name"].ToString();
+            this.Id_Category = (string)row["id_category"];
             this.Price = (float)Convert.ToDouble(row["price"].ToString());
         }
         
