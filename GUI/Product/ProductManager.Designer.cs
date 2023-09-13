@@ -32,6 +32,7 @@
             this.dataGridViewFood = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSearchProduct = new System.Windows.Forms.Button();
             this.txtSearchProduct = new System.Windows.Forms.TextBox();
             this.btnReloadProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
@@ -45,7 +46,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSearchProduct = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).BeginInit();
             this.panel2.SuspendLayout();
@@ -100,6 +100,16 @@
             this.panel2.Size = new System.Drawing.Size(331, 534);
             this.panel2.TabIndex = 2;
             // 
+            // btnSearchProduct
+            // 
+            this.btnSearchProduct.Location = new System.Drawing.Point(249, 0);
+            this.btnSearchProduct.Name = "btnSearchProduct";
+            this.btnSearchProduct.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchProduct.TabIndex = 4;
+            this.btnSearchProduct.Text = "Tìm kiếm";
+            this.btnSearchProduct.UseVisualStyleBackColor = true;
+            this.btnSearchProduct.Click += new System.EventHandler(this.btnSearchProduct_Click);
+            // 
             // txtSearchProduct
             // 
             this.txtSearchProduct.Location = new System.Drawing.Point(48, 0);
@@ -124,6 +134,7 @@
             this.btnDeleteProduct.TabIndex = 2;
             this.btnDeleteProduct.Text = "Xóa";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // btnEditProduct
             // 
@@ -224,16 +235,6 @@
             this.label2.Size = new System.Drawing.Size(149, 22);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tên sản phẩm:";
-            // 
-            // btnSearchProduct
-            // 
-            this.btnSearchProduct.Location = new System.Drawing.Point(249, 0);
-            this.btnSearchProduct.Name = "btnSearchProduct";
-            this.btnSearchProduct.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchProduct.TabIndex = 4;
-            this.btnSearchProduct.Text = "Tìm kiếm";
-            this.btnSearchProduct.UseVisualStyleBackColor = true;
-            this.btnSearchProduct.Click += new System.EventHandler(this.btnSearchProduct_Click);
             // 
             // ProductManager
             // 

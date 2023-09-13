@@ -100,5 +100,27 @@ namespace GUI
         {
             viewDetail(e.RowIndex);
         }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            ClassState foodState = ClassState.GetInstance();
+            String id = foodState.Id;
+            if(id == null)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm cần xóa");
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    FoodBLL.Instance.DeleteFood(id);
+                    MessageBox.Show("Xóa thành công");
+                    loadData();
+                    // reset lại giá trị foodState
+                    foodState = null;
+                }
+            }   
+        }
     }
 }
