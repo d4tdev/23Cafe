@@ -16,6 +16,11 @@ namespace GUI.Product
         {
             InitializeComponent();
             this.KeyPreview = true;
+            ClassState foodState = ClassState.GetInstance();
+            txtCodeProduct.Text = foodState.Id;
+            txtNameProduct.Text = foodState.Food_Name;
+            txtPriceProduct.Text = foodState.Price;
+            cbCategoryProduct.Text = foodState.Id_Category;
         }
 
         private void btnSaveEditProduct_Click(object sender, EventArgs e)

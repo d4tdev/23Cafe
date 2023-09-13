@@ -51,6 +51,13 @@ namespace GUI
             textNameProduct.Text = dataGridViewFood.Rows[index].Cells[1].Value.ToString();
             textPriceProduct.Text = dataGridViewFood.Rows[index].Cells[3].Value.ToString();
             textCategoryProduct.Text = dataGridViewFood.Rows[index].Cells[2].Value.ToString();
+
+            // lưu giá trị khi click vào foodState
+            ClassState foodState = ClassState.GetInstance();
+            foodState.Id = textCodeProduct.Text;
+            foodState.Food_Name = textNameProduct.Text;
+            foodState.Price = textPriceProduct.Text;
+            foodState.Id_Category = textCategoryProduct.Text;
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
