@@ -27,6 +27,7 @@ namespace GUI
         {
             List<Food> listFood = FoodBLL.Instance.GetListFood();
             DataTable dt = new DataTable();
+            
             dt.Columns.Add("Mã sản phẩm", typeof(string));
             dt.Columns.Add("Tên sản phẩm", typeof(string));
             dt.Columns.Add("Danh mục", typeof(string));
@@ -42,6 +43,10 @@ namespace GUI
                 dt.Rows.Add(row);
             }
             dataGridViewFood.DataSource = dt;
+            foreach (DataGridViewColumn column in dataGridViewFood.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
             viewDetail(0);
         }
 

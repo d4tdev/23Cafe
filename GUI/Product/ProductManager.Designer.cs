@@ -62,9 +62,16 @@
             // 
             // dataGridViewFood
             // 
+            this.dataGridViewFood.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewFood.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewFood.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFood.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewFood.Name = "dataGridViewFood";
+            this.dataGridViewFood.ReadOnly = true;
             this.dataGridViewFood.Size = new System.Drawing.Size(609, 534);
             this.dataGridViewFood.TabIndex = 0;
             this.dataGridViewFood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFood_CellClick);
