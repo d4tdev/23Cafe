@@ -22,5 +22,14 @@ namespace GUI.Staff
             EditStaff editStaff = new EditStaff();
             editStaff.ShowDialog();
         }
+
+        private void btnDelStaff_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show("Xóa thành công");  
+            }
+        }
     }
 }

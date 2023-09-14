@@ -79,6 +79,7 @@
             this.btnDelStaff.TabIndex = 3;
             this.btnDelStaff.Text = "Xóa";
             this.btnDelStaff.UseVisualStyleBackColor = true;
+            this.btnDelStaff.Click += new System.EventHandler(this.btnDelStaff_Click);
             // 
             // labelHour
             // 
