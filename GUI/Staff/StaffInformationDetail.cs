@@ -16,5 +16,20 @@ namespace GUI.Staff
         {
             InitializeComponent();
         }
+
+        private void btnEditStaff_Click(object sender, EventArgs e)
+        {
+            EditStaff editStaff = new EditStaff();
+            editStaff.ShowDialog();
+        }
+
+        private void btnDelStaff_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show("Xóa thành công");  
+            }
+        }
     }
 }
