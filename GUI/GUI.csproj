@@ -139,6 +139,9 @@
     <EmbeddedResource Include="Staff\AddStaff.resx">
       <DependentUpon>AddStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Staff\EditStaff.resx">
+      <DependentUpon>EditStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Staff\StaffInformationDetail.resx">
       <DependentUpon>StaffInformationDetail.cs</DependentUpon>
     </EmbeddedResource>

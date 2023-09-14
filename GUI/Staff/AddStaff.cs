@@ -28,6 +28,7 @@ namespace GUI.Staff
             if (username == null || password == null || name == null || phone == null || salary == null)
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
