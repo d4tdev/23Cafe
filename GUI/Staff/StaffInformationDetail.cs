@@ -16,5 +16,11 @@ namespace GUI.Staff
         {
             InitializeComponent();
         }
+
+        private void btnEditStaff_Click(object sender, EventArgs e)
+        {
+            EditStaff editStaff = new EditStaff();
+            editStaff.ShowDialog();
+        }
     }
 }
