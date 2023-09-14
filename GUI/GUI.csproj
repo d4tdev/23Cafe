@@ -136,6 +136,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Staff\StaffInformationDetail.resx">
+      <DependentUpon>StaffInformationDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Staff\StaffManager.resx">
       <DependentUpon>StaffManager.cs</DependentUpon>
     </EmbeddedResource>
