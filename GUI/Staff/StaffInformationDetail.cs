@@ -25,7 +25,7 @@ namespace GUI.Staff
 
         private void btnDelStaff_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 MessageBox.Show("Xóa thành công");  
