@@ -141,6 +141,7 @@
             this.Name = "EditProduct";
             this.Text = "Sửa thông tin sản phẩm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditProduct_FormClosing);
+            this.Load += new System.EventHandler(this.EditProduct_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

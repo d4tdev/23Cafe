@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,8 +33,15 @@ namespace GUI.Staff
             }
             else
             {
-                MessageBox.Show("Staff created successfully");
-                this.Close();
+                if (AccountBLL.Instance.InsertAccount(username, name, 0, password, phone, salary)) {
+                    MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm nhân viên thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }   
         }
     }

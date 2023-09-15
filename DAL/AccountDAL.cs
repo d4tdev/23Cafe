@@ -33,6 +33,7 @@ namespace DAL
         */
         public bool Login(string userName, string passWord)
         {
+            /**
             byte[] temp = ASCIIEncoding.ASCII.GetBytes(passWord);
             byte[] hasData = new MD5CryptoServiceProvider().ComputeHash(temp);
 
@@ -42,12 +43,13 @@ namespace DAL
             {
                 hasPass += item;
             }
+            */
             //var list = hasData.ToString();
             //list.Reverse();
 
             string query = "USP_Login @userName , @passWord";
 
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, hasPass /*list*/});
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, passWord /*list*/});
 
             return result.Rows.Count > 0;
         }

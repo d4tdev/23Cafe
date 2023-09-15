@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    internal class ClassState
+    internal class FoodState
     {
         // State
-        public static ClassState foodState = null;
+        public static FoodState foodState = null;
 
         // Thêm các thuộc tính mới
         public string Id { get; set; }
@@ -17,16 +17,16 @@ namespace GUI
         public string Price { get; set; }
         public string Id_Category { get; set; }
 
-        private ClassState()
+        private FoodState()
         {
             // Khởi tạo các thuộc tính ở đây nếu cần
         }
 
-        public static ClassState GetInstance()
+        public static FoodState GetInstance()
         {
             if (foodState == null)
             {
-                foodState = new ClassState();
+                foodState = new FoodState();
             }
             return foodState;
         }

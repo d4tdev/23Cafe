@@ -15,6 +15,13 @@ namespace GUI.Staff
         public EditStaff()
         {
             InitializeComponent();
+            // load data from account state
+            AccountState accountState = AccountState.GetInstance();
+            txtUsername.Text = accountState.Username;
+            txtPassword.Text = accountState.Password;
+            txtName.Text = accountState.Name;
+            txtPhone.Text = accountState.Phone;
+            txtSalary.Text = accountState.Salary.ToString();
         }
 
         private void btnEditStaff_Click(object sender, EventArgs e)

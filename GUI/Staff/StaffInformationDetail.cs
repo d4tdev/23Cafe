@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,13 @@ namespace GUI.Staff
 {
     public partial class StaffInformationDetail : Form
     {
+        AccountState accountState;
         public StaffInformationDetail()
         {
             InitializeComponent();
+            accountState = AccountState.GetInstance();
+            labelName.Text = accountState.Name;
+            labelPhone.Text = accountState.Phone;
         }
 
         private void btnEditStaff_Click(object sender, EventArgs e)
@@ -28,7 +33,16 @@ namespace GUI.Staff
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Xóa thành công");  
+                if (AccountBLL.Instance.DeleteAccount(accountState.Username))
+                {
+                    MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa nhân viên thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
         }
     }

@@ -20,7 +20,7 @@ namespace GUI.Product
             listCategory = FoodCategoryBLL.Instance.GetAllCategory();
             InitializeComponent();
             this.KeyPreview = true;
-            ClassState foodState = ClassState.GetInstance();
+            FoodState foodState = FoodState.GetInstance();
             txtCodeProduct.Text = foodState.Id;
             txtNameProduct.Text = foodState.Food_Name;
             txtPriceProduct.Text = foodState.Price;
@@ -88,6 +88,11 @@ namespace GUI.Product
             {
                 e.Cancel = true;
             }
+        }
+
+        private void EditProduct_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

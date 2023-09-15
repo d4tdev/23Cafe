@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +35,7 @@ namespace GUI
                 dashboard.ShowDialog();
                 this.Show();
             }
-            else if (username == "user" && password == "user")
+            else if (AccountBLL.Instance.Login(username, password))
             {
                 MessageBox.Show($"Bắt đầu ca làm việc vào lúc: {DateTime.Now}", "Bắt đầu ca làm việc");
                 this.Hide();

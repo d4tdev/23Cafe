@@ -58,7 +58,7 @@ namespace GUI
             textCategoryProduct.Text = dataGridViewFood.Rows[index].Cells[2].Value.ToString();
 
             // lưu giá trị khi click vào foodState
-            ClassState foodState = ClassState.GetInstance();
+            FoodState foodState = FoodState.GetInstance();
             foodState.Id = textCodeProduct.Text;
             foodState.Food_Name = textNameProduct.Text;
             foodState.Price = textPriceProduct.Text;
@@ -110,7 +110,7 @@ namespace GUI
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
-            ClassState foodState = ClassState.GetInstance();
+            FoodState foodState = FoodState.GetInstance();
             String id = foodState.Id;
             if(id == null)
             {

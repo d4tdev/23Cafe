@@ -58,7 +58,6 @@
     <Compile Include="Bill\BillManager.Designer.cs">
       <DependentUpon>BillManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClassState.cs" />
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +100,7 @@
     <Compile Include="Product\EditProduct.Designer.cs">
       <DependentUpon>EditProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Product\FoodState.cs" />
     <Compile Include="Product\ProductManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staff\AccountState.cs" />
     <Compile Include="Staff\AddStaff.cs">
       <SubType>Form</SubType>
     </Compile>

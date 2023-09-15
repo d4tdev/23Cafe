@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtSearchStaff = new System.Windows.Forms.TextBox();
-            this.btnSearchStaff = new System.Windows.Forms.Button();
-            this.btnAddStaff = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAddStaff = new System.Windows.Forms.Button();
+            this.btnSearchStaff = new System.Windows.Forms.Button();
+            this.txtSearchStaff = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -50,35 +50,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(807, 447);
             this.panel1.TabIndex = 0;
-            // 
-            // txtSearchStaff
-            // 
-            this.txtSearchStaff.Location = new System.Drawing.Point(538, 2);
-            this.txtSearchStaff.Name = "txtSearchStaff";
-            this.txtSearchStaff.Size = new System.Drawing.Size(185, 20);
-            this.txtSearchStaff.TabIndex = 0;
-            // 
-            // btnSearchStaff
-            // 
-            this.btnSearchStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchStaff.Location = new System.Drawing.Point(729, 0);
-            this.btnSearchStaff.Name = "btnSearchStaff";
-            this.btnSearchStaff.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchStaff.TabIndex = 1;
-            this.btnSearchStaff.Text = "Tìm kiếm";
-            this.btnSearchStaff.UseVisualStyleBackColor = true;
-            this.btnSearchStaff.Click += new System.EventHandler(this.btnSearchStaff_Click);
-            // 
-            // btnAddStaff
-            // 
-            this.btnAddStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddStaff.Location = new System.Drawing.Point(3, 0);
-            this.btnAddStaff.Name = "btnAddStaff";
-            this.btnAddStaff.Size = new System.Drawing.Size(75, 23);
-            this.btnAddStaff.TabIndex = 2;
-            this.btnAddStaff.Text = "Thêm";
-            this.btnAddStaff.UseVisualStyleBackColor = true;
-            this.btnAddStaff.Click += new System.EventHandler(this.btnAddStaff_Click);
             // 
             // panel2
             // 
@@ -99,6 +70,37 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(798, 406);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            // 
+            // btnAddStaff
+            // 
+            this.btnAddStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddStaff.Location = new System.Drawing.Point(3, 0);
+            this.btnAddStaff.Name = "btnAddStaff";
+            this.btnAddStaff.Size = new System.Drawing.Size(75, 23);
+            this.btnAddStaff.TabIndex = 2;
+            this.btnAddStaff.Text = "Thêm";
+            this.btnAddStaff.UseVisualStyleBackColor = true;
+            this.btnAddStaff.Click += new System.EventHandler(this.btnAddStaff_Click);
+            // 
+            // btnSearchStaff
+            // 
+            this.btnSearchStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchStaff.Location = new System.Drawing.Point(729, 0);
+            this.btnSearchStaff.Name = "btnSearchStaff";
+            this.btnSearchStaff.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchStaff.TabIndex = 1;
+            this.btnSearchStaff.Text = "Tìm kiếm";
+            this.btnSearchStaff.UseVisualStyleBackColor = true;
+            this.btnSearchStaff.Click += new System.EventHandler(this.btnSearchStaff_Click);
+            // 
+            // txtSearchStaff
+            // 
+            this.txtSearchStaff.Location = new System.Drawing.Point(538, 2);
+            this.txtSearchStaff.Name = "txtSearchStaff";
+            this.txtSearchStaff.Size = new System.Drawing.Size(185, 20);
+            this.txtSearchStaff.TabIndex = 0;
             // 
             // StaffManager
             // 

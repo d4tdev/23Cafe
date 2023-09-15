@@ -10,10 +10,8 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-IF NOT EXISTS(SELECT name FROM master.dbo.sys.databases WHERE name = N'QuanLy23Cafe')
-BEGIN
+
 	CREATE DATABASE QuanLy23Cafe
-END
 GO -- Thực thi câu lệnh phía sau
 
 USE QuanLy23Cafe
@@ -430,7 +428,7 @@ BEGIN
     
     IF (@isRightPass = 1)
     BEGIN
-        UPDATE dbo.Account SET display_name = @displayName, password = @newPassword WHERE username = @userName
+        UPDATE dbo.Account SET password = @newPassword WHERE username = @userName
     END
 END
 GO

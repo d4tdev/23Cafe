@@ -36,6 +36,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.labelCurrentTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.muaMangVềToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tàiKhoảnToolStripMenuItem});
+            this.tàiKhoảnToolStripMenuItem,
+            this.muaMangVềToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1188, 24);
@@ -91,6 +93,12 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // muaMangVềToolStripMenuItem
+            // 
+            this.muaMangVềToolStripMenuItem.Name = "muaMangVềToolStripMenuItem";
+            this.muaMangVềToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.muaMangVềToolStripMenuItem.Text = "Mua mang về";
             // 
             // Order
             // 
@@ -120,5 +128,6 @@
         private System.Windows.Forms.Label labelCurrentTime;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem thôngTinNhânViênToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem muaMangVềToolStripMenuItem;
     }
 }
