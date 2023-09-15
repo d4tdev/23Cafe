@@ -23,10 +23,11 @@ namespace GUI
             loadData();
         }
 
-        private void loadData()
+        public void loadData()
         {
             List<Food> listFood = FoodBLL.Instance.GetListFood();
             DataTable dt = new DataTable();
+            
             dt.Columns.Add("Mã sản phẩm", typeof(string));
             dt.Columns.Add("Tên sản phẩm", typeof(string));
             dt.Columns.Add("Danh mục", typeof(string));
@@ -42,6 +43,10 @@ namespace GUI
                 dt.Rows.Add(row);
             }
             dataGridViewFood.DataSource = dt;
+            foreach (DataGridViewColumn column in dataGridViewFood.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
             viewDetail(0);
         }
 
@@ -63,13 +68,15 @@ namespace GUI
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             AddProduct addProduct = new AddProduct();
-            addProduct.Show();
+            addProduct.ShowDialog();
+            loadData();
+            MessageBox.Show("Thêm sản phẩm thành công");
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
             EditProduct editProduct = new EditProduct();
-            editProduct.Show();
+            editProduct.ShowDialog();
         }
 
         private void btnSearchProduct_Click(object sender, EventArgs e)

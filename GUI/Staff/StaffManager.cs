@@ -16,5 +16,17 @@ namespace GUI.Staff
         {
             InitializeComponent();
         }
+
+        private void btnAddStaff_Click(object sender, EventArgs e)
+        {
+            AddStaff addStaff = new AddStaff();
+            addStaff.ShowDialog();
+        }
+
+        private void btnSearchStaff_Click(object sender, EventArgs e)
+        {
+            String search = txtSearchStaff.Text;
+            
+        }
     }
 }
