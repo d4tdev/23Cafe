@@ -60,16 +60,16 @@ namespace DAL
         *@param newPassword @newPassword  [newPass Word]        
         *@return result
         */
-        public bool UpdateAccountPassword(string userName, string displayName, string pass, string newPass)
+        public bool UpdateAccountPassword(string userName, string pass, string newPass)
         {
-            int result = DataProvider.Instance.ExecuteNonQuery("exec USP_UpdateAccount @userName , @displayName , @password , @newPassword", new object[] { userName, displayName, pass, newPass });
+            int result = DataProvider.Instance.ExecuteNonQuery("exec USP_UpdateAccount @userName , @password , @newPassword", new object[] { userName, pass, newPass });
 
             return result > 0;
         }
 
         public DataTable GetListAccountsTable()
         {
-            return DataProvider.Instance.ExecuteQuery("SELECT username, display_name, role FROM dbo.Account");
+            return DataProvider.Instance.ExecuteQuery("SELECT username, display_name, phone, basic_salary, role FROM dbo.Account");
         }
 
         public List<Account> GetListAccounts()
@@ -108,9 +108,9 @@ namespace DAL
         *@param password @password        
         *@return result
         */
-        public bool InsertAccount(string username, string displayName, int type, string password)
+        public bool InsertAccount(string username, string displayName, string phone, int basic_salary, int role, string password)
         {
-            string query = string.Format("INSERT dbo.Account ( username, display_name, role, password )VALUES  ( N'{0}', N'{1}', {2}, N'{3}')", username, displayName, type, password);
+            string query = string.Format("INSERT dbo.Account ( username, display_name, role, password, phone, basic_salary ) VALUES  ( N'{0}', N'{1}', {2}, N'{3}', N'{4}', {5})", username, displayName, role, password, phone, basic_salary);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -123,9 +123,9 @@ namespace DAL
         *@param type @type
         *@return result
         */
-        public bool UpdateAccount(string username, string displayName, int role)
+        public bool UpdateAccount(string username, string displayName, int role, string phone, int basic_salary)
         {
-            string query = string.Format("UPDATE dbo.Account SET display_name = N'{1}', role = {2} WHERE username = N'{0}'", username, displayName, role);
+            string query = string.Format("UPDATE dbo.Account SET display_name = N'{1}', role = {2}, phone = N'{3}', basic_salary = {4} WHERE username = N'{0}'", username, displayName, role, phone, basic_salary);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;

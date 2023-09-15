@@ -9,7 +9,11 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-CREATE DATABASE QuanLy23Cafe
+
+IF NOT EXISTS(SELECT name FROM master.dbo.sys.databases WHERE name = N'QuanLy23Cafe')
+BEGIN
+	CREATE DATABASE QuanLy23Cafe
+END
 GO -- Thực thi câu lệnh phía sau
 
 USE QuanLy23Cafe
@@ -46,6 +50,8 @@ IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'Account')
 		username NVARCHAR(100) NOT NULL PRIMARY KEY,
 		display_name NVARCHAR(100) NOT NULL DEFAULT N'Nguoi Dung',
 		password NVARCHAR(200) NOT NULL DEFAULT 0,
+		phone NVARCHAR(10) NOT NULL,
+		basic_salary INT NOT NULL,
 		role INT  NOT NULL DEFAULT 0 -- 1: admin && 0: staff
 	)
 	END
@@ -286,10 +292,12 @@ INSERT INTO dbo.Account
     username,
     display_name,
     password,
-    role
+    role,
+	phone,
+	basic_salary
     )
-VALUES (N'admin', N'Hồng Quang Văn Minh Tiến', N'admin', 1),
-		(N'staff', N'Trần Thị Ngọc Trinh', N'123', 0)
+VALUES (N'admin', N'Hồng Quang Văn Minh Tiến', N'admin', 1, N'0912345678', 30),
+		(N'staff', N'Trần Thị Ngọc Trinh', N'123', 0, N'0912345677', 17)
 GO
 		/**
         * Tạo thủ tục USP_CreateFood
@@ -413,7 +421,7 @@ GO
         * Tạo Thủ tục USP_UpdateAccount
         */
 CREATE PROC USP_UpdateAccount
-@userName NVARCHAR(100), @displayName NVARCHAR(100), @password NVARCHAR(100), @newPassword NVARCHAR(100)
+@userName NVARCHAR(100), @password NVARCHAR(100), @newPassword NVARCHAR(100)
 AS
 BEGIN
     DECLARE @isRightPass INT = 0
@@ -422,13 +430,8 @@ BEGIN
     
     IF (@isRightPass = 1)
     BEGIN
-        IF (@newPassword = NULL OR @newPassword = '')
-        BEGIN
-            UPDATE dbo.Account SET display_name = @displayName WHERE username = @userName
-        END     
-        ELSE
-            UPDATE dbo.Account SET display_name = @displayName, password = @newPassword WHERE username = @userName
-    end
+        UPDATE dbo.Account SET display_name = @displayName, password = @newPassword WHERE username = @userName
+    END
 END
 GO
 
