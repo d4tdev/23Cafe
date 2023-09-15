@@ -23,9 +23,9 @@ namespace BLL
         {
             return AccountDAL.Instance.Login(userName, passWord);
         }
-        public bool UpdateAccountWithPassword(string userName, string displayName, string pass, string newPass)
+        public bool UpdateAccountWithPassword(string userName, string pass, string newPass)
         {
-            return AccountDAL.Instance.UpdateAccountPassword(userName, displayName, pass, newPass);
+            return AccountDAL.Instance.UpdateAccountPassword(userName, pass, newPass);
         }
 
         public DataTable GetListAccountsTable()
@@ -43,14 +43,14 @@ namespace BLL
             return AccountDAL.Instance.GetAccountByUserName(username);
         }
 
-        public bool InsertAccount(string username, string displayName, int type, string password)
+        public bool InsertAccount(string username, string displayName, int role, string password, string phone, int basic_salary)
         {
-            return AccountDAL.Instance.InsertAccount(username, displayName, type, password);
+            return AccountDAL.Instance.InsertAccount(username, displayName,phone, basic_salary, role, password);
         }
 
-        public bool UpdateAccount(string username, string displayName, int role)
+        public bool UpdateAccount(string username, string displayName, int role, string phone, int basic_salary)
         {
-            return AccountDAL.Instance.UpdateAccount(username, displayName, role);
+            return AccountDAL.Instance.UpdateAccount(username, displayName, role, phone, basic_salary);
         }
 
         public bool DeleteAccount(string username)
