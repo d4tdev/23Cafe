@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,17 @@ namespace GUI.Product
 {
     public partial class AddProduct : Form
     {
+        List<FoodCategory> listCategory = FoodCategoryBLL.Instance.GetAllCategory();
+        ClassState foodState = ClassState.GetInstance();
         public AddProduct()
         {
             InitializeComponent();
             this.KeyPreview = true;
+            // thêm danh mục sản phẩm vào combobox
+            foreach (var category in listCategory)
+            {
+                cbCategoryProduct.Items.Add(category.Name);
+            }
         }
 
         private void AddProduct_FormClosing(object sender, FormClosingEventArgs e)
@@ -50,7 +58,19 @@ namespace GUI.Product
                 MessageBox.Show("Bạn chưa lựa chọn danh mục sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            int idCategory = 1;
+            // thêm sản phẩm
+
+            // chuyển category thành id
+            int idCategory = -1;
+            foreach (var item in listCategory)
+            {
+                if(item.Name == category)
+                {
+                    idCategory = item.Id;
+                    break;
+                }
+            }
+            
             if (idCategory == -1)
             {
                 MessageBox.Show("Không tìm thấy danh mục sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

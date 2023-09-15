@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +14,10 @@ namespace GUI.Product
 {
     public partial class EditProduct : Form
     {
+        List<FoodCategory> listCategory;
         public EditProduct()
         {
+            listCategory = FoodCategoryBLL.Instance.GetAllCategory();
             InitializeComponent();
             this.KeyPreview = true;
             ClassState foodState = ClassState.GetInstance();
@@ -21,6 +25,10 @@ namespace GUI.Product
             txtNameProduct.Text = foodState.Food_Name;
             txtPriceProduct.Text = foodState.Price;
             cbCategoryProduct.Text = foodState.Id_Category;
+            foreach (var category in listCategory)
+            {
+                cbCategoryProduct.Items.Add(category.Name);
+            }
         }
 
         private void btnSaveEditProduct_Click(object sender, EventArgs e)
@@ -44,6 +52,33 @@ namespace GUI.Product
             if (category == null)
             {
                 MessageBox.Show("Bạn chưa lựa chọn danh mục sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            int idCategory = -1;
+            foreach (var item in listCategory)
+            {
+                if (item.Name == category)
+                {
+                    idCategory = item.Id;
+                    break;
+                }
+            }
+
+            if (idCategory == -1)
+            {
+                MessageBox.Show("Không tìm thấy danh mục sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (FoodBLL.Instance.UpdateFood(name, float.Parse(price), idCategory, code))
+                {
+                    MessageBox.Show("Sửa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

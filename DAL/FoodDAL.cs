@@ -83,7 +83,7 @@ namespace DAL
 
         public bool InsertFood(string name, string id, int idCategory, float price)
         {
-            string query = string.Format("INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ({0}, N'{1}', {2}, {3})", id, name, idCategory, price);
+            string query = string.Format("INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  (N'{0}', N'{1}', {2}, {3})", id, name, idCategory, price);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -100,7 +100,7 @@ namespace DAL
 
         public bool UpdateFood(string name, float price, int idCategory, string idFood)
         {
-            string query = string.Format("UPDATE dbo.Food SET food_name = N'{0}', id_category = {1}, price = {2} WHERE id = {3}", name, idCategory, price, idFood);
+            string query = string.Format("UPDATE dbo.Food SET food_name = N'{0}', id_category = {1}, price = {2} WHERE id = N'{3}'", name, idCategory, price, idFood);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
