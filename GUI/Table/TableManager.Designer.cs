@@ -50,9 +50,9 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 60);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 60);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(887, 473);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(890, 473);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btnDeleteTable
@@ -87,9 +87,9 @@
             this.panel2.Controls.Add(this.btnAddTable);
             this.panel2.Controls.Add(this.btnDeleteTable);
             this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Location = new System.Drawing.Point(6, 3);
+            this.panel2.Location = new System.Drawing.Point(0, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(884, 51);
+            this.panel2.Size = new System.Drawing.Size(890, 51);
             this.panel2.TabIndex = 3;
             // 
             // TableManager
