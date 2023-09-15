@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill\BillInformationDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bill\BillInformationDetail.Designer.cs">
+      <DependentUpon>BillInformationDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bill\BillManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bill\BillManager.Designer.cs">
+      <DependentUpon>BillManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClassState.cs" />
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
@@ -64,6 +76,18 @@
     </Compile>
     <Compile Include="Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderForTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderForTable.Designer.cs">
+      <DependentUpon>OrderForTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pay.Designer.cs">
+      <DependentUpon>Pay.cs</DependentUpon>
     </Compile>
     <Compile Include="Product\AddProduct.cs">
       <SubType>Form</SubType>
@@ -109,6 +133,18 @@
     <Compile Include="Staff\StaffManager.Designer.cs">
       <DependentUpon>StaffManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Table\TableManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Table\TableManager.Designer.cs">
+      <DependentUpon>TableManager.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Bill\BillInformationDetail.resx">
+      <DependentUpon>BillInformationDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bill\BillManager.resx">
+      <DependentUpon>BillManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +153,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForTable.resx">
+      <DependentUpon>OrderForTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pay.resx">
+      <DependentUpon>Pay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
@@ -147,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Staff\StaffManager.resx">
       <DependentUpon>StaffManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Table\TableManager.resx">
+      <DependentUpon>TableManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

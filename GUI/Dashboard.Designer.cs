@@ -34,9 +34,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnStaff = new System.Windows.Forms.Button();
+            this.btnBillManager = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -83,33 +83,13 @@
             // 
             this.panel2.Controls.Add(this.btnStaff);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.btnBillManager);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.btnProduct);
             this.panel2.Location = new System.Drawing.Point(483, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(317, 346);
             this.panel2.TabIndex = 6;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(172, 212);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Quản lý hóa đơn";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.btnProduct_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(21, 212);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Quản lý bàn";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // btnStaff
             // 
@@ -120,6 +100,26 @@
             this.btnStaff.Text = "Quản lý nhân viên";
             this.btnStaff.UseVisualStyleBackColor = true;
             this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
+            // 
+            // btnBillManager
+            // 
+            this.btnBillManager.Location = new System.Drawing.Point(172, 212);
+            this.btnBillManager.Name = "btnBillManager";
+            this.btnBillManager.Size = new System.Drawing.Size(119, 23);
+            this.btnBillManager.TabIndex = 1;
+            this.btnBillManager.Text = "Quản lý hóa đơn";
+            this.btnBillManager.UseVisualStyleBackColor = true;
+            this.btnBillManager.Click += new System.EventHandler(this.btnBillManager_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(21, 212);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(119, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Quản lý bàn";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Dashboard
             // 
@@ -145,7 +145,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBillManager;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnStaff;
     }

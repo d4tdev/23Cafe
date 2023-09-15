@@ -1,4 +1,6 @@
-﻿using GUI.Staff;
+﻿using GUI.Bill;
+using GUI.Staff;
+using GUI.Table;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +30,18 @@ namespace GUI
         {
             StaffManager staffManager = new StaffManager();
             staffManager.Show();
+        }
+
+        private void btnBillManager_Click(object sender, EventArgs e)
+        {
+            BillManager billManager = new BillManager();
+            billManager.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TableManager tableManager = new TableManager();
+            tableManager.Show();
         }
     }
 }
