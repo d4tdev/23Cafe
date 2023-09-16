@@ -31,26 +31,30 @@ namespace GUI
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (username == "admin" && password == "admin")
-            {
-                this.Hide();
-                Dashboard dashboard = new Dashboard();
-                dashboard.ShowDialog();
-                this.Show();
-            }
             else if (AccountBLL.Instance.Login(username, password))
             {
-                MessageBox.Show($"Bắt đầu ca làm việc vào lúc: {DateTime.Now}", "Bắt đầu ca làm việc");
-                this.Hide();
-                Order order = new Order();
-                order.ShowDialog();
-                this.Show();
-
-                // lấy thông tin nhân viên bằng username
+                
                 Account account = AccountBLL.Instance.GetAccountByUsername(username);
-                // lưu thông tin nhân viên vào global state
-                globalState.Username = account.Username;
-                globalState.Role = account.Role.ToString();
+
+                if(account.Role == 1)
+                {
+                    this.Hide();
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.ShowDialog();
+                    this.Show();
+                 
+                } else if (account.Role == 0)
+                {
+                    // lưu thông tin nhân viên vào global state
+                    globalState.Username = account.Username;
+                    globalState.Role = account.Role.ToString();
+
+                    MessageBox.Show($"Bắt đầu ca làm việc vào lúc: {DateTime.Now}", "Bắt đầu ca làm việc");
+                    this.Hide();
+                    Order order = new Order();
+                    order.ShowDialog();
+                    this.Show();
+                }
                 txtPasswordLogin.Text = "";
                 txtUsernameLogin.Text = "";
             }
