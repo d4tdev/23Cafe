@@ -16,7 +16,6 @@ GO -- Thực thi câu lệnh phía sau
 
 USE QuanLy23Cafe
 GO
-SELECT * from Account WHERE display_name=N'0912345678' OR phone=N'0912345678' OR username=N'0912345678'
 
 -- Food
 -- TableFood
