@@ -64,6 +64,7 @@ namespace GUI.Staff
         {
             AddStaff addStaff = new AddStaff();
             addStaff.ShowDialog();
+            loadData();
         }
 
         private void btnSearchStaff_Click(object sender, EventArgs e)
@@ -84,6 +85,7 @@ namespace GUI.Staff
             saveAccountState();
             StaffInformationDetail staffInformationDetail = new StaffInformationDetail();
             staffInformationDetail.ShowDialog();
+            loadData();
         }
     }
 }

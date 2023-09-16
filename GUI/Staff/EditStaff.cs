@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +13,24 @@ namespace GUI.Staff
 {
     public partial class EditStaff : Form
     {
+        AccountState accountState;
         public EditStaff()
         {
             InitializeComponent();
             // load data from account state
-            AccountState accountState = AccountState.GetInstance();
+            accountState = AccountState.GetInstance();
             txtUsername.Text = accountState.Username;
             txtPassword.Text = accountState.Password;
             txtName.Text = accountState.Name;
             txtPhone.Text = accountState.Phone;
             txtSalary.Text = accountState.Salary.ToString();
+
+            if (accountState.Role == 0)
+            {
+                txtName.Enabled = false;
+                txtPassword.Enabled = false;
+                txtSalary.Enabled = false;
+            }
         }
 
         private void btnEditStaff_Click(object sender, EventArgs e)
@@ -39,8 +48,39 @@ namespace GUI.Staff
             }
             else
             {
-                MessageBox.Show("Staff edited successfully!");
+                if (password != accountState.Password)
+                {
+                    if(MessageBox.Show("Bạn có chắc muốn đổi mật khẩu?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (BLL.AccountBLL.Instance.ResetPassword(password, username))
+                        {
+                            MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            accountState.Password = password;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cập nhật thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }   
+                }
+
+                if (AccountBLL.Instance.UpdateAccount(username, name, 0, phone, salary))
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    accountState.Name = name;
+                    accountState.Phone = phone;
+                    accountState.Salary = salary;
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        private void EditStaff_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            accountState = null;
         }
     }
 }

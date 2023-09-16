@@ -20,6 +20,15 @@ namespace GUI.Staff
             accountState = AccountState.GetInstance();
             labelName.Text = accountState.Name;
             labelPhone.Text = accountState.Phone;
+
+            if(accountState.Role == 1)
+            {
+                btnDelStaff.Visible = true;
+            }
+            else if (accountState.Role == 0)
+            {
+                btnDelStaff.Visible = false;
+            }
         }
 
         private void btnEditStaff_Click(object sender, EventArgs e)
@@ -37,6 +46,8 @@ namespace GUI.Staff
                 {
                     MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+
+                    accountState = null;
                 }
                 else
                 {
@@ -44,6 +55,11 @@ namespace GUI.Staff
                     return;
                 }
             }
+        }
+
+        private void StaffInformationDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            accountState = null;
         }
     }
 }

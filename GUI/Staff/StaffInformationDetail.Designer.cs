@@ -162,6 +162,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "StaffInformationDetail";
             this.Text = "Thông tin chi tiết nhân viên";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StaffInformationDetail_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

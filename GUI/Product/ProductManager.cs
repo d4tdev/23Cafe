@@ -70,13 +70,13 @@ namespace GUI
             AddProduct addProduct = new AddProduct();
             addProduct.ShowDialog();
             loadData();
-            MessageBox.Show("Thêm sản phẩm thành công");
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
             EditProduct editProduct = new EditProduct();
             editProduct.ShowDialog();
+            loadData();
         }
 
         private void btnSearchProduct_Click(object sender, EventArgs e)

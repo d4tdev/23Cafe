@@ -70,6 +70,7 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalState.cs" />
     <Compile Include="Order.cs">
       <SubType>Form</SubType>
     </Compile>

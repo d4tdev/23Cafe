@@ -15,7 +15,7 @@ namespace GUI.Product
     public partial class AddProduct : Form
     {
         List<FoodCategory> listCategory = FoodCategoryBLL.Instance.GetAllCategory();
-        ClassState foodState = ClassState.GetInstance();
+        FoodState foodState = FoodState.GetInstance();
         public AddProduct()
         {
             InitializeComponent();

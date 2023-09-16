@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,11 @@ namespace GUI
 {
     public partial class DangNhap : Form
     {
+        GlobalState globalState;
         public DangNhap()
         {
             InitializeComponent();
+            globalState = GlobalState.GetInstance();
             this.KeyPreview = true;
         }
 
@@ -42,6 +45,14 @@ namespace GUI
                 Order order = new Order();
                 order.ShowDialog();
                 this.Show();
+
+                // lấy thông tin nhân viên bằng username
+                Account account = AccountBLL.Instance.GetAccountByUsername(username);
+                // lưu thông tin nhân viên vào global state
+                globalState.Username = account.Username;
+                globalState.Role = account.Role.ToString();
+                txtPasswordLogin.Text = "";
+                txtUsernameLogin.Text = "";
             }
             else
             {

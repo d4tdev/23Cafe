@@ -34,9 +34,9 @@
             this.thôngTinNhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.muaMangVềToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelCurrentTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.muaMangVềToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,7 @@
             this.thôngTinNhânViênToolStripMenuItem.Name = "thôngTinNhânViênToolStripMenuItem";
             this.thôngTinNhânViênToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thôngTinNhânViênToolStripMenuItem.Text = "Thông tin nhân viên";
+            this.thôngTinNhânViênToolStripMenuItem.Click += new System.EventHandler(this.thôngTinNhânViênToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
@@ -80,6 +81,12 @@
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // muaMangVềToolStripMenuItem
+            // 
+            this.muaMangVềToolStripMenuItem.Name = "muaMangVềToolStripMenuItem";
+            this.muaMangVềToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.muaMangVềToolStripMenuItem.Text = "Mua mang về";
+            // 
             // labelCurrentTime
             // 
             this.labelCurrentTime.AutoSize = true;
@@ -93,12 +100,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // muaMangVềToolStripMenuItem
-            // 
-            this.muaMangVềToolStripMenuItem.Name = "muaMangVềToolStripMenuItem";
-            this.muaMangVềToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
-            this.muaMangVềToolStripMenuItem.Text = "Mua mang về";
             // 
             // Order
             // 
