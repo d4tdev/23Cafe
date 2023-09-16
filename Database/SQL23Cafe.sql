@@ -16,6 +16,7 @@ GO -- Thực thi câu lệnh phía sau
 
 USE QuanLy23Cafe
 GO
+SELECT * from Account WHERE display_name=N'0912345678' OR phone=N'0912345678' OR username=N'0912345678'
 
 -- Food
 -- TableFood
@@ -258,11 +259,11 @@ INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'TT05', N'Sữa 
 
         /**
         * Thêm dữ liệu vào bảng Bill 
-        */
+        
 INSERT  dbo.Bill (  date_checkout , id_table , status_bill ) VALUES  ( GETDATE(), 3 , 0 )
 INSERT  dbo.Bill ( date_checkout , id_table , status_bill ) VALUES  ( GETDATE(), 4 , 0 )
 INSERT  dbo.Bill (  date_checkout , id_table , status_bill ) VALUES  ( GETDATE(), 5 , 0 )
-
+*/
 
 GO
 

@@ -56,11 +56,11 @@ namespace DAL
         *@return result
         */
 
-        public List<Food> SearchFoodByName(string name)
+        public List<Food> SearchFoodByName(string querySearch)
         {
             List<Food> list = new List<Food>();
 
-            string query = string.Format("SELECT id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price FROM dbo.Food WHERE food_name LIKE N'%{0}%'", name);
+            string query = string.Format($"SELECT id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price FROM dbo.Food WHERE food_name LIKE N'%{querySearch}%' OR id_category LIKE N'%{querySearch}% OR price LIKE {querySearch} OR id LIKE {querySearch}");
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
