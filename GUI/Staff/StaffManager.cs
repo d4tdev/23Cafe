@@ -31,14 +31,14 @@ namespace GUI.Staff
             dt.Columns.Add("Số điện thoại", typeof(string));
             dt.Columns.Add("Lương cơ bản", typeof(int));
 
-            foreach (var food in listAccount)
+            foreach (var account in listAccount)
             {
                 DataRow row = dt.NewRow();
-                row["Tên đăng nhập"] = food.Username;
-                row["Mật khẩu"] = food.Password;
-                row["Họ và tên"] = food.Display_Name;
-                row["Số điện thoại"] = food.Phone;
-                row["Lương cơ bản"] = food.Basic_Salary;
+                row["Tên đăng nhập"] = account.Username;
+                row["Mật khẩu"] = account.Password;
+                row["Họ và tên"] = account.Display_Name;
+                row["Số điện thoại"] = account.Phone;
+                row["Lương cơ bản"] = account.Basic_Salary;
                 dt.Rows.Add(row);
             }
             dataGridView1.DataSource = dt;
@@ -70,7 +70,30 @@ namespace GUI.Staff
         private void btnSearchStaff_Click(object sender, EventArgs e)
         {
             String search = txtSearchStaff.Text;
-            
+            List<Account> listAccount = AccountBLL.Instance.SearchListAccounts(search);
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Tên đăng nhập", typeof(string));
+            dt.Columns.Add("Mật khẩu", typeof(string));
+            dt.Columns.Add("Họ và tên", typeof(string));
+            dt.Columns.Add("Số điện thoại", typeof(string));
+            dt.Columns.Add("Lương cơ bản", typeof(int));
+
+            foreach (var account in listAccount)
+            {
+                DataRow row = dt.NewRow();
+                row["Tên đăng nhập"] = account.Username;
+                row["Mật khẩu"] = account.Password;
+                row["Họ và tên"] = account.Display_Name;
+                row["Số điện thoại"] = account.Phone;
+                row["Lương cơ bản"] = account.Basic_Salary;
+                dt.Rows.Add(row);
+            }
+            dataGridView1.DataSource = dt;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
