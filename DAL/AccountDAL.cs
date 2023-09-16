@@ -96,7 +96,7 @@ namespace DAL
             List<Account> list = new List<Account>();
 
             string query = string.Format($"SELECT * from Account WHERE display_name LIKE N'%{querySearch}%' OR phone LIKE N'%{querySearch}%' OR username LIKE N'%{querySearch}%'");
-            DataTable data = DataProvider.Instance.ExecuteQuery(querySearch);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
             {
