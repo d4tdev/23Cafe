@@ -38,6 +38,11 @@ namespace BLL
             return AccountDAL.Instance.GetListAccounts();
         }
 
+        public List<Account> SearchListAccounts(string querySearch)
+        {
+            return AccountDAL.Instance.SearchListAccounts(querySearch);
+        }
+
         public Account GetAccountByUsername(string username)
         {
             return AccountDAL.Instance.GetAccountByUserName(username);

@@ -91,6 +91,21 @@ namespace DAL
             return list;
         }
 
+        public List<Account> SearchListAccounts(string querySearch)
+        {
+            List<Account> list = new List<Account>();
+
+            string query = string.Format($"SELECT * from Account WHERE display_name LIKE N'%{querySearch}%' OR phone LIKE N'%{querySearch}%' OR username LIKE N'%{querySearch}%'");
+            DataTable data = DataProvider.Instance.ExecuteQuery(querySearch);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Account account = new Account(item);
+                list.Add(account);
+            }
+            return list;
+        }
+
         public Account GetAccountByUserName(string userName)
         {
             DataTable data = DataProvider.Instance.ExecuteQuery($"Select * from Account where username = '{userName}'");
