@@ -60,7 +60,7 @@ namespace DAL
         {
             List<Food> list = new List<Food>();
 
-            string query = string.Format($"SELECT id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price FROM dbo.Food WHERE food_name LIKE N'%{querySearch}%' OR id_category LIKE N'%{querySearch}% OR price LIKE {querySearch} OR id LIKE {querySearch}");
+            string query = string.Format($"SELECT id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price FROM dbo.Food WHERE ((food_name LIKE N'%{querySearch}%') OR (id LIKE N'%{querySearch}%'))");
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
