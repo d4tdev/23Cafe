@@ -29,6 +29,7 @@ namespace GUI.Product
             {
                 cbCategoryProduct.Items.Add(category.Name);
             }
+            txtCodeProduct.Enabled = false;
         }
 
         private void btnSaveEditProduct_Click(object sender, EventArgs e)
