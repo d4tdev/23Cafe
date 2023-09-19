@@ -29,8 +29,8 @@ namespace GUI.Staff
 
             if (globalState.Role == 0)
             {
+                txtUsername.Enabled = false;
                 txtName.Enabled = false;
-                txtPassword.Enabled = false;
                 txtSalary.Enabled = false;
             }
         }
