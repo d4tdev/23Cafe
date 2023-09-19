@@ -12,7 +12,7 @@ namespace GUI
 
         // Thêm các thuộc tính mới
         public string Username { get; set; }
-        public string Role { get; set; }
+        public int Role { get; set; }
 
         private GlobalState()
         {

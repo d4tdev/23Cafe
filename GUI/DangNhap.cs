@@ -35,7 +35,7 @@ namespace GUI
             {
                 
                 Account account = AccountBLL.Instance.GetAccountByUsername(username);
-
+                globalState.Role = account.Role;
                 if(account.Role == 1)
                 {
                     this.Hide();
@@ -47,7 +47,7 @@ namespace GUI
                 {
                     // lưu thông tin nhân viên vào global state
                     globalState.Username = account.Username;
-                    globalState.Role = account.Role.ToString();
+                    globalState.Role = account.Role;
 
                     MessageBox.Show($"Bắt đầu ca làm việc vào lúc: {DateTime.Now}", "Bắt đầu ca làm việc");
                     this.Hide();

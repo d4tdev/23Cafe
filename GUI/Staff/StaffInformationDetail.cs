@@ -14,18 +14,20 @@ namespace GUI.Staff
     public partial class StaffInformationDetail : Form
     {
         AccountState accountState;
+        GlobalState globalState;
         public StaffInformationDetail()
         {
             InitializeComponent();
             accountState = AccountState.GetInstance();
+            globalState = GlobalState.GetInstance();
             labelName.Text = accountState.Name;
             labelPhone.Text = accountState.Phone;
 
-            if(accountState.Role == 1)
+            if(globalState.Role == 1)
             {
                 btnDelStaff.Visible = true;
             }
-            else if (accountState.Role == 0)
+            else if (globalState.Role == 0)
             {
                 btnDelStaff.Visible = false;
             }

@@ -14,18 +14,20 @@ namespace GUI.Staff
     public partial class EditStaff : Form
     {
         AccountState accountState;
+        GlobalState globalState;
         public EditStaff()
         {
             InitializeComponent();
             // load data from account state
             accountState = AccountState.GetInstance();
+            globalState = GlobalState.GetInstance();
             txtUsername.Text = accountState.Username;
             txtPassword.Text = accountState.Password;
             txtName.Text = accountState.Name;
             txtPhone.Text = accountState.Phone;
             txtSalary.Text = accountState.Salary.ToString();
 
-            if (accountState.Role == 0)
+            if (globalState.Role == 0)
             {
                 txtName.Enabled = false;
                 txtPassword.Enabled = false;
@@ -52,7 +54,7 @@ namespace GUI.Staff
                 {
                     if(MessageBox.Show("Bạn có chắc muốn đổi mật khẩu?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (BLL.AccountBLL.Instance.ResetPassword(password, username))
+                        if (AccountBLL.Instance.ResetPassword(password, username))
                         {
                             MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             accountState.Password = password;
