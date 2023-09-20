@@ -38,22 +38,22 @@ namespace GUI.Product
         private void btnSaveAddProduct_Click(object sender, EventArgs e)
         {
             String name = txtNameProduct.Text;
-            if (name == null)
+            if (name == "")
             {
                 MessageBox.Show("Bạn chưa nhập tên sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             String code = txtCodeProduct.Text;
-            if (code == null)
+            if (code == "")
             {
                 MessageBox.Show("Bạn chưa nhập mã sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             String price = txtPriceProduct.Text;
-            if (price == null)
+            if (price == "")
             {
                 MessageBox.Show("Bạn chưa nhập giá sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             String category = cbCategoryProduct.Text;
-            if (category == null)
+            if (category == "")
             {
                 MessageBox.Show("Bạn chưa lựa chọn danh mục sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

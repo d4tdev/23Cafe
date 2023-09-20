@@ -43,7 +43,7 @@ namespace GUI.Staff
             String phone = txtPhone.Text;
             int salary = int.Parse(txtSalary.Text);
 
-            if (username == null || password == null || name == null || phone == null || salary == null)
+            if (username == "" || password == "" || name == "" || phone == "" || salary == 0)
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
