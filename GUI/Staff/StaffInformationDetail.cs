@@ -18,6 +18,7 @@ namespace GUI.Staff
         public StaffInformationDetail()
         {
             InitializeComponent();
+            this.KeyPreview = true;
             accountState = AccountState.GetInstance();
             globalState = GlobalState.GetInstance();
             labelName.Text = accountState.Name;
@@ -41,6 +42,16 @@ namespace GUI.Staff
 
         private void btnDelStaff_Click(object sender, EventArgs e)
         {
+            delStaff();
+        }
+
+        private void StaffInformationDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            accountState = null;
+        }
+
+        private void delStaff()
+        {
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -59,9 +70,13 @@ namespace GUI.Staff
             }
         }
 
-        private void StaffInformationDetail_FormClosed(object sender, FormClosedEventArgs e)
+        private void StaffInformationDetail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            accountState = null;
+            // khi ấn phím delete thì thực hiện xóa nhân viên
+            if (e.KeyChar == (char)Keys.Delete)
+            {
+                delStaff();
+            }
         }
     }
 }

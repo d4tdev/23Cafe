@@ -163,6 +163,7 @@
             this.Name = "StaffInformationDetail";
             this.Text = "Thông tin chi tiết nhân viên";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StaffInformationDetail_FormClosed);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StaffInformationDetail_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -59,14 +59,16 @@
             // thôngTinNhânViênToolStripMenuItem
             // 
             this.thôngTinNhânViênToolStripMenuItem.Name = "thôngTinNhânViênToolStripMenuItem";
-            this.thôngTinNhânViênToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thôngTinNhânViênToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
+            this.thôngTinNhânViênToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.thôngTinNhânViênToolStripMenuItem.Text = "Thông tin nhân viên";
             this.thôngTinNhânViênToolStripMenuItem.Click += new System.EventHandler(this.thôngTinNhânViênToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đăngXuấtToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.đăngXuấtToolStripMenuItem.Text = "Kết thúc ca làm việc";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -84,8 +86,10 @@
             // muaMangVềToolStripMenuItem
             // 
             this.muaMangVềToolStripMenuItem.Name = "muaMangVềToolStripMenuItem";
+            this.muaMangVềToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
             this.muaMangVềToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.muaMangVềToolStripMenuItem.Text = "Mua mang về";
+            this.muaMangVềToolStripMenuItem.Click += new System.EventHandler(this.muaMangVềToolStripMenuItem_Click);
             // 
             // labelCurrentTime
             // 

@@ -79,5 +79,11 @@ namespace GUI
                 staffInformationDetail.ShowDialog();
             }
         }
+
+        private void muaMangVềToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OrderForTable orderForTable = new OrderForTable();
+            orderForTable.ShowDialog();
+        }
     }
 }
