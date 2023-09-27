@@ -1,6 +1,6 @@
 ﻿using GUI.Bill;
 using GUI.Staff;
-using GUI.Table;
+using GUI.TableMana;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

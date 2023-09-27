@@ -135,10 +135,10 @@
     <Compile Include="Staff\StaffManager.Designer.cs">
       <DependentUpon>StaffManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Table\TableManager.cs">
+    <Compile Include="TableMana\TableManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Table\TableManager.Designer.cs">
+    <Compile Include="TableMana\TableManager.Designer.cs">
       <DependentUpon>TableManager.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Bill\BillInformationDetail.resx">
@@ -192,7 +192,7 @@
     <EmbeddedResource Include="Staff\StaffManager.resx">
       <DependentUpon>StaffManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Table\TableManager.resx">
+    <EmbeddedResource Include="TableMana\TableManager.resx">
       <DependentUpon>TableManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

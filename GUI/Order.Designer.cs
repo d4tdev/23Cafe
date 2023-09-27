@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowTableOrder = new System.Windows.Forms.FlowLayoutPanel();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinNhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,12 +40,12 @@
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // flowTableOrder
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 28);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1163, 604);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.flowTableOrder.Location = new System.Drawing.Point(13, 28);
+            this.flowTableOrder.Name = "flowTableOrder";
+            this.flowTableOrder.Size = new System.Drawing.Size(1163, 604);
+            this.flowTableOrder.TabIndex = 3;
             // 
             // tàiKhoảnToolStripMenuItem
             // 
@@ -111,7 +111,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 644);
             this.Controls.Add(this.labelCurrentTime);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowTableOrder);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Order";
@@ -126,7 +126,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowTableOrder;
         private System.Windows.Forms.ToolStripMenuItem tàiKhoảnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;

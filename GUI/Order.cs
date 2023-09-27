@@ -27,6 +27,29 @@ namespace GUI
             timer1.Interval = 1000; // Cập nhật mỗi giây (1000 milliseconds)
             timer1.Tick += timer1_Tick;
             timer1.Start(); // Bắt đầu Timer
+            loadData();
+        }
+
+        void loadData()
+        {
+            List<Table> listTable = TableBLL.Instance.GetListTable();
+
+            foreach (Table item in listTable)
+            {
+                Button btn = new Button() { Width = 129, Height = 100 };
+
+                // Hiển thị trạng thái dưới dạng chuỗi
+                string statusText = (item.StatusTable == 0) ? "Trống" : "Có khách";
+
+                // Gán text cho button
+                btn.Text = item.TableName + Environment.NewLine + statusText;
+                btn.Tag = item;
+
+                // Thay đổi màu nền dựa trên trạng thái
+                btn.BackColor = (item.StatusTable == 0) ? Color.White : Color.LightPink;
+
+                flowTableOrder.Controls.Add(btn);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
