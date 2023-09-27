@@ -142,7 +142,7 @@ namespace DAL
         */
         public bool UpdateAccount(string username, string displayName, int role, string phone, int basic_salary)
         {
-            string query = string.Format("UPDATE dbo.Account SET display_name = N'{1}', role = {2}, phone = N'{3}', basic_salary = {4} WHERE username = N'{0}'", username, displayName, role, phone, basic_salary);
+            string query = string.Format("UPDATE Account SET display_name = N'{1}', role = {2}, phone = N'{3}', basic_salary = {4} WHERE username = '{0}'", username, displayName, role, phone, basic_salary);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;

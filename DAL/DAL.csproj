@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
+    <Compile Include="BillDAL.cs" />
+    <Compile Include="BillInfoDAL.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="FoodCategoryDAL.cs" />
     <Compile Include="FoodDAL.cs" />

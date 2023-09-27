@@ -1,12 +1,12 @@
 ﻿/*
-Post-Deployment Script Template							
+Post-Deployment Script Template
 --------------------------------------------------------------------------------------
- This file contains SQL statements that will be appended to the build script.		
- Use SQLCMD syntax to include a file in the post-deployment script.			
- Example:      :r .\myfile.sql								
- Use SQLCMD syntax to reference a variable in the post-deployment script.		
- Example:      :setvar TableName MyTable							
-               SELECT * FROM [$(TableName)]					
+ This file contains SQL statements that will be appended to the build script.
+ Use SQLCMD syntax to include a file in the post-deployment script.
+ Example:      :r .\myfile.sql
+ Use SQLCMD syntax to reference a variable in the post-deployment script.
+ Example:      :setvar TableName MyTable
+               SELECT * FROM [$(TableName)]
 --------------------------------------------------------------------------------------
 */
 
@@ -44,7 +44,7 @@ GO
 IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'Account')
   BEGIN
 	CREATE TABLE Account
-	(   
+	(
 		username NVARCHAR(100) NOT NULL PRIMARY KEY,
 		display_name NVARCHAR(100) NOT NULL DEFAULT N'Nguoi Dung',
 		password NVARCHAR(200) NOT NULL DEFAULT 0,
@@ -108,7 +108,8 @@ IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'BillInfo')
 		id INT IDENTITY PRIMARY KEY,
 		id_bill INT NOT NULL,
 		id_food VARCHAR(20) NOT NULL,
-		info_count INT NOT NULL DEFAULT 0
+		amount INT NOT NULL DEFAULT 0,
+                price FLOAT NOT NULL DEFAULT 0
 		FOREIGN KEY (id_bill) REFERENCES dbo.Bill(id),
 		FOREIGN KEY (id_food) REFERENCES dbo.Food(id)
 	)
@@ -171,7 +172,7 @@ INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'CF04', N'Cà ph
         /**
         * Thêm dữ liệu vào bảng Food - Nước Ép
         */
-        
+
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'NE01', N'Dứa ép', 2, 30000)
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'NE02', N'Dưa hấu ép', 2, 30000)
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'NE03', N'Cam ép', 2, 30000)
@@ -180,7 +181,7 @@ INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'NE04', N'Chanh 
         /**
         * Thêm dữ liệu vào bảng Food - Sinh tố
         */
-        
+
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'ST01', N'Sinh tố xoài', 3, 30000)
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'ST02', N'Sinh tố dưa hấu', 3, 30000)
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'ST03', N'Sinh tố bơ', 3, 30000)
@@ -189,7 +190,7 @@ INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'ST04', N'Sinh t
         /**
         * Thêm dữ liệu vào bảng Food - Đồ ăn vặt
         */
-        
+
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'AV01', N'Bim bim', 4, 35000)
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'AV02', N'Mì tôm trẻ em', 4, 35000)
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'AV03', N'Xúc xích', 4, 35000)
@@ -255,10 +256,33 @@ INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'TT03', N'Bột 
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'TT04', N'Me đá', 11, 25000)
 INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  ( 'TT05', N'Sữa tươi', 11, 25000)
 
+		/**
+		* Thêm dữ liệu vào bảng TableFood
+
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 1', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 2', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 3', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 4', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 5', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 6', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 7', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 8', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 9', 0)
+INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 10', 0)
+*/
+
+USE QuanLy23Cafe
+DECLARE @i INT = 1
+WHILE @I <= 15
+BEGIN
+    INSERT dbo.TableFood (table_name) VALUES (N'Bàn ' + CAST(@i AS nvarchar(100)))
+    SET @i = @i + 1
+END
+GO
 
         /**
-        * Thêm dữ liệu vào bảng Bill 
-        
+        * Thêm dữ liệu vào bảng Bill
+
 INSERT  dbo.Bill (  date_checkout , id_table , status_bill ) VALUES  ( GETDATE(), 3 , 0 )
 INSERT  dbo.Bill ( date_checkout , id_table , status_bill ) VALUES  ( GETDATE(), 4 , 0 )
 INSERT  dbo.Bill (  date_checkout , id_table , status_bill ) VALUES  ( GETDATE(), 5 , 0 )
@@ -270,14 +294,14 @@ GO
 USE QuanLy23Cafe
 
         /**
-        * Thêm dữ liệu vào bảng BillInfo 
+        * Thêm dữ liệu vào bảng BillInfo
         */
-INSERT  dbo.BillInfo ( id_bill, id_food, info_count ) VALUES  ( 1, 1, 2 )
-INSERT  dbo.BillInfo ( id_bill, id_food, info_count ) VALUES  ( 1, 3, 4 )
-INSERT  dbo.BillInfo ( id_bill, id_food, info_count ) VALUES  ( 1, 5, 1 )
-INSERT  dbo.BillInfo ( id_bill, id_food, info_count ) VALUES  ( 1, 1, 2 )
-INSERT  dbo.BillInfo ( id_bill, id_food, info_count ) VALUES  ( 3, 6, 2 )
-INSERT  dbo.BillInfo ( id_bill, id_food, info_count ) VALUES  ( 3, 5, 2 )
+INSERT  dbo.BillInfo ( id_bill, id_food, amount ) VALUES  ( 1, 1, 2 )
+INSERT  dbo.BillInfo ( id_bill, id_food, amount ) VALUES  ( 1, 3, 4 )
+INSERT  dbo.BillInfo ( id_bill, id_food, amount ) VALUES  ( 1, 5, 1 )
+INSERT  dbo.BillInfo ( id_bill, id_food, amount ) VALUES  ( 1, 1, 2 )
+INSERT  dbo.BillInfo ( id_bill, id_food, amount ) VALUES  ( 3, 6, 2 )
+INSERT  dbo.BillInfo ( id_bill, id_food, amount ) VALUES  ( 3, 5, 2 )
 
 GO*/
 
@@ -423,13 +447,205 @@ CREATE PROC USP_UpdateAccount
 AS
 BEGIN
     DECLARE @isRightPass INT = 0
-    
+
     SELECT @isRightPass = COUNT(*) FROM dbo.Account WHERE username = @userName COLLATE SQL_Latin1_General_CP1_CS_AS AND password = @passWord COLLATE SQL_Latin1_General_CP1_CS_AS
-    
+
     IF (@isRightPass = 1)
     BEGIN
         UPDATE dbo.Account SET password = @newPassword WHERE username = @userName
     END
+END
+GO
+
+
+        /**
+        * Tạo thủ tục USP_GetTableList
+        */
+CREATE PROC USP_GetTableList
+AS SELECT * FROM dbo.TableFood
+GO
+
+EXEC dbo.USP_GetTableList
+GO
+
+        /**
+        * Tạo thủ tục USP_InsertBill
+        */
+CREATE PROC USP_InsertBill
+@idTable INT
+AS
+BEGIN
+    INSERT dbo.Bill
+            ( date_checkout,
+            id_table,
+            status_bill
+            )
+    VALUES ( GETDATE(),
+            @idTable,
+            0
+            )
+END
+GO
+        /**
+        * Tạo thủ tục USP_Insert_UpdateBillInfo
+        */
+CREATE PROC USP_Insert_UpdateBillInfo
+@idBill INT, @idFood INT, @count INT
+AS
+BEGIN
+    DECLARE @isExitsBillInfo INT;
+    DECLARE @foodCount INT = 1;
+    SELECT @isExitsBillInfo = id, @foodCount = b.amount
+    FROM dbo.BillInfo AS b
+    WHERE id_bill = @idBill AND id_food = @idFood
+    IF (@isExitsBillInfo > 0)
+    BEGIN
+        DECLARE @newCount INT = @foodCount + @count
+        IF (@newCount > 0)
+            UPDATE dbo.BillInfo SET amount = @foodCount + @count WHERE id_food = @idFood
+        ELSE
+            DELETE dbo.BillInfo WHERE id_bill = @idBill AND id_food = @idFood
+    END
+    ELSE
+    BEGIN
+        INSERT dbo.BillInfo
+            (id_bill,
+            id_food,
+            amount
+            )
+    VALUES ( @idBill,
+            @idFood,
+            @count
+            )
+    END
+END
+GO
+
+        /**
+        * Tạo Trigger UTG_UpdateBillInfo (Table status)
+        */
+CREATE TRIGGER UTG_UpdateBillInfo
+ON dbo.BillInfo FOR INSERT, UPDATE
+AS
+BEGIN
+    DECLARE @idBill INT
+
+    SELECT @idBill = id_bill FROM Inserted
+
+    DECLARE @idTable INT
+
+    SELECT @idTable = id_table FROM dbo.Bill WHERE id = @idBill AND status_bill = 0
+
+    DECLARE @count INT
+    SELECT @count = COUNT(*) FROM dbo.BillInfo WHERE id_bill = @idBill
+
+    IF (@count > 0)
+    BEGIN
+
+        PRINT @idTable
+        PRINT @idBill
+        PRINT @count
+
+        UPDATE dbo.TableFood SET status_table = 1 WHERE id = @idTable
+
+    END
+    ELSE
+    BEGIN
+        PRINT @idTable
+        PRINT @idBill
+        PRINT @count
+        UPDATE dbo.TableFood SET status_table = 0 WHERE id = @idTable
+    end
+
+END
+GO
+ /**
+        * Tạo Trigger UTG_UpdatePriceBillInfo (PriceBillInfo)
+        */
+CREATE TRIGGER UTG_UpdatePriceBillInfo
+ON dbo.BillInfo FOR INSERT, UPDATE
+AS
+BEGIN
+    DECLARE @idBill INT
+
+    SELECT @idBill = id_bill FROM Inserted
+
+    DECLARE @idFood VARCHAR(20)
+
+    SELECT @idFood = id_food FROM Inserted
+
+    DECLARE @amount INT
+
+    SELECT @amount = amount FROM Inserted
+
+    DECLARE @price FLOAT
+
+    SELECT @price = price FROM dbo.Food WHERE id = @idFood
+
+    IF (@amount > 0)
+    BEGIN
+
+        PRINT @price
+        PRINT @idFood
+        PRINT @amount
+
+        DECLARE @billInfo_price FLOAT = @amount * @price
+
+        DECLARE @bill_price FLOAT 
+        SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill
+
+        UPDATE dbo.BillInfo SET price = @price WHERE id_bill = @idBill AND id_food = @idFood
+        UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
+
+    END
+END
+GO
+
+        /**
+        * Tạo Trigger UTG_UpdateBill (Payment)
+        */
+CREATE TRIGGER UTG_UpdateBill
+ON dbo.Bill FOR UPDATE
+AS
+BEGIN
+    DECLARE @idBill INT
+
+    SELECT @idBill = id FROM Inserted
+
+    DECLARE @idTable INT
+
+    SELECT @idTable = id_table FROM dbo.Bill WHERE id = @idBill
+
+    DECLARE @count int = 0
+
+    SELECT @count = COUNT(*) FROM dbo.Bill WHERE id_table = @idTable AND status_bill = 0
+
+    IF (@count = 0)
+        UPDATE dbo.TableFood SET status_table = 0 WHERE id = @idTable
+END
+GO
+
+        /**
+        * Tạo Trigger UTG_DeleteBill (Delete)
+        */
+CREATE TRIGGER UTG_DeleteBill
+ON dbo.Bill FOR DELETE
+AS
+BEGIN
+    DECLARE @idBill INT
+
+    SELECT @idBill = id FROM Inserted
+
+    DECLARE @idTable INT
+
+    SELECT @idTable = id_table FROM dbo.Bill WHERE id = @idBill
+
+    DECLARE @count int = 0
+
+    SELECT @count = COUNT(*) FROM dbo.Bill WHERE id_table = @idTable AND status_bill = 0
+
+    IF (@count = 0)
+        UPDATE dbo.TableFood SET status_table = 0 WHERE id = @idTable
 END
 GO
 
