@@ -18,7 +18,7 @@ namespace DAL
         }
         private BillInfoDAL() { }
 
-        public List<BillInfo> GetListBillInfo()
+        public List<BillInfo> GetAllListBillInfo()
         {
             List<BillInfo> list = new List<BillInfo>();
             string query = "SELECT * FROM BillInfo";

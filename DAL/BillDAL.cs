@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class BillDAL
+    public class BillDAL
     {
         private static BillDAL instance;
         public static BillDAL Instance
@@ -53,6 +53,17 @@ namespace DAL
             string query = string.Format("Delete from Bill WHERE id_bill = {0}", idBill);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
+        }
+
+        public Bill GetOneBillById(int id)
+        {
+            string query = string.Format("SELECT * FROM Bill WHERE id={0}", id);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach(DataRow item in data.Rows)
+            {
+               return new Bill(item);
+            }
+            return null;
         }
     }
 }
