@@ -31,15 +31,15 @@ namespace GUI.TableMana
                 Button btn = new Button() { Width = 129, Height = 100 };
                 btn.Text = item.TableName + Environment.NewLine + item.StatusTable;
                 btn.Tag = item;
-                switch (item.StatusTable)
-                {
-                    case 0:
-                        btn.BackColor = Color.White;
-                        break;
-                    default:
-                        btn.BackColor = Color.LightPink;
-                        break;
-                }
+                // Hiển thị trạng thái dưới dạng chuỗi
+                string statusText = (item.StatusTable == 0) ? "Trống" : "Có khách";
+
+                // Gán text cho button
+                btn.Text = item.TableName + Environment.NewLine + statusText;
+                btn.Tag = item;
+
+                // Thay đổi màu nền dựa trên trạng thái
+                btn.BackColor = (item.StatusTable == 0) ? Color.White : Color.Red;
 
                 // Thêm sự kiện Click cho button
                 btn.Click += Btn_Click;

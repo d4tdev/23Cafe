@@ -37,11 +37,16 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnReset = new System.Windows.Forms.Button();
             this.flowFood = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDeleteFood = new System.Windows.Forms.Button();
             this.btnAddFood = new System.Windows.Forms.Button();
             this.cbCategory = new System.Windows.Forms.ComboBox();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -114,6 +119,12 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
+            this.columnName,
+            this.columnPrice,
+            this.columnQuantity,
+            this.Column1});
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(843, 344);
@@ -130,6 +141,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1042, 258);
             this.panel3.TabIndex = 1;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(198, 1);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 5;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // flowFood
             // 
@@ -166,15 +187,33 @@
             this.cbCategory.TabIndex = 0;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
-            // btnReset
+            // STT
             // 
-            this.btnReset.Location = new System.Drawing.Point(198, 1);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 5;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            // 
+            // columnName
+            // 
+            this.columnName.HeaderText = "Tên sản phẩm";
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
+            // 
+            // columnPrice
+            // 
+            this.columnPrice.HeaderText = "Đơn giá";
+            this.columnPrice.Name = "columnPrice";
+            this.columnPrice.ReadOnly = true;
+            // 
+            // columnQuantity
+            // 
+            this.columnQuantity.HeaderText = "Số lượng";
+            this.columnQuantity.Name = "columnQuantity";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Thành tiền";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // OrderForTable
             // 
@@ -185,6 +224,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "OrderForTable";
             this.Text = "OrderForTable";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OrderForTable_FormClosed);
+            this.Load += new System.EventHandler(this.OrderForTable_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -211,5 +252,10 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.FlowLayoutPanel flowFood;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

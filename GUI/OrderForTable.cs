@@ -112,5 +112,15 @@ namespace GUI
             // Hiển thị danh sách món ăn
             loadFoodListByCategory(0);
         }
+
+        private void OrderForTable_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OrderForTable_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            globalState.TableId = 0;
+        }
     }
 }
