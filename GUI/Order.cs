@@ -46,7 +46,10 @@ namespace GUI
                 btn.Tag = item;
 
                 // Thay đổi màu nền dựa trên trạng thái
-                btn.BackColor = (item.StatusTable == 0) ? Color.White : Color.LightPink;
+                btn.BackColor = (item.StatusTable == 0) ? Color.White : Color.Red;
+
+                // Thêm sự kiện Click cho button
+                btn.Click += btn_Click;
 
                 flowTableOrder.Controls.Add(btn);
             }
@@ -63,8 +66,11 @@ namespace GUI
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn thoát ca làm việc?", "Xác nhận thoát", MessageBoxButtons.OKCancel) != DialogResult.OK)
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát ca làm việc?", "Xác nhận thoát", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
             {
+                // Xử lý đóng form khi ấn "OK"
                 this.Close();
             }
         }
@@ -77,9 +83,11 @@ namespace GUI
 
         private void Order_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn thoát ca làm việc?", "Xác nhận thoát", MessageBoxButtons.OKCancel) != DialogResult.OK)
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát ca làm việc?", "Xác nhận thoát", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.Cancel)
             {
-                this.Close();
+                e.Cancel = true; // Ngăn không cho đóng form khi ấn "Cancel"
             }
         }
 
@@ -105,6 +113,16 @@ namespace GUI
 
         private void muaMangVềToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OrderForTable orderForTable = new OrderForTable();
+            orderForTable.ShowDialog();
+        }
+
+        // lấy giá trị của bàn thông qua click
+        private void btn_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            Table table = clickedButton.Tag as Table;
+            globalState.TableId = table.Id;
             OrderForTable orderForTable = new OrderForTable();
             orderForTable.ShowDialog();
         }

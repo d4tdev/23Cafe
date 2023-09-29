@@ -13,6 +13,7 @@ namespace GUI
         // Thêm các thuộc tính mới
         public string Username { get; set; }
         public int Role { get; set; }
+        public int TableId { get; set; }
 
         private GlobalState()
         {
