@@ -34,7 +34,9 @@ namespace GUI
             loadCategoryList();
             loadTable();
             loadFoodListByCategory(categoryID);
-            createBillFromTableId(globalState.TableId);
+            //createBillFromTableId(globalState.TableId);
+            checkBillForTable(globalState.TableId);
+            showBillInfo(billId);
         }
 
         // hiển thị danh sách món ăn theo danh mục
@@ -54,7 +56,7 @@ namespace GUI
             {
                 Button btn = new Button() { Width = 100, Height = 50 };
                 btn.Text = Food.Food_Name + Environment.NewLine + Food.Price;
-
+                btn.Tag = Food.Id;
                 // Add event handler
                 btn.Click += new EventHandler(btnFood_Click);
 
@@ -82,31 +84,18 @@ namespace GUI
             }
         }
 
-        // tạo mới bill theo tableId
-        private void createBillFromTableId(int tableId)
+        private void checkBillForTable(int tableId)
         {
-            // Create a new bill for the table
-            MessageBox.Show("Creating a new bill for table ID: " + tableId);
-            bool success = BillBLL.Instance.InsertBill(tableId);
+            bool existsBill = TableBLL.Instance.CheckTableExistsBill(tableId);
 
-            if (success)
+            if(!existsBill)
             {
-                // Retrieve the bill ID associated with the table ID
-                billId = GetBillIdByTableId(tableId);
+                BillBLL.Instance.InsertBill(tableId);
+            }
 
-                if (billId != 0)
-                {
-                    MessageBox.Show("Bill created successfully. Bill ID: " + billId);
-                }
-                else
-                {
-                    MessageBox.Show("Failed to retrieve Bill ID.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Failed to create a new bill.");
-            }
+            billId = GetBillIdByTableId(tableId);
+            MessageBox.Show(billId.ToString());
+           
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -146,11 +135,6 @@ namespace GUI
             loadFoodListByCategory(0);
         }
 
-        private void OrderForTable_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void OrderForTable_FormClosed(object sender, FormClosedEventArgs e)
         {
             globalState.TableId = 0;
@@ -164,57 +148,70 @@ namespace GUI
                 {
                     if (button == sender)
                     {
-                        string buttonText = button.Text;
-                        string[] foodInfo = buttonText.Split('\n');
-
-                        string foodName = foodInfo[0];
-                        string price = foodInfo[1];
+                        string foodId = button.Tag.ToString();
 
                         // Get the food ID based on the food name
-                        string foodId = GetFoodIdByName(foodName);
-                        MessageBox.Show(foodId);
-                        if (!string.IsNullOrEmpty(foodId))
+                        if (BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodId, 1))
                         {
-                            // Add the food item to BillInfo
-                            if (BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodId, 1))
-                            {
-                                MessageBox.Show("Added food to bill info successfully");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Failed to add food to bill info");
-                            }
+                            MessageBox.Show("Added food to bill info successfully");
+                            showBillInfo(billId);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to add food to bill info");
                         }
                     }
                 }
             }
         }
 
-        private string GetFoodIdByName(string foodName)
-        {
-            // Iterate through the list of foods to find the ID of the selected food
-            foreach (var food in FoodBLL.Instance.GetListFood())
-            {
-                if (food.Food_Name == foodName)
-                {
-                    return food.Id;
-                }
-            }
-
-            return null; // Return null if the food name is not found (handle accordingly)
-        }
-
         public int GetBillIdByTableId(int tableId)
         {
-            foreach (var bill in BillBLL.Instance.GetAllListBill())
+            List<Bill> listBill = BillBLL.Instance.GetAllListBill();
+
+            foreach (var bill in listBill)
             {
-                if (bill.Id_Table == tableId.ToString())
+
+                if (bill.Id_Table.ToString() == tableId.ToString())
                 {
                     return bill.Id;
                 }
             }
 
             return 0; // Return 0 if the bill is not found for the table ID
+        }
+
+        public void showBillInfo(int billId)
+        {
+            List<BillInfo> listBillInfo = BillInfoBLL.Instance.GetListByIdBill(billId);
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Tên sản phẩm", typeof(string)).ReadOnly = true;
+            dt.Columns.Add("Giá tiền", typeof(float)).ReadOnly = true;
+            dt.Columns.Add("Số lượng", typeof(int));
+            dt.Columns.Add("Thành tiền", typeof(float)).ReadOnly = true;
+
+            foreach (var billInfo in listBillInfo)
+            {
+                DataRow row = dt.NewRow();
+                row["Tên sản phẩm"] = billInfo.Id_Food;
+                row["Số lượng"] = billInfo.Count;
+                row["Giá tiền"] = billInfo.Price;
+                row["Thành tiền"] = billInfo.Count * billInfo.Price;
+                dt.Rows.Add(row);
+            }
+            dataFoodBill.DataSource = dt;
+        }
+
+        private void dataFoodBill_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == dataFoodBill.Columns["Số lượng"].Index)
+            {
+                int count = Convert.ToInt32(dataFoodBill.Rows[e.RowIndex].Cells["Số lượng"].Value);
+                string foodName = dataFoodBill.Rows[e.RowIndex].Cells["Tên sản phẩm"].Value.ToString();
+                BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodName, count);
+                showBillInfo(billId);
+            }
         }
     }
 }

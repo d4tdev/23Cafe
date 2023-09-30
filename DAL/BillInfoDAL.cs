@@ -31,9 +31,9 @@ namespace DAL
             return list;
         }
 
-        public bool InsertAndUpdateBillInfo(int id_bill, string id_food, int quantity)
+        public bool InsertAndUpdateBillInfo(int idBill, string idFood, int quantity)
         {
-            int result = DataProvider.Instance.ExecuteNonQuery("exec USP_Insert_UpdateBillInfo @idBill, @idFood, @count", new object[] { id_bill, id_food, quantity });
+            int result = DataProvider.Instance.ExecuteNonQuery("exec USP_Insert_UpdateBillInfo @idBill , @idFood , @count", new object[] { idBill, idFood, quantity });
             return result > 0;
         }
 

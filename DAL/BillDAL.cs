@@ -24,7 +24,7 @@ namespace DAL
         {
             List<Bill> list = new List<Bill>();
 
-            string query = "SELECT id, date_checkout,id_table=(select table_name from TableFood where TableFood.id=Bill.id_table), status_bill, total_price FROM Bill";
+            string query = "SELECT id, date_checkout,id_table, status_bill, total_price FROM Bill";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
