@@ -23,6 +23,11 @@ namespace BLL
         {
             return TableDAL.Instance.GetListTable();
         }
+
+        public bool CheckTableExistsBill(int idTable)
+        {
+            return TableDAL.Instance.CheckTableExistsBill(idTable);
+        }
     }
 
 }

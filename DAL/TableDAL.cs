@@ -29,5 +29,12 @@ namespace DAL
             }
             return list;
         }
+
+        public bool CheckTableExistsBill(int idTable)
+        {
+            string query = string.Format("SELECT * FROM Bill WHERE id_table={0} AND status_bill=0", idTable);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            return data.Rows.Count > 0;
+        }
     }
 }
