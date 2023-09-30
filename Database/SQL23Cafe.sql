@@ -495,14 +495,15 @@ AS
 BEGIN
     DECLARE @isExitsBillInfo INT;
     DECLARE @foodCount INT = 1;
-    SELECT @isExitsBillInfo = id, @foodCount = b.amount
+    SELECT @isExitsBillInfo = id
+    --, @foodCount = b.amount
     FROM dbo.BillInfo AS b
     WHERE id_bill = @idBill AND id_food = @idFood
     IF (@isExitsBillInfo > 0)
     BEGIN
-        DECLARE @newCount INT = @foodCount + @count
+        DECLARE @newCount INT = @count
         IF (@newCount > 0)
-            UPDATE dbo.BillInfo SET amount = @foodCount + @count WHERE id_food = @idFood
+            UPDATE dbo.BillInfo SET amount = @count WHERE id_food = @idFood
         ELSE
             DELETE dbo.BillInfo WHERE id_bill = @idBill AND id_food = @idFood
     END
@@ -523,7 +524,7 @@ GO
 
 --exec USP_InsertBill @idTable = 1
 --GO
---exec USP_Insert_UpdateBillInfo @idBill = 1, @idFood = 'AV02', @count = 2
+--exec USP_Insert_UpdateBillInfo @idBill = 1, @idFood = 'AV02', @count = 4
 --GO
 
         /**
@@ -600,7 +601,7 @@ BEGIN
         SELECT @bill_price = @billInfo_price + SUM(price*amount) FROM dbo.BillInfo WHERE id_bill = @idBill
         PRINT @bill_price
 
-        UPDATE dbo.BillInfo SET price = @price WHERE id_bill = @idBill AND id_food = @idFood
+        UPDATE dbo.BillInfo SET price = @billInfo_price WHERE id_bill = @idBill AND id_food = @idFood
         UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
 
     END
