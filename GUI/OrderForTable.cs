@@ -16,6 +16,7 @@ namespace GUI
     {
         GlobalState globalState;
         int categoryID = 0;
+        int billId = 0;
         List<FoodCategory> listCategory;
         public OrderForTable()
         {
@@ -33,6 +34,7 @@ namespace GUI
             loadCategoryList();
             loadTable();
             loadFoodListByCategory(categoryID);
+            createBillFromTableId(globalState.TableId);
         }
 
         // hiển thị danh sách món ăn theo danh mục
@@ -52,6 +54,10 @@ namespace GUI
             {
                 Button btn = new Button() { Width = 100, Height = 50 };
                 btn.Text = Food.Food_Name + Environment.NewLine + Food.Price;
+
+                // Add event handler
+                btn.Click += new EventHandler(btnFood_Click);
+
                 flowFood.Controls.Add(btn);
             }
         }
@@ -73,6 +79,33 @@ namespace GUI
             foreach (var table in listTable)
             {
                 cbTable.Items.Add(table.TableName);
+            }
+        }
+
+        // tạo mới bill theo tableId
+        private void createBillFromTableId(int tableId)
+        {
+            // Create a new bill for the table
+            MessageBox.Show("Creating a new bill for table ID: " + tableId);
+            bool success = BillBLL.Instance.InsertBill(tableId);
+
+            if (success)
+            {
+                // Retrieve the bill ID associated with the table ID
+                billId = GetBillIdByTableId(tableId);
+
+                if (billId != 0)
+                {
+                    MessageBox.Show("Bill created successfully. Bill ID: " + billId);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to retrieve Bill ID.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Failed to create a new bill.");
             }
         }
 
@@ -121,6 +154,67 @@ namespace GUI
         private void OrderForTable_FormClosed(object sender, FormClosedEventArgs e)
         {
             globalState.TableId = 0;
+        }
+
+        private void btnFood_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in flowFood.Controls)
+            {
+                if (control is Button button)
+                {
+                    if (button == sender)
+                    {
+                        string buttonText = button.Text;
+                        string[] foodInfo = buttonText.Split('\n');
+
+                        string foodName = foodInfo[0];
+                        string price = foodInfo[1];
+
+                        // Get the food ID based on the food name
+                        string foodId = GetFoodIdByName(foodName);
+                        MessageBox.Show(foodId);
+                        if (!string.IsNullOrEmpty(foodId))
+                        {
+                            // Add the food item to BillInfo
+                            if (BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodId, 1))
+                            {
+                                MessageBox.Show("Added food to bill info successfully");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to add food to bill info");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private string GetFoodIdByName(string foodName)
+        {
+            // Iterate through the list of foods to find the ID of the selected food
+            foreach (var food in FoodBLL.Instance.GetListFood())
+            {
+                if (food.Food_Name == foodName)
+                {
+                    return food.Id;
+                }
+            }
+
+            return null; // Return null if the food name is not found (handle accordingly)
+        }
+
+        public int GetBillIdByTableId(int tableId)
+        {
+            foreach (var bill in BillBLL.Instance.GetAllListBill())
+            {
+                if (bill.Id_Table == tableId.ToString())
+                {
+                    return bill.Id;
+                }
+            }
+
+            return 0; // Return 0 if the bill is not found for the table ID
         }
     }
 }

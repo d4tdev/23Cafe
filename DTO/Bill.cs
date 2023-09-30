@@ -29,8 +29,8 @@ namespace DTO
         {
             this.Id = (int)Convert.ToInt32(row["id"].ToString());
             this.Id_Table = (string)row["id_table"].ToString();
-            this.Status_Bill = (int) Convert.ToInt32(row["id_category"].ToString());
-            this.Date_Checkout = (DateTime)Convert.ToDateTime(row["price"].ToString());
+            this.Status_Bill = (int) Convert.ToInt32(row["status_bill"].ToString());
+            this.Date_Checkout = (DateTime)Convert.ToDateTime(row["date_checkout"].ToString());
             this.Total_Price = (float)Convert.ToDouble(row["total_price"].ToString());
         }
     }

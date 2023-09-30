@@ -36,17 +36,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.flowFood = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnDeleteFood = new System.Windows.Forms.Button();
-            this.btnAddFood = new System.Windows.Forms.Button();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.flowFood = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDeleteFood = new System.Windows.Forms.Button();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -130,63 +129,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(843, 344);
             this.dataGridView2.TabIndex = 0;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnReset);
-            this.panel3.Controls.Add(this.flowFood);
-            this.panel3.Controls.Add(this.btnDeleteFood);
-            this.panel3.Controls.Add(this.btnAddFood);
-            this.panel3.Controls.Add(this.cbCategory);
-            this.panel3.Location = new System.Drawing.Point(15, 377);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1042, 258);
-            this.panel3.TabIndex = 1;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(198, 1);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 5;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // flowFood
-            // 
-            this.flowFood.AutoScroll = true;
-            this.flowFood.Location = new System.Drawing.Point(3, 30);
-            this.flowFood.Name = "flowFood";
-            this.flowFood.Size = new System.Drawing.Size(1033, 228);
-            this.flowFood.TabIndex = 4;
-            // 
-            // btnDeleteFood
-            // 
-            this.btnDeleteFood.Location = new System.Drawing.Point(880, 4);
-            this.btnDeleteFood.Name = "btnDeleteFood";
-            this.btnDeleteFood.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteFood.TabIndex = 3;
-            this.btnDeleteFood.Text = "Xóa món";
-            this.btnDeleteFood.UseVisualStyleBackColor = true;
-            // 
-            // btnAddFood
-            // 
-            this.btnAddFood.Location = new System.Drawing.Point(961, 4);
-            this.btnAddFood.Name = "btnAddFood";
-            this.btnAddFood.Size = new System.Drawing.Size(75, 23);
-            this.btnAddFood.TabIndex = 2;
-            this.btnAddFood.Text = "Thêm món";
-            this.btnAddFood.UseVisualStyleBackColor = true;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(3, 3);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(189, 21);
-            this.cbCategory.TabIndex = 0;
-            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
-            // 
             // STT
             // 
             this.STT.HeaderText = "STT";
@@ -214,6 +156,53 @@
             this.Column1.HeaderText = "Thành tiền";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnReset);
+            this.panel3.Controls.Add(this.flowFood);
+            this.panel3.Controls.Add(this.btnDeleteFood);
+            this.panel3.Controls.Add(this.cbCategory);
+            this.panel3.Location = new System.Drawing.Point(15, 377);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1042, 258);
+            this.panel3.TabIndex = 1;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(198, 1);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 5;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // flowFood
+            // 
+            this.flowFood.AutoScroll = true;
+            this.flowFood.Location = new System.Drawing.Point(3, 30);
+            this.flowFood.Name = "flowFood";
+            this.flowFood.Size = new System.Drawing.Size(1033, 228);
+            this.flowFood.TabIndex = 4;
+            // 
+            // btnDeleteFood
+            // 
+            this.btnDeleteFood.Location = new System.Drawing.Point(961, 3);
+            this.btnDeleteFood.Name = "btnDeleteFood";
+            this.btnDeleteFood.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteFood.TabIndex = 3;
+            this.btnDeleteFood.Text = "Xóa món";
+            this.btnDeleteFood.UseVisualStyleBackColor = true;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(3, 3);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(189, 21);
+            this.cbCategory.TabIndex = 0;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // OrderForTable
             // 
@@ -243,7 +232,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.Button btnDeleteFood;
-        private System.Windows.Forms.Button btnAddFood;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cbTable;
