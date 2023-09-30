@@ -490,7 +490,7 @@ GO
         * Tạo thủ tục USP_Insert_UpdateBillInfo
         */
 CREATE PROC USP_Insert_UpdateBillInfo
-@idBill INT, @idFood INT, @count INT
+@idBill INT, @idFood VARCHAR(20), @count INT
 AS
 BEGIN
     DECLARE @isExitsBillInfo INT;
@@ -520,6 +520,11 @@ BEGIN
     END
 END
 GO
+
+--exec USP_InsertBill @idTable = 1
+--GO
+--exec USP_Insert_UpdateBillInfo @idBill = 1, @idFood = 'AV02', @count = 2
+--GO
 
         /**
         * Tạo Trigger UTG_UpdateBillInfo (Table status)
@@ -592,7 +597,8 @@ BEGIN
         DECLARE @billInfo_price FLOAT = @amount * @price
 
         DECLARE @bill_price FLOAT 
-        SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill
+        SELECT @bill_price = @billInfo_price + SUM(price*amount) FROM dbo.BillInfo WHERE id_bill = @idBill
+        PRINT @bill_price
 
         UPDATE dbo.BillInfo SET price = @price WHERE id_bill = @idBill AND id_food = @idFood
         UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
