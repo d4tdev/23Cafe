@@ -609,7 +609,7 @@ END
 GO
 
  /**
-        * Tạo Trigger UTG_UpdatePriceBillInfo (PriceBillInfo)
+        * Tạo Trigger UTG_UpdatePriceBillInfo (PriceBillInfoAndBill)
         */
 CREATE TRIGGER UTG_UpdatePriceBillInfo
 ON dbo.BillInfo FOR UPDATE
@@ -636,6 +636,28 @@ BEGIN
 
         DECLARE @billInfo_price FLOAT = @amount * @price
         UPDATE dbo.BillInfo SET price = @billInfo_price WHERE id_bill = @idBill AND id_food = @idFood
+
+        DECLARE @bill_price FLOAT 
+        SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill      
+        UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
+
+    END
+END
+GO
+
+ /**
+        * Tạo Trigger UTG_DeleteBillInfo (PriceBill)
+        */
+CREATE TRIGGER UTG_DeleteBillInfo
+ON dbo.BillInfo FOR DELETE
+AS
+BEGIN
+    DECLARE @idBill INT
+
+    SELECT @idBill = id_bill FROM Inserted
+
+    IF (@amount > 0)
+    BEGIN
 
         DECLARE @bill_price FLOAT 
         SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill      
