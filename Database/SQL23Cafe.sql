@@ -565,7 +565,7 @@ BEGIN
 
 END
 GO
- /**
+        /**
         * Tạo Trigger UTG_UpdatePriceBillInfo (PriceBillInfo)
         */
 CREATE TRIGGER UTG_UpdatePriceBillInfo
@@ -597,7 +597,7 @@ BEGIN
 
         DECLARE @billInfo_price FLOAT = @amount * @price
 
-        DECLARE @bill_price FLOAT 
+        DECLARE @bill_price FLOAT
         SELECT @bill_price = @billInfo_price + SUM(price*amount) FROM dbo.BillInfo WHERE id_bill = @idBill
         PRINT @bill_price
 
