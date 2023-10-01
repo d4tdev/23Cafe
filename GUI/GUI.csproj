@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillMana\BillInformationDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillMana\BillInformationDetail.Designer.cs">
+      <DependentUpon>BillInformationDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillMana\BillManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillMana\BillManager.Designer.cs">
+      <DependentUpon>BillManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +141,12 @@
     <Compile Include="TableMana\TableManager.Designer.cs">
       <DependentUpon>TableManager.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillMana\BillInformationDetail.resx">
+      <DependentUpon>BillInformationDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillMana\BillManager.resx">
+      <DependentUpon>BillManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,5 +218,6 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
