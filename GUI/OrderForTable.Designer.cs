@@ -140,6 +140,8 @@
             this.dataFoodBill.Name = "dataFoodBill";
             this.dataFoodBill.Size = new System.Drawing.Size(843, 344);
             this.dataFoodBill.TabIndex = 0;
+            this.dataFoodBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFoodBill_CellClick);
+            this.dataFoodBill.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFoodBill_CellContentClick);
             this.dataFoodBill.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFoodBill_CellEndEdit);
             // 
             // panel3
@@ -179,6 +181,7 @@
             this.btnDeleteFood.TabIndex = 3;
             this.btnDeleteFood.Text = "Xóa món";
             this.btnDeleteFood.UseVisualStyleBackColor = true;
+            this.btnDeleteFood.Click += new System.EventHandler(this.btnDeleteFood_Click);
             // 
             // cbCategory
             // 

@@ -566,10 +566,10 @@ BEGIN
 END
 GO
  /**
-        * Tạo Trigger UTG_UpdatePriceBillInfo (PriceBillInfo)
+        * Tạo Trigger UTG_InsertPriceBillInfo (PriceBillInfo)
         */
-CREATE TRIGGER UTG_UpdatePriceBillInfo
-ON dbo.BillInfo FOR INSERT, UPDATE
+CREATE TRIGGER UTG_InsertPriceBillInfo
+ON dbo.BillInfo FOR INSERT
 AS
 BEGIN
     DECLARE @idBill INT
@@ -602,6 +602,43 @@ BEGIN
         PRINT @bill_price
 
         UPDATE dbo.BillInfo SET price = @billInfo_price WHERE id_bill = @idBill AND id_food = @idFood
+        UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
+
+    END
+END
+GO
+
+ /**
+        * Tạo Trigger UTG_UpdatePriceBillInfo (PriceBillInfo)
+        */
+CREATE TRIGGER UTG_UpdatePriceBillInfo
+ON dbo.BillInfo FOR UPDATE
+AS
+BEGIN
+    DECLARE @idBill INT
+
+    SELECT @idBill = id_bill FROM Inserted
+
+    DECLARE @idFood VARCHAR(20)
+
+    SELECT @idFood = id_food FROM Inserted
+
+    DECLARE @amount INT
+
+    SELECT @amount = amount FROM Inserted
+
+    DECLARE @price FLOAT
+
+    SELECT @price = price FROM dbo.Food WHERE id = @idFood
+
+    IF (@amount > 0)
+    BEGIN
+
+        DECLARE @billInfo_price FLOAT = @amount * @price
+        UPDATE dbo.BillInfo SET price = @billInfo_price WHERE id_bill = @idBill AND id_food = @idFood
+
+        DECLARE @bill_price FLOAT 
+        SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill      
         UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
 
     END

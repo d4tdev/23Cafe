@@ -44,9 +44,9 @@ namespace DAL
             return result > 0;
         }
 
-        public bool DeleteBillInfo(int id)
+        public bool DeleteBillInfo(string foodId)
         {
-            string query = string.Format("Delete from BillInfo WHERE id = {0}", id);
+            string query = string.Format("Delete from BillInfo WHERE id_food = '{0}'", foodId);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
