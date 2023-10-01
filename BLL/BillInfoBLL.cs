@@ -32,9 +32,9 @@ namespace BLL
             return BillInfoDAL.Instance.UpdateBillInfo(id_bill, id_food, quantity, id);
         }
 
-        public bool DeleteBillInfo(int id)
+        public bool DeleteBillInfo(string foodId)
         {
-            return BillInfoDAL.Instance.DeleteBillInfo(id);
+            return BillInfoDAL.Instance.DeleteBillInfo(foodId);
         }
 
         public List<BillInfo> GetListByIdBill(int idBill)

@@ -17,6 +17,7 @@ namespace GUI
         GlobalState globalState;
         int categoryID = 0;
         int billId = 0;
+        String foodId = "";
         List<FoodCategory> listCategory;
         public OrderForTable()
         {
@@ -34,9 +35,9 @@ namespace GUI
             loadCategoryList();
             loadTable();
             loadFoodListByCategory(categoryID);
-            //createBillFromTableId(globalState.TableId);
             checkBillForTable(globalState.TableId);
             showBillInfo(billId);
+            updateTotalPrice();
         }
 
         // hiển thị danh sách món ăn theo danh mục
@@ -100,7 +101,8 @@ namespace GUI
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            foodId = dataFoodBill.Rows[e.RowIndex].Cells["Tên sản phẩm"].Value.ToString();
+            MessageBox.Show(foodId);
         }
 
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,12 +155,9 @@ namespace GUI
                         // Get the food ID based on the food name
                         if (BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodId, 1))
                         {
-                            MessageBox.Show("Added food to bill info successfully");
+                           
                             showBillInfo(billId);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to add food to bill info");
+                            updateTotalPrice();
                         }
                     }
                 }
@@ -187,7 +186,6 @@ namespace GUI
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Tên sản phẩm", typeof(string)).ReadOnly = true;
-            dt.Columns.Add("Giá tiền", typeof(float)).ReadOnly = true;
             dt.Columns.Add("Số lượng", typeof(int));
             dt.Columns.Add("Thành tiền", typeof(float)).ReadOnly = true;
 
@@ -196,8 +194,7 @@ namespace GUI
                 DataRow row = dt.NewRow();
                 row["Tên sản phẩm"] = billInfo.Id_Food;
                 row["Số lượng"] = billInfo.Count;
-                row["Giá tiền"] = billInfo.Price;
-                row["Thành tiền"] = billInfo.Count * billInfo.Price;
+                row["Thành tiền"] = billInfo.Price;
                 dt.Rows.Add(row);
             }
             dataFoodBill.DataSource = dt;
@@ -211,7 +208,39 @@ namespace GUI
                 string foodName = dataFoodBill.Rows[e.RowIndex].Cells["Tên sản phẩm"].Value.ToString();
                 BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodName, count);
                 showBillInfo(billId);
+                updateTotalPrice();
             }
+        }
+
+        private void updateTotalPrice()
+        {
+            Bill bill = BillBLL.Instance.GetOneBillById(billId);
+            text_totalPrice.Text = bill.Total_Price.ToString();
+        }
+
+        private void dataFoodBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteFood_Click(object sender, EventArgs e)
+        {
+            if(foodId != "")
+            {
+                BillInfoBLL.Instance.DeleteBillInfo(foodId);
+                showBillInfo(billId);
+                updateTotalPrice();
+                foodId = "";
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm cần xóa");
+            }
+        }
+
+        private void dataFoodBill_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            foodId = dataFoodBill.Rows[e.RowIndex].Cells["Tên sản phẩm"].Value.ToString();
         }
     }
 }
