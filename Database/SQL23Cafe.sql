@@ -656,14 +656,9 @@ BEGIN
 
     SELECT @idBill = id_bill FROM Inserted
 
-    IF (@amount > 0)
-    BEGIN
-
-        DECLARE @bill_price FLOAT 
-        SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill      
-        UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
-
-    END
+    DECLARE @bill_price FLOAT 
+    SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill      
+    UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
 END
 GO
 
