@@ -271,11 +271,19 @@ INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 9', 0)
 INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 10', 0)
 */
 
+
 USE QuanLy23Cafe
 DECLARE @i INT = 1
-WHILE @I <= 15
+WHILE @i <= 16
 BEGIN
+    IF (@i = 16) 
+    BEGIN 
+        INSERT dbo.TableFood (table_name) VALUES (N'Trống')
+    END
+    ELSE
+    BEGIN
     INSERT dbo.TableFood (table_name) VALUES (N'Bàn ' + CAST(@i AS nvarchar(100)))
+    END
     SET @i = @i + 1
 END
 GO
