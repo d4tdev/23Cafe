@@ -95,7 +95,6 @@ namespace GUI
             }
 
             billId = GetBillIdByTableId(tableId);
-            MessageBox.Show(billId.ToString());
            
         }
 
@@ -253,6 +252,16 @@ namespace GUI
                 }
             }
             return "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(billId.ToString());
+            // khi ấn nút chuyển trạng thái của bill từ 0 thành 1 thể hiện đã thanh toán
+            BillBLL.Instance.UpdateBill(billId, 1, globalState.TableId);
+            // chuyển về trang Order
+            this.Close();
+
         }
     }
 }
