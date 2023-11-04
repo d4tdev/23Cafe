@@ -32,6 +32,7 @@ namespace GUI
 
         void loadData()
         {
+            ClearButtons();
             List<Table> listTable = TableBLL.Instance.GetListTable();
 
             foreach (Table item in listTable)
@@ -125,6 +126,12 @@ namespace GUI
             globalState.TableId = table.Id;
             OrderForTable orderForTable = new OrderForTable();
             orderForTable.ShowDialog();
+            loadData();
+        }
+
+        private void ClearButtons()
+        {
+            flowTableOrder.Controls.Clear();
         }
     }
 }

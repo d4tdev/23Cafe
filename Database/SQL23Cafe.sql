@@ -1,4 +1,4 @@
-﻿/*
+/*
 Post-Deployment Script Template
 --------------------------------------------------------------------------------------
  This file contains SQL statements that will be appended to the build script.
@@ -654,16 +654,11 @@ AS
 BEGIN
     DECLARE @idBill INT
 
-    SELECT @idBill = id_bill FROM Inserted
+    SELECT @idBill = id_bill FROM Deleted
 
-    IF (@amount > 0)
-    BEGIN
-
-        DECLARE @bill_price FLOAT 
-        SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill      
-        UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
-
-    END
+    DECLARE @bill_price FLOAT 
+    SELECT @bill_price = SUM(price) FROM dbo.BillInfo WHERE id_bill = @idBill      
+    UPDATE dbo.Bill SET total_price = @bill_price WHERE id = @idBill
 END
 GO
 
