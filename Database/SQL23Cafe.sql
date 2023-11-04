@@ -710,8 +710,15 @@ BEGIN
 
     SELECT @count = COUNT(*) FROM dbo.Bill WHERE id_table = @idTable AND status_bill = 0
 
+    DECLARE @countBillInfo INT = 0
+    SELECT @countBillInfo = COUNT(*) FROM dbo.BillInfo WHERE id_bill = @idBill
+
     IF (@count = 0)
+    BEGIN
         UPDATE dbo.TableFood SET status_table = 0 WHERE id = @idTable
+        
+    END
+
 END
 GO
 
