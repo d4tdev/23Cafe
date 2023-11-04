@@ -1,4 +1,5 @@
-﻿using GUI.Staff;
+﻿using GUI.BillMana;
+using GUI.Staff;
 using GUI.TableMana;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,8 @@ namespace GUI
 
         private void btnBillManager_Click(object sender, EventArgs e)
         {
-            
+            BillManager billManager = new BillManager();
+            billManager.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -155,7 +155,6 @@ namespace GUI
                         // Get the food ID based on the food name
                         if (BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodId, 1))
                         {
-                           
                             showBillInfo(billId);
                             updateTotalPrice();
                         }
@@ -192,7 +191,7 @@ namespace GUI
             foreach (var billInfo in listBillInfo)
             {
                 DataRow row = dt.NewRow();
-                row["Tên sản phẩm"] = billInfo.Id_Food;
+                row["Tên sản phẩm"] = GetNameFoodFromId(billInfo.Id_Food);
                 row["Số lượng"] = billInfo.Count;
                 row["Thành tiền"] = billInfo.Price;
                 dt.Rows.Add(row);
@@ -241,6 +240,19 @@ namespace GUI
         private void dataFoodBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             foodId = dataFoodBill.Rows[e.RowIndex].Cells["Tên sản phẩm"].Value.ToString();
+        }
+
+        public String GetNameFoodFromId(String id)
+        {
+            List<Food> listFood = FoodBLL.Instance.GetListFood();
+            foreach (var food in listFood)
+            {
+                if (food.Id == id)
+                {
+                    return food.Food_Name;
+                }
+            }
+            return "";
         }
     }
 }
