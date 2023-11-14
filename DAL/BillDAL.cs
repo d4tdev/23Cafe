@@ -43,14 +43,14 @@ namespace DAL
 
         public bool UpdateBill(int idBill, int statusBill, int idTable)
         {
-            string query = string.Format("UPDATE Bill SET status_bill = {1}, id_table = {2} WHERE id_bill = {0}", idBill, statusBill, idTable);
+            string query = string.Format("UPDATE Bill SET status_bill = {1}, id_table = {2} WHERE id = {0}", idBill, statusBill, idTable);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
 
         public bool DeleteBill(int idBill)
         {
-            string query = string.Format("Delete from Bill WHERE id_bill = {0}", idBill);
+            string query = string.Format("Delete from Bill WHERE id = {0}", idBill);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
