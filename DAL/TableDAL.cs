@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using DAL.UseCase;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class TableDAL
+    public class TableDAL : TableUseCase
     {
         private static TableDAL instance;
         public static TableDAL Instance

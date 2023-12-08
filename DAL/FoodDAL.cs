@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class FoodDAL
+    public class FoodDAL 
     {
         private static FoodDAL instance;
         public static FoodDAL Instance

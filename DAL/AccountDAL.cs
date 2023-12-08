@@ -1,3 +1,4 @@
+using DAL.UseCase;
 using DTO;
 using System;
 using System.Collections;
@@ -12,7 +13,7 @@ using System.Xml.Linq;
 
 namespace DAL
 {
-    public class AccountDAL
+    public class AccountDAL : AccountUseCase
     {
         private static AccountDAL instance;
 

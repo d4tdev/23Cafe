@@ -48,6 +48,9 @@
     <Compile Include="FoodCategoryDAL.cs" />
     <Compile Include="FoodDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UseCase\AccountUseCase.cs" />
+    <Compile Include="UseCase\FoodUseCase.cs" />
+    <Compile Include="UseCase\TableUseCase.cs" />
     <Compile Include="TableDAL.cs" />
     <Compile Include="Variable.cs" />
   </ItemGroup>
