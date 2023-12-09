@@ -42,10 +42,6 @@ namespace GUI.Staff
                 dt.Rows.Add(row);
             }
             dataGridView1.DataSource = dt;
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            }
         }
 
         // thêm giá trị vào account state
@@ -90,10 +86,6 @@ namespace GUI.Staff
                 dt.Rows.Add(row);
             }
             dataGridView1.DataSource = dt;
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            }
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

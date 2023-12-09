@@ -88,20 +88,19 @@ namespace GUI
         private void checkBillForTable(int tableId)
         {
             bool existsBill = TableBLL.Instance.CheckTableExistsBill(tableId);
-
             if(!existsBill)
             {
                 BillBLL.Instance.InsertBill(tableId);
             }
 
             billId = GetBillIdByTableId(tableId);
-           
+            MessageBox.Show(existsBill.ToString() + billId);
+            
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            foodId = dataFoodBill.Rows[e.RowIndex].Cells["Tên sản phẩm"].Value.ToString();
-            MessageBox.Show(foodId);
+            foodId = dataFoodBill.Rows[e.RowIndex].Cells["Mã sản phẩm"].Value.ToString();
         }
 
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -169,7 +168,7 @@ namespace GUI
             foreach (var bill in listBill)
             {
 
-                if (bill.Id_Table.ToString() == tableId.ToString())
+                if (bill.Id_Table.ToString() == tableId.ToString() && bill.Status_Bill == 0)
                 {
                     return bill.Id;
                 }
@@ -183,6 +182,7 @@ namespace GUI
             List<BillInfo> listBillInfo = BillInfoBLL.Instance.GetListByIdBill(billId);
 
             DataTable dt = new DataTable();
+            dt.Columns.Add("Mã sản phẩm", typeof(string)).ReadOnly = true;
             dt.Columns.Add("Tên sản phẩm", typeof(string)).ReadOnly = true;
             dt.Columns.Add("Số lượng", typeof(int));
             dt.Columns.Add("Thành tiền", typeof(float)).ReadOnly = true;
@@ -190,6 +190,7 @@ namespace GUI
             foreach (var billInfo in listBillInfo)
             {
                 DataRow row = dt.NewRow();
+                row["Mã sản phẩm"] = billInfo.Id_Food;
                 row["Tên sản phẩm"] = GetNameFoodFromId(billInfo.Id_Food);
                 row["Số lượng"] = billInfo.Count;
                 row["Thành tiền"] = billInfo.Price;
@@ -203,8 +204,8 @@ namespace GUI
             if(e.ColumnIndex == dataFoodBill.Columns["Số lượng"].Index)
             {
                 int count = Convert.ToInt32(dataFoodBill.Rows[e.RowIndex].Cells["Số lượng"].Value);
-                string foodName = dataFoodBill.Rows[e.RowIndex].Cells["Tên sản phẩm"].Value.ToString();
-                BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodName, count);
+                string foodId = dataFoodBill.Rows[e.RowIndex].Cells["Mã sản phẩm"].Value.ToString();
+                BillInfoBLL.Instance.InsetAndUpdateBillInfo(billId, foodId, count);
                 showBillInfo(billId);
                 updateTotalPrice();
             }
@@ -238,7 +239,7 @@ namespace GUI
 
         private void dataFoodBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            foodId = dataFoodBill.Rows[e.RowIndex].Cells["Tên sản phẩm"].Value.ToString();
+            foodId = dataFoodBill.Rows[e.RowIndex].Cells["Mã sản phẩm"].Value.ToString();
         }
 
         public String GetNameFoodFromId(String id)
@@ -256,10 +257,23 @@ namespace GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // khi ấn nút chuyển trạng thái của bill từ 0 thành 1 thể hiện đã thanh toán
-            BillBLL.Instance.UpdateBill(billId, 1, globalState.TableId);
-            // chuyển về trang Order
-            this.Close();
+            // nếu mà không có sản phẩm nào trong bill thì không cho thanh toán
+            if (dataFoodBill.Rows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm");
+                return;
+            }
+            // xác nhận thanh toán
+            if (MessageBox.Show("Bạn có chắc muốn thanh toán cho bàn này?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // khi ấn nút chuyển trạng thái của bill từ 0 thành 1 thể hiện đã thanh toán
+                BillBLL.Instance.UpdateBill(billId, 1, globalState.TableId);
+
+                // chuyển về trang Order
+                this.Close();
+                // reset lại tableId
+                globalState.TableId = 0;
+            }
 
         }
     }

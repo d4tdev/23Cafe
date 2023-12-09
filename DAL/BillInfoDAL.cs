@@ -39,7 +39,7 @@ namespace DAL
 
         public bool UpdateBillInfo(int id_bill, string id_food, int quantity, int id)
         {
-            string query = string.Format("UPDATE BillInfo SET id_bill={0}, id_food=N'{1}', amount={3} WHERE id={4}", id_bill, id_food, quantity, id);
+            string query = string.Format("UPDATE BillInfo SET id_bill={0}, id_food=N'{1}', amount={2} WHERE id={3}", id_bill, id_food, quantity, id);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

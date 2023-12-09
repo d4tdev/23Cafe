@@ -43,10 +43,6 @@ namespace GUI
                 dt.Rows.Add(row);
             }
             dataGridViewFood.DataSource = dt;
-            foreach (DataGridViewColumn column in dataGridViewFood.Columns)
-            {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            }
             viewDetail(0);
         }
 
