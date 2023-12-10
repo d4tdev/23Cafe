@@ -53,13 +53,13 @@ namespace GUI.BillMana
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // get month from now
-            int month = DateTime.Now.Month;
-            int year = DateTime.Now.Year;
-            double sum = 0;
+            // lấy giá trị từ dataTimePicker1 và dataTimePicker2
+            DateTime date1 = dateTimePicker1.Value;
+            DateTime date2 = dateTimePicker2.Value;
 
-            List<Bill> listBill = BillBLL.Instance.GetAllListBill();
             DataTable dt = new DataTable();
+
+            // tạo ra các cột cho datatable
             dt.Columns.Add("Mã hóa đơn", typeof(int)).ReadOnly = true;
             dt.Columns.Add("Mã bàn", typeof(int)).ReadOnly = true;
             dt.Columns.Add("Ngày vào", typeof(DateTime)).ReadOnly = true;
@@ -67,20 +67,28 @@ namespace GUI.BillMana
             dt.Columns.Add("Trạng thái", typeof(String)).ReadOnly = true;
             dt.Columns.Add("Tổng tiền", typeof(int)).ReadOnly = true;
 
+            List<Bill> listBill = BillBLL.Instance.GetAllListBill();
             foreach (Bill item in listBill)
             {
-                if (item.Date_Checkout.Month == month && item.Date_Checkout.Year == year)
+                // so sánh ngày tháng năm của item.Date_Checkin với date1 và date2 
+                // không so sanh gio phut giay
+                if (item.Date_Checkout.Date >= date1.Date && item.Date_Checkout.Date <= date2.Date)
                 {
                     if (item.Status_Bill == 1)
                     {
-                        sum += item.Total_Price;
                         dt.Rows.Add(item.Id, item.Id_Table, item.Date_Checkout, item.Date_Checkout, "Đã thanh toán", item.Total_Price);
                     }
                 }
             }
 
             dataGridView1.DataSource = dt;
-            MessageBox.Show("Tổng doanh thu tháng " + month + " năm " + year + " là: " + sum);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int billID = dataGridView1.Rows[e.RowIndex].Cells[0].Value.GetHashCode();
+            BillInformationDetail billInformationDetail = new BillInformationDetail(billID);
+            billInformationDetail.ShowDialog();
         }
     }
 }
