@@ -48,11 +48,17 @@ namespace DAL
             //var list = hasData.ToString();
             //list.Reverse();
 
-            string query = "USP_Login @userName , @passWord";
+            try
+            {
+                string query = "USP_Login @userName , @passWord";
 
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, passWord /*list*/});
+                DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { userName, passWord /*list*/});
 
-            return result.Rows.Count > 0;
+                return result.Rows.Count > 0;
+            } catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         /**
@@ -94,29 +100,41 @@ namespace DAL
 
         public List<Account> SearchListAccounts(string querySearch)
         {
-            List<Account> list = new List<Account>();
-
-            string query = string.Format($"SELECT * from Account WHERE display_name LIKE N'%{querySearch}%' OR phone LIKE N'%{querySearch}%' OR username LIKE N'%{querySearch}%'");
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                Account account = new Account(item);
-                list.Add(account);
+                List<Account> list = new List<Account>();
+
+                string query = string.Format($"SELECT * from Account WHERE display_name LIKE N'%{querySearch}%' OR phone LIKE N'%{querySearch}%' OR username LIKE N'%{querySearch}%'");
+                DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+                foreach (DataRow item in data.Rows)
+                {
+                    Account account = new Account(item);
+                    list.Add(account);
+                }
+                return list;
+            } catch (Exception ex)
+            {
+                return null;
             }
-            return list;
         }
 
         public Account GetAccountByUserName(string userName)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery($"Select * from Account where username = '{userName}'");
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                return new Account(item);
-            }
+                DataTable data = DataProvider.Instance.ExecuteQuery($"Select * from Account where username = '{userName}'");
 
-            return null;
+                foreach (DataRow item in data.Rows)
+                {
+                    return new Account(item);
+                }
+
+                return null;
+            } catch (Exception ex)
+            {
+                return null;
+            }
         }
         /**
         * Hàm thêm tài khoản
@@ -128,10 +146,16 @@ namespace DAL
         */
         public bool InsertAccount(string username, string displayName, string phone, int basic_salary, int role, string password)
         {
-            string query = string.Format("INSERT dbo.Account ( username, display_name, role, password, phone, basic_salary ) VALUES  ( N'{0}', N'{1}', {2}, N'{3}', N'{4}', {5})", username, displayName, role, password, phone, basic_salary);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            try
+            {
+                string query = string.Format("INSERT dbo.Account ( username, display_name, role, password, phone, basic_salary ) VALUES  ( N'{0}', N'{1}', {2}, N'{3}', N'{4}', {5})", username, displayName, role, password, phone, basic_salary);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
 
-            return result > 0;
+                return result > 0;
+            } catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         /**
@@ -143,10 +167,16 @@ namespace DAL
         */
         public bool UpdateAccount(string username, string displayName, int role, string phone, int basic_salary)
         {
-            string query = string.Format("UPDATE Account SET display_name = N'{1}', role = {2}, phone = N'{3}', basic_salary = {4} WHERE username = '{0}'", username, displayName, role, phone, basic_salary);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            try
+            {
+                string query = string.Format("UPDATE Account SET display_name = N'{1}', role = {2}, phone = N'{3}', basic_salary = {4} WHERE username = '{0}'", username, displayName, role, phone, basic_salary);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
 
-            return result > 0;
+                return result > 0;
+            } catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         /**
@@ -156,10 +186,16 @@ namespace DAL
         */
         public bool DeleteAccount(string username)
         {
-            string query = string.Format("Delete from Account where username = N'{0}'", username);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            try
+            {
+                string query = string.Format("Delete from Account where username = N'{0}'", username);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
 
-            return result > 0;
+                return result > 0;
+            } catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         /**
@@ -169,10 +205,16 @@ namespace DAL
         */
         public bool ResetPassword(string newPass, string username)
         {
-            string query = string.Format("update account set password = N'{0}' where username = N'{1}'", newPass, username);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            try
+            {
+                string query = string.Format("update account set password = N'{0}' where username = N'{1}'", newPass, username);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
 
-            return result > 0;
+                return result > 0;
+            } catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

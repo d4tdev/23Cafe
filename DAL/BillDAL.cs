@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using DAL.UseCase;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class BillDAL
+    public class BillDAL : OrderUseCase
     {
         private static BillDAL instance;
         public static BillDAL Instance
@@ -22,48 +23,78 @@ namespace DAL
 
         public List<Bill> GetAllListBill()
         {
-            List<Bill> list = new List<Bill>();
-
-            string query = "SELECT id, date_checkout,id_table, status_bill, total_price FROM Bill";
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-
-            foreach (DataRow item in data.Rows)
+            try
             {
-                Bill bill = new Bill(item);
-                list.Add(bill);
+                List<Bill> list = new List<Bill>();
+
+                string query = "SELECT id, date_checkout,id_table, status_bill, total_price FROM Bill";
+                DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+                foreach (DataRow item in data.Rows)
+                {
+                    Bill bill = new Bill(item);
+                    list.Add(bill);
+                }
+                return list;
+            } catch (Exception ex)
+            {
+                return null;
             }
-            return list;
         }
 
         public bool InsertBill(int idTable)
         {
-            int result = DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[] { idTable });
-            return result > 0;
+            try
+            {
+                int result = DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[] { idTable });
+                return result > 0;
+            } catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public bool UpdateBill(int idBill, int statusBill, int idTable)
         {
-            string query = string.Format("UPDATE Bill SET status_bill = {1}, id_table = {2} WHERE id = {0}", idBill, statusBill, idTable);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-            return result > 0;
+            try
+            {
+                string query = string.Format("UPDATE Bill SET status_bill = {1}, id_table = {2} WHERE id = {0}", idBill, statusBill, idTable);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            } catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public bool DeleteBill(int idBill)
         {
-            string query = string.Format("Delete from Bill WHERE id = {0}", idBill);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
-            return result > 0;
+            try
+            {
+                string query = string.Format("Delete from Bill WHERE id = {0}", idBill);
+                int result = DataProvider.Instance.ExecuteNonQuery(query);
+                return result > 0;
+            } catch(Exception e)
+            {
+                return false;
+            }
         }
 
         public Bill GetOneBillById(int id)
         {
-            string query = string.Format("SELECT * FROM Bill WHERE id={0}", id);
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-            foreach(DataRow item in data.Rows)
+            try
             {
-               return new Bill(item);
+                string query = string.Format("SELECT * FROM Bill WHERE id={0}", id);
+                DataTable data = DataProvider.Instance.ExecuteQuery(query);
+                foreach (DataRow item in data.Rows)
+                {
+                    return new Bill(item);
+                }
+                return null;
+            } catch (Exception ex)
+            {
+                return null;
             }
-            return null;
         }
     }
 }

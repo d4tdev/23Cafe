@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Remoting.Messaging;
 
 namespace DAL
 {
@@ -26,31 +27,38 @@ namespace DAL
         // Return ResultSet
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
-            DataTable data = new DataTable();
-            using (SqlConnection conn = new SqlConnection(connectionStr))
+            try
             {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                if (parameter != null)
+                DataTable data = new DataTable();
+                using (SqlConnection conn = new SqlConnection(connectionStr))
                 {
-                    string[] listPara = query.Split(' ');
-                    int i = 0;
-                    foreach (string item in listPara)
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    if (parameter != null)
                     {
-                        if (item.Contains('@'))
+                        string[] listPara = query.Split(' ');
+                        int i = 0;
+                        foreach (string item in listPara)
                         {
-                            cmd.Parameters.AddWithValue(item, parameter[i]);
-                            i++;
+                            if (item.Contains('@'))
+                            {
+                                cmd.Parameters.AddWithValue(item, parameter[i]);
+                                i++;
+                            }
                         }
                     }
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(data);
+                    conn.Close();
                 }
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(data);
-                conn.Close();
+                return data;
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Something went wrong.");
+                return null;
             }
-            return data;
         }
 
         // Return integer value
