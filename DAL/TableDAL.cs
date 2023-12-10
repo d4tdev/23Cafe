@@ -42,10 +42,10 @@ namespace DAL
         public bool InsertTable()
         {
             string countQuery = string.Format("SELECT * FROM dbo.TableFood");
-            DataTable count = DataProvider.Instance.ExecuteQuery(countQuery);
+            DataTable countTable = DataProvider.Instance.ExecuteQuery(countQuery);
 
-            string name = "Bàn " + (count.Rows.Count + 1).ToString();
-            string query = string.Format("INSERT dbo.TableFood (table_name) values (N'{0}')", name);
+            string name = "Bàn " + (countTable.Rows.Count + 1).ToString();
+            string query = string.Format("INSERT dbo.TableFood (table_name) values (N'{2}')", name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
