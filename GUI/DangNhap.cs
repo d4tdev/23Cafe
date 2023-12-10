@@ -49,7 +49,7 @@ namespace GUI
                     globalState.Username = account.Username;
                     globalState.Role = account.Role;
 
-                    MessageBox.Show($"Bắt đầu ca làm việc vào lúc: {DateTime.Now}", "Bắt đầu ca làm việc");
+                    MessageBox.Show($"Bắt đầu ca làm việc vào lúc: {DateTime.Now}", "Bắt đầu ca làm việc", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
                     Order order = new Order();
                     order.ShowDialog();
@@ -84,6 +84,11 @@ namespace GUI
             {
                 loginEvent();
             }
+        }
+
+        private void DangNhap_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
