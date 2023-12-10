@@ -9,12 +9,12 @@ namespace DAL.UseCase
 {
     public interface FoodUseCase
     {
-        List<Food> GetFoodByCategoryID(int id);
-        List<Food> GetListFood();
-        List<Food> SearchFoodByName(string querySearch);
-        bool InsertFood(string name, string id, int idCategory, float price);
-        bool UpdateFood(string name, float price, int idCategory, string idFood);
-        bool DeleteFood(string idFood);
+        Object GetFoodByCategoryID(int id);
+        Object GetListFood();
+        Object SearchFoodByName(string querySearch);
+        Object InsertFood(string name, string id, int idCategory, float price);
+        Object UpdateFood(string name, float price, int idCategory, string idFood);
+        Object DeleteFood(string idFood);
 
     }
 }

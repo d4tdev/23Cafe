@@ -9,9 +9,9 @@ namespace DAL.UseCase
 {
     public interface TableUseCase
     {
-        List<Table> GetListTable();
-        bool CheckTableExistsBill(int idTable);
-        bool InsertTable();
-        bool DeleteTable(int idTable);
+        Object GetListTable();
+        Object CheckTableExistsBill(int idTable);
+        Object InsertTable();
+        Object DeleteTable(int idTable);
     }
 }
