@@ -61,6 +61,7 @@ namespace GUI.TableMana
                 else
                 {
                     clickedButton.BackColor = Color.LightGreen;
+                    btnDelTable.Enabled = true;
                 }
 
                 // Cập nhật trạng thái
@@ -91,7 +92,7 @@ namespace GUI.TableMana
                         Table table = button.Tag as Table;
 
                         // Xử lý xóa bàn ở đây (ví dụ: gọi hàm BLL để xóa bàn)
-                        // Ví dụ: TableBLL.Instance.DeleteTable(table);
+                        TableBLL.Instance.DeleteTable(table.Id);
 
                         // Sau khi xóa, cập nhật giao diện
                         flowTable.Controls.Remove(button);
@@ -107,7 +108,7 @@ namespace GUI.TableMana
             int length = listTable.Count;
 
             // thêm bàn mới
-            Boolean result = TableBLL.Instance.InsertTable(length);
+            bool result = TableBLL.Instance.InsertTable(length);
 
             if (result)
             {

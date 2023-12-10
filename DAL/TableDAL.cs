@@ -48,7 +48,7 @@ namespace DAL
 
         public bool DeleteTable(int idTable)
         {
-            String query = string.Format("Delete from dbo.TableFood where id={1}", idTable);
+            String query = string.Format("Delete from dbo.TableFood where id={0}", idTable);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
