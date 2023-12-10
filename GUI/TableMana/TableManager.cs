@@ -88,15 +88,20 @@ namespace GUI.TableMana
                 {
                     if (button.BackColor == Color.LightGreen) // Nút đã được chọn
                     {
-                        // Lấy thông tin bàn từ Tag của nút
-                        Table table = button.Tag as Table;
+                        // xác nhận xóa
+                        DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa bàn này?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        if (result == DialogResult.OK)
+                        {
+                            // Lấy thông tin bàn từ Tag của nút
+                            Table table = button.Tag as Table;
 
-                        // Xử lý xóa bàn ở đây (ví dụ: gọi hàm BLL để xóa bàn)
-                        TableBLL.Instance.DeleteTable(table.Id);
+                            // Xử lý xóa bàn ở đây (ví dụ: gọi hàm BLL để xóa bàn)
+                            TableBLL.Instance.DeleteTable(table.Id);
 
-                        // Sau khi xóa, cập nhật giao diện
-                        flowTable.Controls.Remove(button);
-                        break; // Chỉ xóa một bàn đầu tiên được chọn
+                            // Sau khi xóa, cập nhật giao diện
+                            flowTable.Controls.Remove(button);
+                            break; // Chỉ xóa một bàn đầu tiên được chọn
+                        }
                     }
                 }
             }
