@@ -37,5 +37,21 @@ namespace DAL
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             return data.Rows.Count > 0;
         }
+
+        public bool InsertTable(int idTable)
+        {
+            String name = idTable.ToString();
+            string query = string.Format("INSERT dbo.TableFood (id, table_name, status_table) values ({1}, N'Bàn {2}', 0)", idTable, name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public bool DeleteTable(int idTable)
+        {
+            String query = string.Format("Delete from dbo.TableFood where id={1}", idTable);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }

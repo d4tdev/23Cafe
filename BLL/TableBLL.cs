@@ -28,6 +28,16 @@ namespace BLL
         {
             return TableDAL.Instance.CheckTableExistsBill(idTable);
         }
+
+        public bool InsertTable(int idTable)
+        {
+            return TableDAL.Instance.InsertTable(idTable);
+        }
+
+        public bool DeleteTable(int idTable)
+        {
+            return TableDAL.Instance.DeleteTable(idTable);
+        }
     }
 
 }

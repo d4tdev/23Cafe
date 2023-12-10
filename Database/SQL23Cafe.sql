@@ -274,19 +274,46 @@ INSERT dbo.TableFood (id, table_name, status_table) VALUES (null, N'Bàn 10', 0)
 
 USE QuanLy23Cafe
 DECLARE @i INT = 1
-WHILE @i <= 16
+WHILE @i <= 15
 BEGIN
+/*
     IF (@i = 16) 
     BEGIN 
         INSERT dbo.TableFood (table_name) VALUES (N'Trống')
     END
     ELSE
+*/
     BEGIN
     INSERT dbo.TableFood (table_name) VALUES (N'Bàn ' + CAST(@i AS nvarchar(100)))
     END
     SET @i = @i + 1
 END
 GO
+
+/**
+        /**
+        * Tạo thủ tục USP_InsertTable
+       
+    CREATE PROC USP_InsertTable
+    @numberTable INT
+    AS
+    BEGIN
+        DECLARE @i INT = 1
+        WHILE @i <= @numberTable
+        BEGIN
+            IF (@i = @numberTable) 
+            BEGIN 
+                INSERT dbo.TableFood (table_name) VALUES (N'Trống')
+            END
+            ELSE
+            BEGIN
+            INSERT dbo.TableFood (table_name) VALUES (N'Bàn ' + CAST(@i AS nvarchar(100)))
+            END
+            SET @i = @i + 1
+        END
+    END
+    GO
+*/
 
         /**
         * Thêm dữ liệu vào bảng Bill
