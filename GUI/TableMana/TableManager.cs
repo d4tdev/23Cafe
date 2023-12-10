@@ -103,7 +103,23 @@ namespace GUI.TableMana
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
+            List<Table> listTable = TableBLL.Instance.GetListTable();
+            int length = listTable.Count;
+
+            // thêm bàn mới
+            Boolean result = TableBLL.Instance.InsertTable(length+1);
+
+            if (result)
+            {
+                // Thêm thành công
+                MessageBox.Show("Thêm bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadData();
+            }
+            else
+            {
+                // Thêm thất bại
+                MessageBox.Show("Thêm bàn thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
