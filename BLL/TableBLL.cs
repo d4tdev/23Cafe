@@ -21,22 +21,30 @@ namespace BLL
 
         public List<Table> GetListTable()
         {
-            return TableDAL.Instance.GetListTable();
+            ResponseTable res = (ResponseTable)TableDAL.Instance.GetListTable();
+            if (res.error == false) return res.data;
+            else return null;
         }
 
         public bool CheckTableExistsBill(int idTable)
         {
-            return TableDAL.Instance.CheckTableExistsBill(idTable);
+            Response res = (Response)TableDAL.Instance.CheckTableExistsBill(idTable);
+            if (res.error == false) return true;
+            else return false;
         }
 
         public bool InsertTable()
         {
-            return TableDAL.Instance.InsertTable();
+            Response res = (Response)TableDAL.Instance.InsertTable();
+            if (res.error == false) return true;
+            else return false;
         }
 
         public bool DeleteTable(int idTable)
         {
-            return TableDAL.Instance.DeleteTable(idTable);
+            Response res = (Response)TableDAL.Instance.DeleteTable(idTable);
+            if (res.error == false) return true;
+            else return false;
         }
     }
 

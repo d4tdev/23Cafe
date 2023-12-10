@@ -19,27 +19,37 @@ namespace BLL
         public BillBLL() { }
         public List<Bill> GetAllListBill()
         {
-            return BillDAL.Instance.GetAllListBill();
+            ResponseBill res = (ResponseBill) BillDAL.Instance.GetAllListBill();
+            if (res.error == false) return res.data;
+            else return null;
         }
 
         public bool InsertBill(int idTable)
         {
-            return BillDAL.Instance.InsertBill(idTable);
+            Response res = (Response)BillDAL.Instance.InsertBill(idTable);
+            if (res.error == false) return true;
+            else return false;
         }
 
         public bool UpdateBill(int idBill, int statusBill, int idTable)
         {
-            return BillDAL.Instance.UpdateBill(idBill, statusBill, idTable);
+            Response res = (Response)BillDAL.Instance.UpdateBill(idBill, statusBill, idTable);
+            if (res.error == false) return true;
+            else return false;
         }
 
         public bool DeleteBill(int idBill)
         {
-            return BillDAL.Instance.DeleteBill(idBill);
+            Response res= (Response) BillDAL.Instance.DeleteBill(idBill);
+            if (res.error == false) return true;
+            else return false;
         }
 
         public Bill GetOneBillById(int id)
         {
-            return BillDAL.Instance.GetOneBillById(id);
+            ResponseOneBill res = (ResponseOneBill) BillDAL.Instance.GetOneBillById(id);
+            if (res.error == false) return res.data;
+            else return null;
         }
     }
 }

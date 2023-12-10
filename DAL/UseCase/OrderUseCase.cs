@@ -9,11 +9,11 @@ namespace DAL.UseCase
 {
     public interface OrderUseCase
     {
-        List<Bill> GetAllListBill();
-        bool InsertBill(int idTable);
-        bool UpdateBill(int idBill, int statusBill, int idTable);
-        bool DeleteBill(int idBill);
-        Bill GetOneBillById(int id);
+        Object GetAllListBill();
+        Object InsertBill(int idTable);
+        Object UpdateBill(int idBill, int statusBill, int idTable);
+        Object DeleteBill(int idBill);
+        Object GetOneBillById(int id);
 
     }
 }
