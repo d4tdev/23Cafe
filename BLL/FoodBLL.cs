@@ -20,27 +20,43 @@ namespace BLL
         public FoodBLL() { }
         public List<Food> GetFoodByCategoryID(int id)
         {
-            return FoodDAL.Instance.GetFoodByCategoryID(id);
+            ResponseFood res = (ResponseFood) FoodDAL.Instance.GetFoodByCategoryID(id);
+            if (res.error == false) return res.data;
+            else return null;
         }
         public List<Food> GetListFood()
         {
-            return FoodDAL.Instance.GetListFood();
+            ResponseFood res = (ResponseFood) FoodDAL.Instance.GetListFood();
+            if (res.error == false) return res.data;
+            else return null;
         }
         public List<Food> SearchFoodByName(string name)
         {
-            return FoodDAL.Instance.SearchFoodByName(name);
+            ResponseFood res = (ResponseFood) FoodDAL.Instance.SearchFoodByName(name);
+            if (res.error == false) return res.data;
+            else return null;
         }
         public bool InsertFood(string name, string id, int idCategory, float price)
         {
-            return FoodDAL.Instance.InsertFood(name, id, idCategory, price);
+            Response res = (Response)FoodDAL.Instance.InsertFood(name, id, idCategory, price);
+            
+            if (res.error == false)
+                return true;
+            else return false;
         }
         public bool UpdateFood(string name, float price, int idCategory, string idFood)
         {
-            return FoodDAL.Instance.UpdateFood(name, price, idCategory, idFood);
+            Response res = (Response) FoodDAL.Instance.UpdateFood(name, price, idCategory, idFood);
+            if (res.error == false)
+                return true;
+            else return false;
         }
         public bool DeleteFood(string idFood)
         {
-            return FoodDAL.Instance.DeleteFood(idFood);
+            Response res = (Response) FoodDAL.Instance.DeleteFood(idFood);
+            if (res.error == false)
+                return true;
+            else return false;
         }
     }
 }

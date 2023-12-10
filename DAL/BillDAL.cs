@@ -21,8 +21,9 @@ namespace DAL
 
         private BillDAL() { }
 
-        public List<Bill> GetAllListBill()
+        public Object GetAllListBill()
         {
+            ResponseBill res = new ResponseBill();
             try
             {
                 List<Bill> list = new List<Bill>();
@@ -35,65 +36,99 @@ namespace DAL
                     Bill bill = new Bill(item);
                     list.Add(bill);
                 }
-                return list;
+                res.error = false;
+                res.message = "";
+                res.data = list;
+                return res;
             } catch (Exception ex)
             {
-                return null;
+                res.error = true;
+                res.message = ex.Message;
+                res.data = null;
+                return res;
             }
         }
 
-        public bool InsertBill(int idTable)
+        public Object InsertBill(int idTable)
         {
+            Response res = new Response();
             try
             {
                 int result = DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[] { idTable });
-                return result > 0;
+                res.error = result > 0 ? false : true;
+                res.message = "";
+                return res;
             } catch (Exception e)
             {
-                return false;
+                res.error = true;
+                res.message = e.Message;
+                return res;
             }
         }
 
-        public bool UpdateBill(int idBill, int statusBill, int idTable)
+        public Object UpdateBill(int idBill, int statusBill, int idTable)
         {
+            Response res = new Response();
             try
             {
                 string query = string.Format("UPDATE Bill SET status_bill = {1}, id_table = {2} WHERE id = {0}", idBill, statusBill, idTable);
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
-                return result > 0;
+                res.error = result > 0 ? false : true;
+                res.message = "";
+                return res;
             } catch (Exception e)
             {
-                return false;
+                res.error = true;
+                res.message = e.Message;
+                return res;
             }
         }
 
-        public bool DeleteBill(int idBill)
+        public Object DeleteBill(int idBill)
         {
+            Response res = new Response();
             try
             {
                 string query = string.Format("Delete from Bill WHERE id = {0}", idBill);
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
-                return result > 0;
+                res.error = result > 0 ? false : true;
+                res.message = "";
+                return res;
             } catch(Exception e)
             {
-                return false;
+                res.error = true;
+                res.message = e.Message;
+                return res;
             }
         }
 
-        public Bill GetOneBillById(int id)
+        public Object GetOneBillById(int id)
         {
+            ResponseOneBill res = new ResponseOneBill();
             try
             {
                 string query = string.Format("SELECT * FROM Bill WHERE id={0}", id);
                 DataTable data = DataProvider.Instance.ExecuteQuery(query);
-                foreach (DataRow item in data.Rows)
+                if (data != null )
                 {
-                    return new Bill(item);
+                    foreach (DataRow item in data.Rows)
+                    {
+                        res.data = new Bill(item);
+                        res.error = false;
+                        res.message = "";
+                        return res;
+
+                    }
                 }
-                return null;
+                res.error= false;
+                res.message = "Không có hóa đơn";
+                res.data= null;
+                return res;
             } catch (Exception ex)
             {
-                return null;
+                res.error = true;
+                res.message = e.Message;
+                return res;
             }
         }
     }

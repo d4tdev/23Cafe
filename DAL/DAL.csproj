@@ -48,6 +48,11 @@
     <Compile Include="FoodCategoryDAL.cs" />
     <Compile Include="FoodDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\Response.cs" />
+    <Compile Include="Response\ResponseBill.cs" />
+    <Compile Include="Response\ResponseFood.cs" />
+    <Compile Include="Response\ResponseOneBill.cs" />
+    <Compile Include="Response\ResponseTable.cs" />
     <Compile Include="UseCase\AccountUseCase.cs" />
     <Compile Include="UseCase\FoodUseCase.cs" />
     <Compile Include="UseCase\OrderUseCase.cs" />

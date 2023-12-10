@@ -1,14 +1,17 @@
-﻿using DTO;
+﻿using DAL;
+using DAL.UseCase;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class FoodDAL 
+    public class FoodDAL : FoodUseCase
     {
         private static FoodDAL instance;
         public static FoodDAL Instance
@@ -17,8 +20,9 @@ namespace DAL
             private set { FoodDAL.instance = value; }
         }
         private FoodDAL() { }
-        public List<Food> GetFoodByCategoryID(int id)
+        public Object GetFoodByCategoryID(int id)
         {
+            ResponseFood res = new ResponseFood();
             List<Food> list = new List<Food>();
 
             string query = "select id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price from Food where id_category = " + id;
@@ -31,10 +35,14 @@ namespace DAL
                 list.Add(food);
             }
 
-            return list;
+            res.error = list.Count > 0 ? false : true;
+            res.message = "";
+            res.data = list;
+            return res;
         }
-        public List<Food> GetListFood()
+        public Object GetListFood()
         {
+            ResponseFood res = new ResponseFood();
             List<Food> list = new List<Food>();
 
             string query = "select id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price from Food";
@@ -47,7 +55,10 @@ namespace DAL
                 list.Add(food);
             }
 
-            return list;
+            res.error = list.Count > 0 ? false : true;
+            res.message = "";
+            res.data = list;
+            return res;
         }
 
         /**
@@ -56,8 +67,10 @@ namespace DAL
         *@return result
         */
 
-        public List<Food> SearchFoodByName(string querySearch)
+        public Object SearchFoodByName(string querySearch)
         {
+            ResponseFood res = new ResponseFood();
+    
             List<Food> list = new List<Food>();
 
             string query = string.Format($"SELECT id, food_name, id_category=(select name from FoodCategory where FoodCategory.id=Food.id_category), price FROM dbo.Food WHERE ((food_name LIKE N'%{querySearch}%') OR (id LIKE N'%{querySearch}%'))");
@@ -70,7 +83,10 @@ namespace DAL
                 list.Add(food);
             }
 
-            return list;
+            res.error = list.Count > 0 ? false : true;
+            res.message = "";
+            res.data = list;
+            return res;
         }
 
         /**
@@ -81,17 +97,23 @@ namespace DAL
         *@return result
         */
 
-        public bool InsertFood(string name, string id, int idCategory, float price)
+        public Object InsertFood(string name, string id, int idCategory, float price)
         {
+            Response res = new Response();
             try
             {
+                
                 string query = string.Format("INSERT dbo.Food ( id, food_name, id_category, price ) VALUES  (N'{0}', N'{1}', {2}, {3})", id, name, idCategory, price);
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
 
-                return result > 0;
+                res.error = result > 0 ? false : true;
+                res.message = "";
+                return res;
             } catch (Exception ex)
             {
-                return false;
+                res.error = true;
+                res.message = ex.Message;
+                return res;
             }
         }
 
@@ -104,17 +126,22 @@ namespace DAL
        *@return result
        */
 
-        public bool UpdateFood(string name, float price, int idCategory, string idFood)
+        public Object UpdateFood(string name, float price, int idCategory, string idFood)
         {
+            Response res = new Response();
             try
             {
                 string query = string.Format("UPDATE dbo.Food SET food_name = N'{0}', id_category = {1}, price = {2} WHERE id = N'{3}'", name, idCategory, price, idFood);
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
 
-                return result > 0;
+                res.error = result > 0 ? false : true;
+                res.message = "";
+                return res;
             } catch(Exception ex)
             {
-                return false;
+                res.error = true;
+                res.message = ex.Message;
+                return res;
             }
         }
 
@@ -125,19 +152,23 @@ namespace DAL
         */
 
 
-        public bool DeleteFood(string idFood)
+        public Object DeleteFood(string idFood)
         {
             //BillInfoDAO.Instance.DeleteBillInfoByFoodID(idFood);
-
+            Response res = new Response();
             try
             {
                 string query = string.Format("DELETE FROM Food WHERE id = N'{0}'", idFood);
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
 
-                return result > 0;
+                res.error = result > 0 ? false : true;
+                res.message = "";
+                return res;
             } catch (Exception e)
             {
-                return false;
+                res.error = true;
+                res.message = e.Message;
+                return res;
             }
         }
     }
