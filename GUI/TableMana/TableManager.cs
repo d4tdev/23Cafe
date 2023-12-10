@@ -107,7 +107,7 @@ namespace GUI.TableMana
             int length = listTable.Count;
 
             // thêm bàn mới
-            Boolean result = TableBLL.Instance.InsertTable(length+1);
+            Boolean result = TableBLL.Instance.InsertTable(length);
 
             if (result)
             {

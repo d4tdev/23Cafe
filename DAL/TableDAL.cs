@@ -41,9 +41,8 @@ namespace DAL
         public bool InsertTable(int idTable)
         {
             String name = idTable.ToString();
-            string query = string.Format("INSERT dbo.TableFood (id, table_name) values ({1}, N'Bàn {2}')", idTable, name);
+            string query = string.Format("INSERT dbo.TableFood (id, table_name) values ({0}, N'Bàn {1}')", idTable, name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
-
             return result > 0;
         }
 
