@@ -94,8 +94,6 @@ namespace GUI
             }
 
             billId = GetBillIdByTableId(tableId);
-            MessageBox.Show(existsBill.ToString() + billId);
-            
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
