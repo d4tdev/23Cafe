@@ -45,7 +45,7 @@ namespace DAL
             int count = DataProvider.Instance.ExecuteNonQuery(countQuery);
 
             string name = "Bàn " + (count + 1).ToString();
-            string query = string.Format("INSERT dbo.TableFood (table_name) values (N'{2}')", name);
+            string query = string.Format("INSERT dbo.TableFood (table_name) values (N'{0}')", name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

@@ -11,7 +11,7 @@ namespace DAL.UseCase
     {
         List<Table> GetListTable();
         bool CheckTableExistsBill(int idTable);
-        bool InsertTable(int idTable);
+        bool InsertTable();
         bool DeleteTable(int idTable);
     }
 }
