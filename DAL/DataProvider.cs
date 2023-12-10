@@ -64,32 +64,39 @@ namespace DAL
         // Return integer value
         public int ExecuteNonQuery(string query, object[] parameter = null)
         {
-            int data = 0;
-            using (SqlConnection conn = new SqlConnection(connectionStr))
+            try
             {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                if (parameter != null)
+                int data = 0;
+                using (SqlConnection conn = new SqlConnection(connectionStr))
                 {
-                    string[] listPara = query.Split(' ');
-                    int i = 0;
-                    foreach (string item in listPara)
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    if (parameter != null)
                     {
-                        if (item.Contains('@'))
+                        string[] listPara = query.Split(' ');
+                        int i = 0;
+                        foreach (string item in listPara)
                         {
-                            cmd.Parameters.AddWithValue(item, parameter[i]);
-                            i++;
+                            if (item.Contains('@'))
+                            {
+                                cmd.Parameters.AddWithValue(item, parameter[i]);
+                                i++;
+                            }
                         }
                     }
+
+                    data = cmd.ExecuteNonQuery();
+
+                    conn.Close();
                 }
-
-                data = cmd.ExecuteNonQuery();
-
-                conn.Close();
+                return data;
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return 0;
             }
-            return data;
         }
 
         public object ExecuteScalar(string query, object[] parameter = null)
