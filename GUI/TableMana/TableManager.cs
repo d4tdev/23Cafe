@@ -104,16 +104,14 @@ namespace GUI.TableMana
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            List<Table> listTable = TableBLL.Instance.GetListTable();
-            int length = listTable.Count;
-
             // thêm bàn mới
-            bool result = TableBLL.Instance.InsertTable(length);
+            bool result = TableBLL.Instance.InsertTable();
 
             if (result)
             {
                 // Thêm thành công
                 MessageBox.Show("Thêm bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                flowTable.Controls.Clear();
                 loadData();
             }
             else

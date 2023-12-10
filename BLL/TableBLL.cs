@@ -29,9 +29,9 @@ namespace BLL
             return TableDAL.Instance.CheckTableExistsBill(idTable);
         }
 
-        public bool InsertTable(int idTable)
+        public bool InsertTable()
         {
-            return TableDAL.Instance.InsertTable(idTable);
+            return TableDAL.Instance.InsertTable();
         }
 
         public bool DeleteTable(int idTable)
