@@ -21,7 +21,8 @@ namespace BLL
 
         public bool Login(string userName, string passWord)
         {
-            return AccountDAL.Instance.Login(userName, passWord);
+            if (userName.Equals("") || passWord.Equals("") ) { return false; }
+            else return AccountDAL.Instance.Login(userName, passWord);
         }
         public bool UpdateAccountWithPassword(string userName, string pass, string newPass)
         {
