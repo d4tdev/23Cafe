@@ -1,4 +1,5 @@
 ﻿using DTO;
+using GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -33,6 +34,7 @@ namespace DAL
                 return list;
             } catch (Exception ex)
             {
+                Logger.WriteLog(ex.Message);
                 return null;
             }
         }
@@ -45,6 +47,7 @@ namespace DAL
                 return result > 0;
             } catch (Exception e)
             {
+                Logger.WriteLog(ex.Message);
                 return false;
             }
         }
@@ -58,6 +61,7 @@ namespace DAL
                 return result > 0;
             } catch(Exception e)
             {
+                Logger.WriteLog(ex.Message);
                 return false;
             }
         }
@@ -71,6 +75,7 @@ namespace DAL
                 return result > 0;
             } catch (Exception e)
             {
+                Logger.WriteLog(ex.Message);
                 return false;
             }
         }

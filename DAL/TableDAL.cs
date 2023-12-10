@@ -1,6 +1,6 @@
-﻿using DAL.Response;
-using DAL.UseCase;
+﻿using DAL.UseCase;
 using DTO;
+using GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -42,6 +42,7 @@ namespace DAL
             {
                 res.error = true;
                 res.message = ex.Message;
+                Logger.WriteLog(ex.Message);
                 return res;
             }
         }
@@ -61,6 +62,7 @@ namespace DAL
             {
                 res.error= true;
                 res.message = ex.Message;
+                Logger.WriteLog(ex.Message);
                 return res;
             }
         }
@@ -83,6 +85,7 @@ namespace DAL
             {
                 res.error = true;
                 res.message = ex.Message;
+                Logger.WriteLog(ex.Message);
                 return res;
             }
         }
@@ -102,6 +105,7 @@ namespace DAL
             {
                 res.error = true;
                 res.message = ex.Message;
+                Logger.WriteLog(ex.Message);
                 return res;
             }
         }
