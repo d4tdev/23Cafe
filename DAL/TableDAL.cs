@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DAL
 {
@@ -38,10 +39,13 @@ namespace DAL
             return data.Rows.Count > 0;
         }
 
-        public bool InsertTable(int idTable)
+        public bool InsertTable()
         {
-            String name = idTable.ToString();
-            string query = string.Format("INSERT dbo.TableFood (id, table_name) values ({1}, N'Bàn {2}')", idTable, name);
+            string countQuery = string.Format("SELECT COUNT(*) FROM dbo.TableFood");
+            int count = DataProvider.Instance.ExecuteNonQuery(countQuery);
+
+            string name = "Bàn " + (count + 1).ToString();
+            string query = string.Format("INSERT dbo.TableFood (table_name) values (N'{2}')", name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
