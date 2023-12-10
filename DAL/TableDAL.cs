@@ -4,10 +4,6 @@ using GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace DAL
 {
@@ -23,7 +19,6 @@ namespace DAL
 
         public Object GetListTable()
         {
-
             ResponseTable res = new ResponseTable();
             try
             {
@@ -38,7 +33,8 @@ namespace DAL
                 res.message = "";
                 res.data = list;
                 return res;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 res.error = true;
                 res.message = ex.Message;
@@ -52,15 +48,15 @@ namespace DAL
             Response res = new Response();
             try
             {
-                
                 string query = string.Format("SELECT * FROM Bill WHERE id_table={0} AND status_bill=0", idTable);
                 DataTable data = DataProvider.Instance.ExecuteQuery(query);
                 res.error = data.Rows.Count > 0 ? false : true;
                 res.message = "";
                 return res;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                res.error= true;
+                res.error = true;
                 res.message = ex.Message;
                 Logger.WriteLog(ex.Message);
                 return res;
@@ -81,7 +77,8 @@ namespace DAL
                 res.error = result > 0 ? false : true;
                 res.message = "";
                 return res;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 res.error = true;
                 res.message = ex.Message;
@@ -95,13 +92,13 @@ namespace DAL
             Response res = new Response();
             try
             {
-                
                 String query = string.Format("Delete from dbo.TableFood where id={0}", idTable);
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
                 res.error = result > 0 ? false : true;
                 res.message = "";
                 return res;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 res.error = true;
                 res.message = ex.Message;

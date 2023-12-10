@@ -118,7 +118,7 @@ namespace GUI
                 if (dialogResult == DialogResult.Yes)
                 {
                     FoodBLL.Instance.DeleteFood(id);
-                    MessageBox.Show("Xóa thành công");
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadData();
                     // reset lại giá trị foodState
                     foodState = null;

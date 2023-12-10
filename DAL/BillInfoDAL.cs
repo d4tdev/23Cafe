@@ -47,7 +47,7 @@ namespace DAL
                 return result > 0;
             } catch (Exception e)
             {
-                Logger.WriteLog(ex.Message);
+                Logger.WriteLog(e.Message);
                 return false;
             }
         }
@@ -61,7 +61,7 @@ namespace DAL
                 return result > 0;
             } catch(Exception e)
             {
-                Logger.WriteLog(ex.Message);
+                Logger.WriteLog(e.Message);
                 return false;
             }
         }
@@ -75,7 +75,7 @@ namespace DAL
                 return result > 0;
             } catch (Exception e)
             {
-                Logger.WriteLog(ex.Message);
+                Logger.WriteLog(e.Message);
                 return false;
             }
         }

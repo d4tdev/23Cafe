@@ -80,7 +80,6 @@ namespace GUI.Product
                 if (FoodBLL.Instance.InsertFood(name, code, idCategory, float.Parse(price)))
                 {
                     MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
                 }
                 else
                 {
