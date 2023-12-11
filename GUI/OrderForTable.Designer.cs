@@ -136,7 +136,6 @@
             // 
             // dataFoodBill
             // 
-            this.dataFoodBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataFoodBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataFoodBill.Location = new System.Drawing.Point(3, 3);
             this.dataFoodBill.Name = "dataFoodBill";

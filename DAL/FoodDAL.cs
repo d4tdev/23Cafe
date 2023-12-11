@@ -1,6 +1,7 @@
 ﻿using DAL;
 using DAL.UseCase;
 using DTO;
+using GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -107,12 +108,18 @@ namespace DAL
                 int result = DataProvider.Instance.ExecuteNonQuery(query);
 
                 res.error = result > 0 ? false : true;
+                if (res.error = true || result <= 0)
+                {
+
+                    Logger.WriteLog("Không thêm sản phẩm được");
+                }
                 res.message = "";
                 return res;
             } catch (Exception ex)
             {
                 res.error = true;
                 res.message = ex.Message;
+                Logger.WriteLog(ex.Message);
                 return res;
             }
         }
@@ -136,11 +143,17 @@ namespace DAL
 
                 res.error = result > 0 ? false : true;
                 res.message = "";
+                if (res.error = true || result <= 0)
+                {
+
+                    Logger.WriteLog("Không cập nhật sản phẩm được");
+                }
                 return res;
             } catch(Exception ex)
             {
                 res.error = true;
                 res.message = ex.Message;
+                Logger.WriteLog(ex.Message);
                 return res;
             }
         }
@@ -163,11 +176,13 @@ namespace DAL
 
                 res.error = result > 0 ? false : true;
                 res.message = "";
+
                 return res;
             } catch (Exception e)
             {
                 res.error = true;
                 res.message = e.Message;
+                Logger.WriteLog(e.Message);
                 return res;
             }
         }
