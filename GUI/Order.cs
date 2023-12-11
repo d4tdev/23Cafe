@@ -114,8 +114,8 @@ namespace GUI
 
         private void muaMangVềToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OrderForTable orderForTable = new OrderForTable();
-            orderForTable.ShowDialog();
+            /*OrderForTable orderForTable = new OrderForTable();
+            orderForTable.ShowDialog();*/
         }
 
         // lấy giá trị của bàn thông qua click
