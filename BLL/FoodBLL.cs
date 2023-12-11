@@ -3,9 +3,11 @@ using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BLL
 {
@@ -32,12 +34,20 @@ namespace BLL
         }
         public List<Food> SearchFoodByName(string name)
         {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+            {
+                return null;
+            }
             ResponseFood res = (ResponseFood) FoodDAL.Instance.SearchFoodByName(name);
             if (res.error == false) return res.data;
             else return null;
         }
         public bool InsertFood(string name, string id, int idCategory, float price)
         {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name) || string.IsNullOrEmpty(id) || string.IsNullOrWhiteSpace(id) || string.IsNullOrEmpty(idCategory.ToString()) || string.IsNullOrWhiteSpace(idCategory.ToString()) || string.IsNullOrEmpty(price.ToString()) || string.IsNullOrWhiteSpace(price.ToString()))
+            {
+                return false;
+            }
             Response res = (Response)FoodDAL.Instance.InsertFood(name, id, idCategory, price);
             
             if (res.error == false)
@@ -46,6 +56,10 @@ namespace BLL
         }
         public bool UpdateFood(string name, float price, int idCategory, string idFood)
         {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name) || string.IsNullOrEmpty(idFood) || string.IsNullOrWhiteSpace(idFood) || string.IsNullOrEmpty(idCategory.ToString()) || string.IsNullOrWhiteSpace(idCategory.ToString()) || string.IsNullOrEmpty(price.ToString()) || string.IsNullOrWhiteSpace(price.ToString()))
+            {
+                return false;
+            }
             Response res = (Response) FoodDAL.Instance.UpdateFood(name, price, idCategory, idFood);
             if (res.error == false)
                 return true;
@@ -53,6 +67,10 @@ namespace BLL
         }
         public bool DeleteFood(string idFood)
         {
+            if (string.IsNullOrEmpty(idFood) || string.IsNullOrWhiteSpace(idFood))
+            {
+                return false;
+            }
             Response res = (Response) FoodDAL.Instance.DeleteFood(idFood);
             if (res.error == false)
                 return true;
